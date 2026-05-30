@@ -1,0 +1,25 @@
+[project]
+name = "askistanbul"
+version = "0.1.1"
+description = "RAG-based Q&A travel guide for Istanbul"
+requires-python = ">=3.10"
+
+[project.scripts]
+askistanbul-scrape     = "askistanbul.scraper:_main"
+askistanbul-preprocess = "askistanbul.preprocess:_main"
+askistanbul-chunk      = "askistanbul.chunker:_main"
+askistanbul-embed      = "askistanbul.embedder:_main"
+askistanbul-index      = "askistanbul.pipeline:_main"
+askistanbul-ask        = "askistanbul.retriever:_main"
+askistanbul-repl       = "askistanbul.rag:_main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["askistanbul*"]
