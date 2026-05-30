@@ -10,10 +10,13 @@ data/chunks/
 data/index/
 
 
-# data/cleaned/ 
+data/cleaned/ 
 
 # Environment
 .env
 
 # OS
 .DS_Store
+
+askistanbul.egg-info/
+CS455_555_Proposal_Caliskan_Sahinbas.pdf
