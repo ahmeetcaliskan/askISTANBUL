@@ -54,11 +54,18 @@ class Config:
     reranker_model: str
     reranker_fetch_k: int
 
+    # --- Judge type for proposal evaluation (openrouter, openai, anthropic) -------------
+    judge_type: str | None
+
     # --- Local LLM (Ollama) ------------------------------------------------
     ollama_base_url: str
     ollama_model: str
 
     # --- Hosted API fallbacks ---------------------------------------------
+    openrouter_api_key: str | None
+    openrouter_model: str
+    openrouter_referer: str | None
+    openrouter_title: str | None
     openai_api_key: str | None
     openai_model: str
     anthropic_api_key: str | None
@@ -72,8 +79,13 @@ class Config:
             embedding_model=_str_env("EMBEDDING_MODEL"),
             reranker_model=_str_env("RERANKER_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2"),
             reranker_fetch_k=_int_env("RERANKER_FETCH_K", 20),
+            judge_type=_str_env("JUDGE_TYPE", "openrouter"),
             ollama_base_url=_str_env("OLLAMA_BASE_URL", "http://localhost:11434"),
             ollama_model=_str_env("OLLAMA_MODEL", "qwen2.5:7b"),
+            openrouter_api_key=_str_env("OPENROUTER_API_KEY"),
+            openrouter_model=_str_env("OPENROUTER_LLM_MODEL", "qwen/qwen-2.5-72b-instruct"),
+            openrouter_referer=_str_env("OPENROUTER_REFERER"),
+            openrouter_title=_str_env("OPENROUTER_TITLE", "askistanbul"),
             openai_api_key=_str_env("OPENAI_API_KEY"),
             openai_model=_str_env("OPENAI_MODEL", "gpt-4o-mini"),
             anthropic_api_key=_str_env("ANTHROPIC_API_KEY"),
