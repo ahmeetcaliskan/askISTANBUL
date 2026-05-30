@@ -33,6 +33,7 @@ from .retriever import (
 from .scraper import DEFAULT_PAGES, Scraper, slug
 
 from .generator.adapter.OllamaClient import OllamaClient
+from .generator.adapter.OpenRouterClient import OpenRouterClient
 from .generator.port.BaseLLMClient import BaseLLMClient
 from .generator.factory.LLMClientFactory import LLMClientFactory
 
@@ -57,5 +58,5 @@ __all__ = [
     # facade
     "Pipeline", "RAGPipeline", "Answer",
     # LLM clients
-    "BaseLLMClient", "OllamaClient", "LLMClientFactory"
+    "BaseLLMClient", "OllamaClient", "OpenRouterClient", "LLMClientFactory"
 ]
