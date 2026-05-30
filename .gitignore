@@ -10,10 +10,12 @@ data/chunks/
 data/index/
 
 
-# data/cleaned/ 
+data/cleaned/ 
 
 # Environment
 .env
 
 # OS
 .DS_Store
+
+askistanbul.egg-info/
