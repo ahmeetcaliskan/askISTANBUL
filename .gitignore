@@ -1,0 +1,19 @@
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Data 
+data/raw/
+data/chunks/
+data/index/
+
+
+# data/cleaned/ 
+
+# Environment
+.env
+
+# OS
+.DS_Store
