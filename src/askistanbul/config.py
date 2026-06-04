@@ -78,7 +78,7 @@ class Config:
             askistanbul_data_dir=_str_env("ASKISTANBUL_DATA_DIR"),
             embedding_model=_str_env("EMBEDDING_MODEL"),
             reranker_model=_str_env("RERANKER_MODEL", "cross-encoder/ms-marco-MiniLM-L-6-v2"),
-            reranker_fetch_k=_int_env("RERANKER_FETCH_K", 20),
+            reranker_fetch_k=_int_env("RERANKER_FETCH_K", 5),
             judge_type=_str_env("JUDGE_TYPE", "openrouter"),
             ollama_base_url=_str_env("OLLAMA_BASE_URL", "http://localhost:11434"),
             ollama_model=_str_env("OLLAMA_MODEL", "qwen2.5:7b"),

@@ -1,0 +1,3606 @@
+{
+  "timestamp": "2026-06-04T01:47:14.658496",
+  "k": 5,
+  "client_type": "openrouter",
+  "conditions": [
+    {
+      "condition": "rerank-rag",
+      "k": 5,
+      "n_questions": 85,
+      "aggregate": {
+        "precision_at_k": {
+          "mean": 0.26666666666666666,
+          "min": 0.0,
+          "max": 0.6,
+          "n": 81
+        },
+        "recall_at_k": {
+          "mean": 0.8786008230452673,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 81
+        },
+        "mrr": {
+          "mean": 0.8847736625514404,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 81
+        },
+        "faithfulness": {
+          "mean": 0.9616386554621849,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 85
+        },
+        "answer_relevance": {
+          "mean": 0.9050735662965214,
+          "min": 0.8432393074035645,
+          "max": 0.955190896987915,
+          "n": 85
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "What is the cheapest way to get from Istanbul Airport to Sultanahmet, and what transfers are required?",
+          "ground_truth": "Take the M11 metro from the airport to Gayrettepe (about 30 minutes), transfer to the M2 southbound to Vezneciler, walk roughly 300 m to the Laleli-Üniversite tram stop, then ride Tram T1 three stops east to Sultanahmet. The HVIST-11 Havaist coach also runs directly from the airport to Çatladıkapı in Sultanahmet for 380 TL in about 110 minutes if you prefer a single-vehicle option.",
+          "answer": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram, which involves the following steps:\n\n1. Take the M11 metro line from the airport to Gayrettepe.\n2. Transfer to Metro line M2 heading southbound and travel as far as Vezneciler (the penultimate stop).\n3. Walk 300 meters to Laleli-Üniversite and transfer to Tram line 1.\n4. Travel eastward for three stops on the tram until you reach Sultanahmet.\n\nFares on line M11 vary according to distance and the number of stops traveled. Using an IstanbulKart will help manage the fare efficiently, as you will be automatically refunded any excess fare upon tapping out at the arrival station. [1], [4]",
+          "retrieved_ids": [
+            "istanbul_airport_00019",
+            "istanbul_00013",
+            "istanbul_00028",
+            "istanbul_airport_00018",
+            "istanbul_00014"
+          ],
+          "gold_ids": [
+            "istanbul_00013",
+            "istanbul_airport_00017",
+            "istanbul_airport_00019"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 0.7142857142857143,
+          "answer_relevance": 0.9331454038619995,
+          "latency_s": 5.85,
+          "faithfulness_claims": [
+            {
+              "claim": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram.",
+              "supported": true
+            },
+            {
+              "claim": "Take the M11 metro line from the airport to Gayrettepe.",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Metro line M2 heading southbound and travel as far as Vezneciler (the penultimate stop).",
+              "supported": true
+            },
+            {
+              "claim": "Walk 300 meters to Laleli-Üniversite and transfer to Tram line 1.",
+              "supported": true
+            },
+            {
+              "claim": "Travel eastward for three stops on the tram until you reach Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Fares on line M11 vary according to distance and the number of stops traveled.",
+              "supported": false
+            },
+            {
+              "claim": "Using an IstanbulKart will help manage the fare efficiently, as you will be automatically refunded any excess fare upon tapping out at the arrival station.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What is balık-ekmek and where in Istanbul is it traditionally sold?",
+          "ground_truth": "Balık-ekmek means 'fish and bread' and consists of freshly grilled fish, typically mackerel, served in a crusty bread roll with lettuce, onions, sometimes tomatoes, and a squeeze of lemon. It is an iconic waterfront snack, especially at the lower level of Galata Bridge near the Eminönü ferry pier where vendors such as Eminönü Balık Ekmek and Deniz Yildizi Balikci sell it.",
+          "answer": "Balık-ekmek is a grilled fish sandwiched inside half a bread, often served with lettuce, onions, and sometimes tomatoes, and can be accompanied by a squeeze of lemon and a sprinkle of spices. It is a popular low-budget meal in Istanbul, traditionally sold from buffets along the coast, fish restaurants in the market area, and handcarts by the ferry pier in Kadıköy [1], [2], [3].",
+          "retrieved_ids": [
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_00103",
+            "istanbul_kadıköy_00014",
+            "istanbul_00098",
+            "istanbul_historical_peninsula_00035"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00035",
+            "istanbul_kadıköy_00014",
+            "istanbul_00103"
+          ],
+          "precision_at_k": 0.6,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8825069069862366,
+          "latency_s": 3.23,
+          "faithfulness_claims": [
+            {
+              "claim": "Balık-ekmek is a grilled fish sandwiched inside half a bread, often served with lettuce, onions, and sometimes tomatoes, and can be accompanied by a squeeze of lemon and a sprinkle of spices.",
+              "supported": true
+            },
+            {
+              "claim": "It is a popular low-budget meal in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "It is traditionally sold from buffets along the coast, fish restaurants in the market area, and handcarts by the ferry pier in Kadıköy.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "Which travellers can enter Turkey without obtaining a visa in advance, and how long is the e-visa valid for those who do need one?",
+          "ground_truth": "From 2020 onward most EU, UK, CIS and South American visitors do not need a visa. Travellers from many other countries including Australia, Canada and the United States can obtain an e-visa online that is valid for 90 days.",
+          "answer": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance. Visitors from countries including Australia, Canada, and the US can get an e-visa online, which is valid for 90 days. [1], [2]",
+          "retrieved_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012",
+            "istanbul_airport_00030",
+            "istanbul_00063",
+            "istanbul_airport_00005"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9208183288574219,
+          "latency_s": 2.37,
+          "faithfulness_claims": [
+            {
+              "claim": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance.",
+              "supported": true
+            },
+            {
+              "claim": "Visitors from countries including Australia, Canada, and the US can get an e-visa online.",
+              "supported": true
+            },
+            {
+              "claim": "The e-visa is valid for 90 days.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "factual",
+          "question": "What was the Hippodrome at Sultanahmet Square used for, and what notable monuments remain there today?",
+          "ground_truth": "The Hippodrome was a U-shaped chariot-racing track first built in 203 AD and rebuilt under Constantine in 324, where rival factions of Greens and Blues raced. A riot there in 532 left 30,000 dead and ruined half the city, and the venue was abandoned after the Crusader attack of 1204. The square still holds two obelisks, the stump of the Serpent Column, and the 1901 German Fountain donated by Kaiser Wilhelm.",
+          "answer": "The Hippodrome at Sultanahmet Square was used as a chariot racing venue during the Roman and Byzantine periods. Chariots representing rival political factions, such as the Greens and the Blues, would race around the track. A significant event in the Hippodrome's history was a riot in 532 AD that resulted in 30,000 deaths and widespread destruction in the city [1].\n\nToday, the square retains several notable monuments, including:\n- Obelisks\n- The stump of the \"serpent column\"\n- The German Fountain of 1901, a gift from Kaiser Wilhelm to the Sultan [1]",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_00065",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00026",
+            "istanbul_historical_peninsula_00005"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00018"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8752814531326294,
+          "latency_s": 7.34,
+          "faithfulness_claims": [
+            {
+              "claim": "The Hippodrome at Sultanahmet Square was used as a chariot racing venue during the Roman and Byzantine periods.",
+              "supported": true
+            },
+            {
+              "claim": "Chariots representing rival political factions, such as the Greens and the Blues, would race around the track.",
+              "supported": true
+            },
+            {
+              "claim": "A significant event in the Hippodrome's history was a riot in 532 AD that resulted in 30,000 deaths and widespread destruction in the city.",
+              "supported": true
+            },
+            {
+              "claim": "Today, the square retains several notable monuments, including obelisks.",
+              "supported": true
+            },
+            {
+              "claim": "The square retains the stump of the 'serpent column'.",
+              "supported": true
+            },
+            {
+              "claim": "The square retains the German Fountain of 1901, a gift from Kaiser Wilhelm to the Sultan.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "category": "Accommodation",
+          "difficulty": "synthesis",
+          "question": "Which Istanbul neighbourhoods are best suited to budget travellers looking for hostels, and how do they differ in character?",
+          "ground_truth": "Sultanahmet in the old city is the main hub for hostel-type accommodation favoured by independent travellers, with many hotels offering Marmara Sea or Blue Mosque views. Taksim on the European side has hostels and moderate hotels and serves as the city's shopping and entertainment centre. Harbiye is close to both Nişantaşı and Taksim and contains apartments and moderate hotels for budget travellers.",
+          "answer": "The best neighbourhoods for budget travelers looking for hostels in Istanbul are Harbiye, Taksim, and Sultanahmet. Each has its own distinct character:\n\n1. **Harbiye**: This area is popular and close to the main center of the new city on the European side. It offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers. Being close to Nişantaşı and Taksim, you can benefit from the activities in those areas as well [1].\n\n2. **Taksim**: Taksim is the main center of the city on the European side, known for shopping and entertainment. It has moderate hotels for budget travelers and several hostels. Taksim is vibrant and bustling, making it a lively choice for those who enjoy a more dynamic atmosphere [1].\n\n3. **Sultanahmet**: This is the main center for the old city on the European side. It has a selection of quality, reasonably priced hotels, many with terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque. Sultanahmet is rich in historical and cultural attractions, making it ideal for travelers interested in exploring the old city. Most hostel-type accommodation frequented by independent travelers is located here [1].\n\nCitations:\n[1]",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_eastern_suburbs_00000",
+            "istanbul_00136",
+            "istanbul_00101",
+            "istanbul_airport_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00109"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 0.9,
+          "answer_relevance": 0.8988494873046875,
+          "latency_s": 17.47,
+          "faithfulness_claims": [
+            {
+              "claim": "The best neighbourhoods for budget travelers looking for hostels in Istanbul are Harbiye, Taksim, and Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is popular and close to the main center of the new city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers.",
+              "supported": true
+            },
+            {
+              "claim": "Being close to Nişantaşı and Taksim, you can benefit from the activities in those areas as well.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is the main center of the city on the European side, known for shopping and entertainment.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim has moderate hotels for budget travelers and several hostels.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is vibrant and bustling, making it a lively choice for those who enjoy a more dynamic atmosphere.",
+              "supported": false
+            },
+            {
+              "claim": "Sultanahmet is the main center for the old city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet has a selection of quality, reasonably priced hotels, many with terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque.",
+              "supported": true
+            },
+            {
+              "claim": "Most hostel-type accommodation frequented by independent travelers is located in Sultanahmet.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "category": "Culture & Customs",
+          "difficulty": "factual",
+          "question": "How should travellers handle tipping when taking taxis in Istanbul?",
+          "ground_truth": "Tipping is generally unnecessary for taxis, and there is no extra fare at night. Drivers should be using the taximeter; if a driver tries to negotiate a fixed price or fails to start the meter, it is best to refuse the ride and take another cab to avoid being overcharged.",
+          "answer": "Travellers should know that tipping is generally unnecessary when taking taxis in Istanbul [1].",
+          "retrieved_ids": [
+            "istanbul_00057",
+            "istanbul_00122",
+            "istanbul_00058",
+            "istanbul_00124",
+            "istanbul_00014"
+          ],
+          "gold_ids": [
+            "istanbul_00057",
+            "istanbul_00126",
+            "istanbul_airport_00015"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.3333333333333333,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9109801054000854,
+          "latency_s": 1.4,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers should know that tipping is generally unnecessary when taking taxis in Istanbul",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "category": "Shopping",
+          "difficulty": "synthesis",
+          "question": "Why might travellers want to avoid buying Turkish Delight or spices at the Spice Bazaar, and where would be a better place to shop?",
+          "ground_truth": "Prices at the Spice Market in Eminönü are roughly two to three times higher than elsewhere in the city because the area is heavily touristic. Istiklal Caddesi in Beyoğlu has many stores selling Turkish sweets by the kilogram and is generally a better place to buy fresh lokum and other Turkish delights, unless you are a strong haggler.",
+          "answer": "Travellers might want to avoid buying Turkish Delight or spices at the Spice Bazaar because prices there can be inflated compared to other areas of the city [4]. A better place to shop for Turkish Delight would be on Istiklal Caddesi, where there are many stores selling Turkish sweets by the kilogram, including lokum and helvah [2]. For spices, it's recommended to explore other central spots such as Üsküdar [1]. \n\nCitations: [1], [2], [4]",
+          "retrieved_ids": [
+            "istanbul_00100",
+            "istanbul_00098",
+            "istanbul_00128",
+            "istanbul_00101",
+            "istanbul_00132"
+          ],
+          "gold_ids": [
+            "istanbul_00101",
+            "istanbul_00098"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9226038455963135,
+          "latency_s": 4.81,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers might want to avoid buying Turkish Delight or spices at the Spice Bazaar because prices there can be inflated compared to other areas of the city",
+              "supported": true
+            },
+            {
+              "claim": "A better place to shop for Turkish Delight would be on Istiklal Caddesi, where there are many stores selling Turkish sweets by the kilogram, including lokum and helvah",
+              "supported": true
+            },
+            {
+              "claim": "For spices, it's recommended to explore other central spots such as Üsküdar",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "What major natural hazard does Istanbul face, and what should travellers do to prepare for it?",
+          "ground_truth": "A major earthquake with its epicentre in the nearby Sea of Marmara is expected within the next few decades. Travellers are advised to read an earthquake safety article before arriving so they know how to respond if a quake occurs during their stay.",
+          "answer": "Istanbul faces the major natural hazard of a major earthquake, with the epicenter expected to be in the nearby Sea of Marmara. To prepare for this, travellers should read the earthquake safety article before arriving in Istanbul [1].",
+          "retrieved_ids": [
+            "istanbul_00111",
+            "istanbul_00129",
+            "istanbul_00006",
+            "istanbul_airport_00057",
+            "istanbul_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00111"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9045449495315552,
+          "latency_s": 2.34,
+          "faithfulness_claims": [
+            {
+              "claim": "Istanbul faces the major natural hazard of a major earthquake.",
+              "supported": true
+            },
+            {
+              "claim": "The epicenter of the earthquake is expected to be in the nearby Sea of Marmara.",
+              "supported": true
+            },
+            {
+              "claim": "Travellers should read the earthquake safety article before arriving in Istanbul.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "category": "Itinerary & Planning",
+          "difficulty": "factual",
+          "question": "When are the best times of year to visit the Princes' Islands, and which seasons should be avoided?",
+          "ground_truth": "Spring (April and May) and autumn (September and October) are the best times, with pleasant temperatures and smaller crowds. Summer weekends from June to August are very crowded on both the islands and the ferries, while winter from November to March is cold and quiet, suitable only for travellers who don't mind biting cold and a near-deserted feel.",
+          "answer": "The best times to visit the Princes' Islands are during spring (April and May) and autumn (September and October). During these seasons, the temperature is pleasantly mild, and the islands are not very crowded. Early spring, around late March, is particularly charming when the silver wattles are in bloom, adding to the islands' beauty. Summer weekends (June to August) should be avoided due to crowds on the islands and in the ships. Winter (November to March) is also a less ideal time unless you are looking for a \"ghost-town\" experience with the islands blanketed in snow and a biting cold [2].",
+          "retrieved_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00004",
+            "istanbul_00008",
+            "istanbul_princes_islands_00000",
+            "istanbul_kadıköy_00021"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00004",
+            "istanbul_00008"
+          ],
+          "precision_at_k": 0.6,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8962560892105103,
+          "latency_s": 6.35,
+          "faithfulness_claims": [
+            {
+              "claim": "The best times to visit the Princes' Islands are during spring (April and May) and autumn (September and October).",
+              "supported": true
+            },
+            {
+              "claim": "During these seasons, the temperature is pleasantly mild, and the islands are not very crowded.",
+              "supported": true
+            },
+            {
+              "claim": "Early spring, around late March, is particularly charming when the silver wattles are in bloom, adding to the islands' beauty.",
+              "supported": true
+            },
+            {
+              "claim": "Summer weekends (June to August) should be avoided due to crowds on the islands and in the ships.",
+              "supported": true
+            },
+            {
+              "claim": "Winter (November to March) is also a less ideal time unless you are looking for a 'ghost-town' experience with the islands blanketed in snow and a biting cold.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "category": "Activities & Entertainment",
+          "difficulty": "factual",
+          "question": "Which six Istanbul football clubs play in the Süper Lig, and which one won the 2000 UEFA Cup?",
+          "ground_truth": "Istanbul has six clubs in the Süper Lig: Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray and Kasımpaşa. Galatasaray is the club that won the 2000 UEFA Cup.",
+          "answer": "The six Istanbul football clubs that play in the Süper Lig are Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray, and Kasımpaşa. Galatasaray won the 2000 UEFA Cup [1].",
+          "retrieved_ids": [
+            "istanbul_00088",
+            "istanbul_00112",
+            "istanbul_00089",
+            "istanbul_00090",
+            "istanbul_kadıköy_00012"
+          ],
+          "gold_ids": [
+            "istanbul_00088"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9260754585266113,
+          "latency_s": 4.74,
+          "faithfulness_claims": [
+            {
+              "claim": "The six Istanbul football clubs that play in the Süper Lig are Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray, and Kasımpaşa.",
+              "supported": true
+            },
+            {
+              "claim": "Galatasaray won the 2000 UEFA Cup.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "How can you reach the European side of Istanbul from Sabiha Gökçen Airport at night when many services are reduced?",
+          "ground_truth": "The IETT city bus E-10 runs 24 hours from Sabiha Gökçen to Kadıköy via Kurtköy and requires a two-zone ticket. From Kadıköy you can catch a ferry across to the European side, or transfer to the Marmaray train at Ayrılık Çeşmesi. The Havabüs to Taksim also operates from 04:00 to 01:00 every 30 minutes and is faster.",
+          "answer": "To reach the European side of Istanbul from Sabiha Gökçen Airport at night, you can use the Havaist airport shuttle buses, which operate at reduced frequencies but still provide service to key destinations such as Taksim Square. Additionally, you can take a taxi, which is available 24/7 and can directly take you to your destination on the European side. [2]",
+          "retrieved_ids": [
+            "istanbul_00022",
+            "istanbul_galata_00009",
+            "istanbul_airport_00000",
+            "sabiha_gökçen_international_airport_00001",
+            "istanbul_00030"
+          ],
+          "gold_ids": [
+            "istanbul_00056"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9167205691337585,
+          "latency_s": 4.24,
+          "faithfulness_claims": [
+            {
+              "claim": "To reach the European side of Istanbul from Sabiha Gökçen Airport at night, you can use the Havaist airport shuttle buses.",
+              "supported": true
+            },
+            {
+              "claim": "Havaist airport shuttle buses operate at reduced frequencies but still provide service to key destinations such as Taksim Square.",
+              "supported": true
+            },
+            {
+              "claim": "You can take a taxi, which is available 24/7 and can directly take you to your destination on the European side.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What are meyhanes and where in Istanbul are they typically found?",
+          "ground_truth": "Meyhanes are traditional taverns that originated in Ottoman times, available in both traditional and modern styles, sometimes featuring belly dancing. They are mostly concentrated in seaside districts on both the European and Asian sides, including the old fishermen's quarter south of Beyazıt where meyhanes line the streets serving mostly seafood, and the area further west where the taverns also offer more meat choices.",
+          "answer": "Meyhanes are taverns that originated during the Ottoman era. They can be found in both traditional and modern styles, with some even featuring belly dancing. These taverns are predominantly located in the seaside districts on both the European and Asian sides of Istanbul. Notable areas include Bebek, a small town on the European Bosphorus, and Beylerbeyi on the Asian side [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00108",
+            "istanbul_asian_bosphorus_00013",
+            "istanbul_00101",
+            "istanbul_00067",
+            "istanbul_00128"
+          ],
+          "gold_ids": [
+            "istanbul_asian_bosphorus_00013",
+            "istanbul_00108"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8499486446380615,
+          "latency_s": 4.66,
+          "faithfulness_claims": [
+            {
+              "claim": "Meyhanes are taverns that originated during the Ottoman era.",
+              "supported": true
+            },
+            {
+              "claim": "They can be found in both traditional and modern styles, with some even featuring belly dancing.",
+              "supported": true
+            },
+            {
+              "claim": "These taverns are predominantly located in the seaside districts on both the European and Asian sides of Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "Notable areas include Bebek, a small town on the European Bosphorus, and Beylerbeyi on the Asian side.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "category": "Practical Info",
+          "difficulty": "synthesis",
+          "question": "How much does the Istanbul Museum Pass cost as of April 2025 and how long is it valid?",
+          "ground_truth": "The Museum Pass costs €105 as of April 2025. It is non-transferable and valid for five days from the date of the first visit, granting one free entry to each included site such as Topkapı Palace, Hagia Irene, the Istanbul Archaeological Museums and the Galata Tower.",
+          "answer": "The Istanbul Museum Pass costs €105 as of April 2025 and is valid for five days from the date of the first visit. [1]",
+          "retrieved_ids": [
+            "istanbul_00063",
+            "istanbul_00064",
+            "istanbul_00014",
+            "istanbul_airport_00052",
+            "istanbul_airport_00007"
+          ],
+          "gold_ids": [
+            "istanbul_00063"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9468457698822021,
+          "latency_s": 2.13,
+          "faithfulness_claims": [
+            {
+              "claim": "The Istanbul Museum Pass costs €105 as of April 2025",
+              "supported": true
+            },
+            {
+              "claim": "The pass is valid for five days from the date of the first visit",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "synthesis",
+          "question": "How can a visitor enter Gülhane Park, and what historical artefacts can be seen inside it?",
+          "ground_truth": "Gülhane Park has three entrances: from the north on Kennedy Caddesi by the coast, from the west near the Museum of the History of Science and Technology in Islam, and from the south on Alemdar Caddesi near the Blue Mosque; there is no direct entrance from Topkapı to the east. Inside the park visitors can see the Column of the Goths, a 3rd-or-4th-century Roman victory monument thought to be the city's oldest intact Roman artefact, and the Orphanage of St Paul founded in 573 AD, as well as Gülhane Park Cistern which is now a free art space.",
+          "answer": "Gülhane Park can be entered through three entrances: \n\n1. North entrance from Kennedy Cd on the coastline.\n2. West entrance by the Museum of History of Science and Technology in Islam.\n3. South entrance from Alemdar Cd near the Blue Mosque.\n\nInside the park, visitors can see the Column of the Goths near the north entrance, which is a victory monument erected in the 3rd or 4th century AD. It is considered the oldest intact Roman artefact in the city. Additionally, the park houses the Gülhane Park Cistern, which was discovered during the 1912 makeover and is now used as an art space [1], [3].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00021",
+            "istanbul_historical_peninsula_00019",
+            "istanbul_historical_peninsula_00022",
+            "istanbul_historical_peninsula_00018",
+            "istanbul_historical_peninsula_00016"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00021",
+            "istanbul_historical_peninsula_00022"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8794229030609131,
+          "latency_s": 5.61,
+          "faithfulness_claims": [
+            {
+              "claim": "Gülhane Park can be entered through three entrances: north from Kennedy Cd on the coastline, west by the Museum of History of Science and Technology in Islam, and south from Alemdar Cd near the Blue Mosque.",
+              "supported": true
+            },
+            {
+              "claim": "Inside the park, visitors can see the Column of the Goths near the north entrance, which is a victory monument erected in the 3rd or 4th century AD.",
+              "supported": true
+            },
+            {
+              "claim": "The Column of the Goths is considered the oldest intact Roman artefact in the city.",
+              "supported": true
+            },
+            {
+              "claim": "The park houses the Gülhane Park Cistern, which was discovered during the 1912 makeover and is now used as an art space.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "Where in Istanbul will you find caravan parks suitable for travellers with motorhomes or trailers?",
+          "ground_truth": "Caravan parks exist in Ahırkapı south of Sultanahmet, in Maltepe in the Maltepe district, and in outlying villages on both sides of the Bosphorus.",
+          "answer": "Caravan parks suitable for travellers with motorhomes or trailers can be found in Ahırkapı south of Sultanahmet, in Maltepe, and in the outlying villages on both sides of the Bosphorus [1].",
+          "retrieved_ids": [
+            "istanbul_00110",
+            "istanbul_airport_00057",
+            "istanbul_00109",
+            "istanbul_princes_islands_00010",
+            "istanbul_airport_00018"
+          ],
+          "gold_ids": [
+            "istanbul_00110"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.880794882774353,
+          "latency_s": 2.73,
+          "faithfulness_claims": [
+            {
+              "claim": "Caravan parks suitable for travellers with motorhomes or trailers can be found in Ahırkapı south of Sultanahmet",
+              "supported": true
+            },
+            {
+              "claim": "Caravan parks suitable for travellers with motorhomes or trailers can be found in Maltepe",
+              "supported": true
+            },
+            {
+              "claim": "Caravan parks suitable for travellers with motorhomes or trailers can be found in the outlying villages on both sides of the Bosphorus",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "Why is it advised to dress modestly in Istanbul, particularly compared with Turkish beach resorts like Bodrum?",
+          "ground_truth": "Istanbul is not Bodrum, so skimpy clothing that might be acceptable at a beach resort can draw hostile attention from both 'horny jocks' and ultraconservatives. Modest dress avoids unwanted harassment and reflects respect for a more religious urban setting.",
+          "answer": "It is advised to dress modestly in Istanbul, particularly compared with Turkish beach resorts like Bodrum, because skimpy clothing that might be normal in Bodrum can draw hostile attention in Istanbul, both from \"horny jocks and ultraconservatives\" [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00043",
+            "istanbul_european_bosphorus_00018",
+            "istanbul_rural_00004",
+            "istanbul_00111",
+            "istanbul_european_bosphorus_00017"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00043"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.93051677942276,
+          "latency_s": 3.58,
+          "faithfulness_claims": [
+            {
+              "claim": "It is advised to dress modestly in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "Compared with Turkish beach resorts like Bodrum, skimpy clothing is more normal in Bodrum.",
+              "supported": true
+            },
+            {
+              "claim": "Skimpy clothing in Istanbul can draw hostile attention.",
+              "supported": true
+            },
+            {
+              "claim": "The hostile attention can come from 'horny jocks and ultraconservatives'.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "category": "Shopping",
+          "difficulty": "factual",
+          "question": "Where can you buy fresh Turkish Delight by the kilogram in Istanbul, and which flavours are recommended?",
+          "ground_truth": "Istiklal Caddesi in particular has a number of stores that sell Turkish sweets including lokum and helvah by the kilogram. It is advisable to buy fresh lokum rather than pre-packed boxes, and pistachio is highlighted as a particularly good flavour, alongside a variety beyond the stereotypical rose-water or lemon options sold abroad.",
+          "answer": "You can buy fresh Turkish Delight (Lokum) by the kilogram in Istanbul from stores on Istiklal Caddesi, which offer a variety of flavors [1]. Pistachio is particularly recommended as it is considered very good [1].",
+          "retrieved_ids": [
+            "istanbul_00098",
+            "istanbul_00100",
+            "istanbul_00099",
+            "istanbul_00042",
+            "istanbul_00104"
+          ],
+          "gold_ids": [
+            "istanbul_00098"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9172179698944092,
+          "latency_s": 3.56,
+          "faithfulness_claims": [
+            {
+              "claim": "You can buy fresh Turkish Delight (Lokum) by the kilogram in Istanbul",
+              "supported": true
+            },
+            {
+              "claim": "Turkish Delight can be bought from stores on Istiklal Caddesi",
+              "supported": true
+            },
+            {
+              "claim": "Stores on Istiklal Caddesi offer a variety of flavors of Turkish Delight",
+              "supported": true
+            },
+            {
+              "claim": "Pistachio is particularly recommended as it is considered very good",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "category": "Health & Safety",
+          "difficulty": "synthesis",
+          "question": "How do bar scams typically operate in the Taksim, Aksaray and Beyazit areas, and what should travellers do if they get caught in one?",
+          "ground_truth": "Friendly young men or male-female couples strike up conversations in the street and invite tourists to a nightclub they know, sometimes after dinner to lower suspicion. Once inside, drinks are charged at extreme prices based on a replica menu or a menu that had been upside down, and 'security' personnel may force compliance. If trapped, you should comply, pay the bill, get out safely, and only then contact the police on #112.",
+          "answer": "Bar scams in the Taksim, Aksaray, and Beyazit areas typically operate by luring tourists into nightclubs with the promise of a good time, only to present them with an exorbitantly high bill later. Scammers may approach tourists in the street, strike up a conversation, and invite them to a \"good nightclub they know.\" They might offer to take the tourists to dinner first to lower their suspicions. Another variant involves an invitation to buy a beer for the scammer, who pretends to be a local. At the club, attractive women may join the tourists and order drinks, and when the bill comes, the scammer denies having said they would pay. If the tourists object, burly \"security\" personnel may appear to intimidate them into paying.\n\nIf you find yourself in such a situation, you should do whatever they want you to do, pay the bill, buy the things they are forcing you to buy, and try to get out of the situation as soon as possible. Once you are in a safe place, call the police [1], [3].",
+          "retrieved_ids": [
+            "istanbul_00113",
+            "istanbul_galata_00031",
+            "istanbul_00114",
+            "istanbul_00129",
+            "istanbul_00119"
+          ],
+          "gold_ids": [
+            "istanbul_00113",
+            "istanbul_00114"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9341117143630981,
+          "latency_s": 8.01,
+          "faithfulness_claims": [
+            {
+              "claim": "Bar scams in the Taksim, Aksaray, and Beyazit areas typically operate by luring tourists into nightclubs with the promise of a good time, only to present them with an exorbitantly high bill later.",
+              "supported": true
+            },
+            {
+              "claim": "Scammers may approach tourists in the street, strike up a conversation, and invite them to a 'good nightclub they know.'",
+              "supported": true
+            },
+            {
+              "claim": "They might offer to take the tourists to dinner first to lower their suspicions.",
+              "supported": true
+            },
+            {
+              "claim": "Another variant involves an invitation to buy a beer for the scammer, who pretends to be a local.",
+              "supported": true
+            },
+            {
+              "claim": "At the club, attractive women may join the tourists and order drinks, and when the bill comes, the scammer denies having said they would pay.",
+              "supported": true
+            },
+            {
+              "claim": "If the tourists object, burly 'security' personnel may appear to intimidate them into paying.",
+              "supported": true
+            },
+            {
+              "claim": "If you find yourself in such a situation, you should do whatever they want you to do, pay the bill, buy the things they are forcing you to buy, and try to get out of the situation as soon as possible.",
+              "supported": true
+            },
+            {
+              "claim": "Once you are in a safe place, call the police.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "category": "Itinerary & Planning",
+          "difficulty": "synthesis",
+          "question": "What kind of summer weather should travellers prepare for in Istanbul, and what clothing is recommended?",
+          "ground_truth": "Summer (July to August) is generally warm, averaging 26°C during the day and 17°C at night, with the Poyraz northeasterly wind usually keeping temperatures below 32-33°C but bringing humid Black Sea air. There are roughly four to five rainy days a month and around 2-3 hailstorms per year. Light clothing is recommended, plus a light jacket or sweater for cooler evenings.",
+          "answer": "Travellers to Istanbul during the summer should prepare for warm weather, with average temperatures around 26°C during the day and 17°C at night. The weather is generally pleasant, but it can be humid, which may make the perceived temperature feel higher. There are typically around four to five rainy days a month, and occasional heavy rain or hailstorms can occur. Light clothing is recommended, along with a light jacket or sweater for cooler evenings [1].",
+          "retrieved_ids": [
+            "istanbul_00007",
+            "istanbul_00011",
+            "istanbul_00004",
+            "istanbul_00010",
+            "istanbul_princes_islands_00004"
+          ],
+          "gold_ids": [
+            "istanbul_00007"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.912093997001648,
+          "latency_s": 4.1,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers to Istanbul during the summer should prepare for warm weather, with average temperatures around 26°C during the day and 17°C at night.",
+              "supported": true
+            },
+            {
+              "claim": "The weather is generally pleasant, but it can be humid, which may make the perceived temperature feel higher.",
+              "supported": true
+            },
+            {
+              "claim": "There are typically around four to five rainy days a month.",
+              "supported": true
+            },
+            {
+              "claim": "Occasional heavy rain or hailstorms can occur.",
+              "supported": true
+            },
+            {
+              "claim": "Light clothing is recommended, along with a light jacket or sweater for cooler evenings.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "category": "Activities & Entertainment",
+          "difficulty": "factual",
+          "question": "What is the Bosphorus Cross Continental Swim, and is regular swimming across the Bosphorus permitted?",
+          "ground_truth": "The Bosphorus Cross Continental Swim is an annual organized swim across the strait. Outside of that event, swimming across the Bosphorus is not forbidden by law as long as the swimmer doesn't threaten the security of sea transport or their own health. A group called 'Sarayburnu Fatihleri' (Seraglio Conquerers) reportedly does this on a daily basis.",
+          "answer": "The Bosphorus Cross Continental Swim is an annual swimming event that takes place in the Bosphorus Strait, allowing participants to swim across from one continent to another [2]. Regular swimming across the Bosphorus is not forbidden by law, provided that it does not threaten the security of sea transport or the swimmer's own health [1], [3]. However, swimming in the Bosphorus is generally discouraged due to strong currents, depth, and water quality concerns [4].",
+          "retrieved_ids": [
+            "istanbul_asian_bosphorus_00006",
+            "istanbul_european_bosphorus_00008",
+            "istanbul_historical_peninsula_00016",
+            "istanbul_european_bosphorus_00017",
+            "istanbul_asian_bosphorus_00004"
+          ],
+          "gold_ids": [
+            "istanbul_asian_bosphorus_00006",
+            "istanbul_historical_peninsula_00016"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9173462390899658,
+          "latency_s": 4.49,
+          "faithfulness_claims": [
+            {
+              "claim": "The Bosphorus Cross Continental Swim is an annual swimming event that takes place in the Bosphorus Strait, allowing participants to swim across from one continent to another",
+              "supported": true
+            },
+            {
+              "claim": "Regular swimming across the Bosphorus is not forbidden by law, provided that it does not threaten the security of sea transport or the swimmer's own health",
+              "supported": true
+            },
+            {
+              "claim": "Swimming in the Bosphorus is generally discouraged due to strong currents, depth, and water quality concerns",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "What types of taxis are available at Istanbul Airport, and how do their capacities and price levels differ?",
+          "ground_truth": "There are three types: orange (economy) taxis, turquoise (comfort) taxis, and black (premium / luxury) taxis. Orange and turquoise taxis carry up to 4 passengers, while black luxury taxis can carry up to 8. Turquoise taxis cost roughly 15% more than orange, and black luxury taxis cost about 70% more.",
+          "answer": "At Istanbul Airport, there are three types of taxis available:\n\n1. **Orange (Economy) Taxis**: These can carry 4 passengers and are the most affordable option.\n2. **Turquoise (Comfort) Taxis**: These also carry 4 passengers and are slightly more expensive than the orange taxis.\n3. **Black (Premium) Taxis**: These can carry up to 8 passengers and are the most expensive option.\n\nThe prices for these taxis to various destinations are as follows (as of June 2024):\n\n- **Aksaray**: ~38 mins\n  - Orange Taxi: 950 TL\n  - Turquoise Taxi: 1050 TL\n  - Black Luxury Taxi: 1550 TL\n\n- **Bakırköy**: ~43 mins\n  - Orange Taxi: 1050 TL\n  - Turquoise Taxi: 1200 TL\n  - Black Luxury Taxi: 1750 TL\n\n- **Beşiktaş**: ~39 mins\n  - Orange Taxi: 950 TL\n  - Turquoise Taxi: 1050 TL\n  - Black Luxury Taxi: 1550 TL\n\n- **Beylikdüzü**: ~44 mins\n  - Orange Taxi: 1300 TL\n  - Turquoise Taxi: 1450 TL\n  - Black Luxury Taxi: 2150 TL\n\n- **Etiler**: ~33 mins\n  - Orange Taxi: 950 TL\n  - Turquoise Taxi: 1050 TL\n  - Black Luxury Taxi: 1550 TL\n\n- **Kadıköy**: ~50 mins\n  - Orange Taxi: 1300 TL\n  - Turquoise Taxi: 1450 TL\n  - Black Luxury Taxi: 2150 TL\n\n- **Levent**: ~33 mins\n  - Orange Taxi: 850 TL\n  - Turquoise Taxi: 950 TL\n  - Black Luxury Taxi: 1400 TL\n\n- **Maslak**: ~35 mins\n  - Orange Taxi: 850 TL\n  - Turquoise Taxi: 950 TL\n\nThese rates do not include highway or bridge tolls. [1]",
+          "retrieved_ids": [
+            "istanbul_airport_00015",
+            "istanbul_airport_00026",
+            "sabiha_gökçen_international_airport_00006",
+            "istanbul_00014",
+            "istanbul_airport_00006"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00015",
+            "istanbul_00015"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8683775663375854,
+          "latency_s": 20.05,
+          "faithfulness_claims": [
+            {
+              "claim": "At Istanbul Airport, there are three types of taxis available: Orange (Economy) Taxis, Turquoise (Comfort) Taxis, and Black (Premium) Taxis.",
+              "supported": true
+            },
+            {
+              "claim": "Orange (Economy) Taxis can carry 4 passengers and are the most affordable option.",
+              "supported": true
+            },
+            {
+              "claim": "Turquoise (Comfort) Taxis can carry 4 passengers and are slightly more expensive than the orange taxis.",
+              "supported": true
+            },
+            {
+              "claim": "Black (Premium) Taxis can carry up to 8 passengers and are the most expensive option.",
+              "supported": true
+            },
+            {
+              "claim": "The prices for these taxis to various destinations are as follows (as of June 2024):",
+              "supported": true
+            },
+            {
+              "claim": "Aksaray: ~38 mins - Orange Taxi: 950 TL, Turquoise Taxi: 1050 TL, Black Luxury Taxi: 1550 TL",
+              "supported": true
+            },
+            {
+              "claim": "Bakırköy: ~43 mins - Orange Taxi: 1050 TL, Turquoise Taxi: 1200 TL, Black Luxury Taxi: 1750 TL",
+              "supported": true
+            },
+            {
+              "claim": "Beşiktaş: ~39 mins - Orange Taxi: 950 TL, Turquoise Taxi: 1050 TL, Black Luxury Taxi: 1550 TL",
+              "supported": true
+            },
+            {
+              "claim": "Beylikdüzü: ~44 mins - Orange Taxi: 1300 TL, Turquoise Taxi: 1450 TL, Black Luxury Taxi: 2150 TL",
+              "supported": true
+            },
+            {
+              "claim": "Etiler: ~33 mins - Orange Taxi: 950 TL, Turquoise Taxi: 1050 TL, Black Luxury Taxi: 1550 TL",
+              "supported": true
+            },
+            {
+              "claim": "Kadıköy: ~50 mins - Orange Taxi: 1300 TL, Turquoise Taxi: 1450 TL, Black Luxury Taxi: 2150 TL",
+              "supported": true
+            },
+            {
+              "claim": "Levent: ~33 mins - Orange Taxi: 850 TL, Turquoise Taxi: 950 TL, Black Luxury Taxi: 1400 TL",
+              "supported": true
+            },
+            {
+              "claim": "Maslak: ~35 mins - Orange Taxi: 850 TL, Turquoise Taxi: 950 TL",
+              "supported": true
+            },
+            {
+              "claim": "These rates do not include highway or bridge tolls.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "category": "Food & Drink",
+          "difficulty": "factual",
+          "question": "What is kokoreç and how is it traditionally prepared?",
+          "ground_truth": "Kokoreç is a traditional Turkish street food made from seasoned and skewered lamb or goat intestines wrapped around sweetbreads and grilled over charcoal. It is typically chopped, mixed with spices, and served either in bread or on a plate.",
+          "answer": "Kokoreç is a traditional Turkish street food made from seasoned and skewered lamb or goat intestines, wrapped around sweetbreads, and grilled over charcoal. It is typically chopped, mixed with spices, and served in bread or on a plate, offering a flavorful and aromatic experience [1], [4].",
+          "retrieved_ids": [
+            "istanbul_00105",
+            "istanbul_european_bosphorus_00011",
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_00104",
+            "istanbul_kadıköy_00014"
+          ],
+          "gold_ids": [
+            "istanbul_00105"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8822813034057617,
+          "latency_s": 4.63,
+          "faithfulness_claims": [
+            {
+              "claim": "Kokoreç is a traditional Turkish street food",
+              "supported": true
+            },
+            {
+              "claim": "Kokoreç is made from seasoned and skewered lamb or goat intestines",
+              "supported": true
+            },
+            {
+              "claim": "Kokoreç is wrapped around sweetbreads",
+              "supported": true
+            },
+            {
+              "claim": "Kokoreç is grilled over charcoal",
+              "supported": true
+            },
+            {
+              "claim": "Kokoreç is typically chopped, mixed with spices, and served in bread or on a plate",
+              "supported": true
+            },
+            {
+              "claim": "Kokoreç offers a flavorful and aromatic experience",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "category": "Practical Info",
+          "difficulty": "synthesis",
+          "question": "What is the recommended strategy for changing foreign currency to Turkish lira when arriving in Istanbul?",
+          "ground_truth": "Bring hard foreign currency such as euros or US dollars and exchange them only after you arrive in the city, not at the airport, because airport exchange rates are terrible. In the city, banks and currency exchanges (döviz bürosu) offer extremely competitive rates with a sell-buy-spread of only 1-2%. Exchange any leftover lira before leaving Turkey since it can be hard to convert back at a fair rate abroad.",
+          "answer": "The recommended strategy for changing foreign currency to Turkish lira when arriving in Istanbul is to bring hard foreign currency and exchange it after you arrive, but not at the airport. It is preferable to exchange currency at a bank or a currency exchange (döviz bürosu) in the city, as they offer much better exchange rates with a sell-buy-spread of about 1–2%, compared to the poor rates at the airport [1].",
+          "retrieved_ids": [
+            "istanbul_00096",
+            "istanbul_00037",
+            "istanbul_airport_00030",
+            "istanbul_00039",
+            "istanbul_airport_00007"
+          ],
+          "gold_ids": [
+            "istanbul_00096"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9183595776557922,
+          "latency_s": 4.18,
+          "faithfulness_claims": [
+            {
+              "claim": "The recommended strategy for changing foreign currency to Turkish lira when arriving in Istanbul is to bring hard foreign currency and exchange it after you arrive.",
+              "supported": true
+            },
+            {
+              "claim": "It is not recommended to exchange currency at the airport.",
+              "supported": true
+            },
+            {
+              "claim": "It is preferable to exchange currency at a bank or a currency exchange (döviz bürosu) in the city.",
+              "supported": true
+            },
+            {
+              "claim": "Banks and currency exchanges in the city offer much better exchange rates with a sell-buy-spread of about 1–2%.",
+              "supported": true
+            },
+            {
+              "claim": "Exchange rates at the airport are poor.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "synthesis",
+          "question": "How long is the walk along Istanbul's Theodosian Walls, and where can you start and end the route?",
+          "ground_truth": "The walk along the remaining Theodosian Walls is about 7 km. From Eminönü, take the Golden Horn ferry to Ayvansaray and start at the wall opposite the main road; the walk ends at the Golden Gate and Yedikule Fortress, which fronts the Sea of Marmara and was Byzantium's triumphal entry point.",
+          "answer": "The walk along Istanbul's Theodosian Walls is 7 km long. You can start the route from Eminönü by taking the Golden Horn ferry to Ayvansaray. From Ayvansaray, cross the park to the wall on the other side of the main road. The end point is not explicitly mentioned, but the walk generally follows the length of the walls, which mark the western border of the peninsula of the Old City [2].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00028",
+            "istanbul_00076",
+            "istanbul_00077",
+            "istanbul_00030",
+            "istanbul_historical_peninsula_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00077",
+            "istanbul_00076"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9066928029060364,
+          "latency_s": 3.92,
+          "faithfulness_claims": [
+            {
+              "claim": "The walk along Istanbul's Theodosian Walls is 7 km long.",
+              "supported": true
+            },
+            {
+              "claim": "You can start the route from Eminönü by taking the Golden Horn ferry to Ayvansaray.",
+              "supported": true
+            },
+            {
+              "claim": "From Ayvansaray, cross the park to the wall on the other side of the main road.",
+              "supported": true
+            },
+            {
+              "claim": "The end point is not explicitly mentioned, but the walk generally follows the length of the walls, which mark the western border of the peninsula of the Old City.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "Where are upscale hotels in Istanbul typically concentrated outside of Sultanahmet and Taksim?",
+          "ground_truth": "Upscale hotels can be found in the western suburbs, especially around the former Atatürk Airport, as well as on or near the banks of the European Bosphorus.",
+          "answer": "Upscale hotels in Istanbul are typically concentrated in the western suburbs, especially around the former airport, as well as on or near the banks of the European Bosphorus [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_00110",
+            "istanbul_galata_00000",
+            "istanbul_00003",
+            "istanbul_new_city_00000"
+          ],
+          "gold_ids": [
+            "istanbul_00110",
+            "istanbul_western_suburbs_00012"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8432393074035645,
+          "latency_s": 4.06,
+          "faithfulness_claims": [
+            {
+              "claim": "Upscale hotels in Istanbul are typically concentrated in the western suburbs",
+              "supported": true
+            },
+            {
+              "claim": "Upscale hotels are concentrated around the former airport",
+              "supported": true
+            },
+            {
+              "claim": "Upscale hotels are concentrated on or near the banks of the European Bosphorus",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "Why does Wikivoyage recommend referring to Istanbul's cats as 'communally-owned' rather than 'feral' or 'stray'?",
+          "ground_truth": "Istanbul has between 125,000 and over a million feline residents, mostly tabbies, who are usually amicable, well-fed and healthy. Because they are looked after collectively by residents rather than being abandoned or wild, the description 'communally-owned' fits their lived reality better than 'feral' or 'stray'.",
+          "answer": "Wikivoyage recommends referring to Istanbul's cats as 'communally-owned' rather than 'feral' or 'stray' because they are generally amicable, well-fed, and healthy, suggesting that they are cared for by the community rather than being neglected or abandoned [1].",
+          "retrieved_ids": [
+            "istanbul_00068",
+            "istanbul_princes_islands_00010",
+            "istanbul_00052",
+            "istanbul_princes_islands_00003",
+            "istanbul_00037"
+          ],
+          "gold_ids": [],
+          "precision_at_k": null,
+          "recall_at_k": null,
+          "mrr": null,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9432839155197144,
+          "latency_s": 2.64,
+          "faithfulness_claims": [
+            {
+              "claim": "Wikivoyage recommends referring to Istanbul's cats as 'communally-owned' rather than 'feral' or 'stray'.",
+              "supported": true
+            },
+            {
+              "claim": "Istanbul's cats are generally amicable, well-fed, and healthy.",
+              "supported": true
+            },
+            {
+              "claim": "Istanbul's cats are cared for by the community rather than being neglected or abandoned.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "category": "Shopping",
+          "difficulty": "factual",
+          "question": "Is haggling expected when buying rugs or kilims in Sultanahmet, and where are these shops clustered?",
+          "ground_truth": "Haggling over the price is normal when shopping in Sultanahmet, and rug/kilim outlets are clustered around Arasta Bazaar just east of the Blue Mosque. Travellers should ask themselves whether they truly want the item and what it is worth to them before negotiating.",
+          "answer": "Haggling over the price is expected when buying rugs or kilims in Sultanahmet, and these shops are clustered around the Arasta Bazaar, just east of the Blue Mosque [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00032",
+            "istanbul_00100",
+            "istanbul_00070",
+            "istanbul_historical_peninsula_00016",
+            "istanbul_historical_peninsula_00043"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00032",
+            "istanbul_00100"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9112831354141235,
+          "latency_s": 1.92,
+          "faithfulness_claims": [
+            {
+              "claim": "Haggling over the price is expected when buying rugs or kilims in Sultanahmet",
+              "supported": true
+            },
+            {
+              "claim": "These shops are clustered around the Arasta Bazaar, just east of the Blue Mosque",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "What number should you dial to reach the police in Istanbul, and in what kind of situation might you need it?",
+          "ground_truth": "The police can be reached by dialling #112. This is the number to call if you find yourself caught in a bar or nightclub scam and need to file a complaint, although the advice is to first leave the situation safely before calling.",
+          "answer": "The context provided does not specify the number to dial to reach the police in Istanbul. However, you might need to contact the police in situations such as reporting a crime, such as pickpocketing or theft, or if you need assistance from the Tourism Police for issues like passport loss [2], [4], [5]. For general emergencies in Turkey, you can dial 155 for the police [general knowledge, not cited in the provided context].",
+          "retrieved_ids": [
+            "istanbul_00134",
+            "istanbul_00131",
+            "istanbul_00039",
+            "istanbul_00129",
+            "istanbul_historical_peninsula_00043"
+          ],
+          "gold_ids": [
+            "istanbul_00114"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 0.75,
+          "answer_relevance": 0.9138350486755371,
+          "latency_s": 5.52,
+          "faithfulness_claims": [
+            {
+              "claim": "The context provided does not specify the number to dial to reach the police in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "You might need to contact the police in situations such as reporting a crime, such as pickpocketing or theft.",
+              "supported": true
+            },
+            {
+              "claim": "You might need to contact the police if you need assistance from the Tourism Police for issues like passport loss.",
+              "supported": true
+            },
+            {
+              "claim": "For general emergencies in Turkey, you can dial 155 for the police.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "category": "Itinerary & Planning",
+          "difficulty": "factual",
+          "question": "How long does a ferry trip to the Princes' Islands take from each side of Istanbul?",
+          "ground_truth": "A liner ferry takes around 1½ hours from the European Side (departing from Beşiktaş, Kabataş or Eminönü) and around 45 minutes from the Asian Side. Seabus fast ferries are more than twice as expensive but cut the journey time substantially, while running less frequently and finishing earlier in the day.",
+          "answer": "A trip on liners to the Princes' Islands takes around 1½ hours from the European Side, and 45 minutes from the Asian Side [2].",
+          "retrieved_ids": [
+            "istanbul_00052",
+            "istanbul_princes_islands_00008",
+            "istanbul_historical_peninsula_00013",
+            "istanbul_00030",
+            "istanbul_historical_peninsula_00014"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00008"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8605793714523315,
+          "latency_s": 2.45,
+          "faithfulness_claims": [
+            {
+              "claim": "A trip on liners to the Princes' Islands takes around 1½ hours from the European Side",
+              "supported": true
+            },
+            {
+              "claim": "A trip on liners to the Princes' Islands takes 45 minutes from the Asian Side",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "category": "Activities & Entertainment",
+          "difficulty": "synthesis",
+          "question": "How does taking the public Bosphorus ferry from Eminönü to Anadolu Kavağı compare to using a private cruise operator?",
+          "ground_truth": "The Sehir Hatlari public ferry costs 640 TL for foreigners (round trip or one-way) and departs at 10:35, but offers no audio commentary, has a barebones washroom and is very popular so requires queuing early. Private operators charge significantly higher rates but often provide audio commentary, cleaner facilities and shorter queues; they mostly offer the short Bosphorus tours rather than the long trip to Anadolu Kavağı.",
+          "answer": "Taking the public Bosphorus ferry from Eminönü to Anadolu Kavağı offers a more authentic and budget-friendly experience compared to using a private cruise operator. The public ferry, operated by Sehir Hatlari, is significantly cheaper at 640 TL for foreigners, and tickets must be purchased at the ticket booth about one hour before departure. The ferry departs early (10:35) and is very popular, so it's important to arrive early to secure a ticket and a seat. The public ferry does not offer audio commentary, and there are no discounts for minors [1].\n\nOn the other hand, private cruise operators often have touts who may use various tactics to make the public ferry seem less appealing, such as suggesting that the full cruise will waste a day of your stay in Istanbul. These private cruises can be more expensive, and they might charge additional fees for the return trip. However, private cruises often offer amenities like audio commentary and more flexible departure times [1].\n\nIn summary, the public ferry is a more economical and authentic choice, while private cruises may offer more convenience and additional services.",
+          "retrieved_ids": [
+            "istanbul_00082",
+            "istanbul_00084",
+            "istanbul_00052",
+            "istanbul_00053",
+            "istanbul_historical_peninsula_00013"
+          ],
+          "gold_ids": [
+            "istanbul_00083",
+            "istanbul_00082"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 0.875,
+          "answer_relevance": 0.9184374809265137,
+          "latency_s": 17.31,
+          "faithfulness_claims": [
+            {
+              "claim": "Taking the public Bosphorus ferry from Eminönü to Anadolu Kavağı offers a more authentic and budget-friendly experience compared to using a private cruise operator.",
+              "supported": true
+            },
+            {
+              "claim": "The public ferry, operated by Sehir Hatlari, is significantly cheaper at 640 TL for foreigners.",
+              "supported": true
+            },
+            {
+              "claim": "Tickets must be purchased at the ticket booth about one hour before departure.",
+              "supported": true
+            },
+            {
+              "claim": "The ferry departs early (10:35) and is very popular, so it's important to arrive early to secure a ticket and a seat.",
+              "supported": true
+            },
+            {
+              "claim": "The public ferry does not offer audio commentary, and there are no discounts for minors.",
+              "supported": true
+            },
+            {
+              "claim": "Private cruise operators often have touts who may use various tactics to make the public ferry seem less appealing, such as suggesting that the full cruise will waste a day of your stay in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "These private cruises can be more expensive, and they might charge additional fees for the return trip.",
+              "supported": true
+            },
+            {
+              "claim": "Private cruises often offer amenities like audio commentary and more flexible departure times.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "How frequent is the Havabüs from Sabiha Gökçen Airport to Taksim, and how long does the trip take?",
+          "ground_truth": "The Havabüs runs from Sabiha Gökçen Airport to Taksim in the city centre every 30 minutes between 04:00 and 01:00. The 50 km journey takes 60 to 90 minutes, and Istanbulkart is accepted on board.",
+          "answer": "The Havabüs from Sabiha Gökçen Airport to Taksim runs every 30 minutes between 04:00 and 01:00, and the trip takes 60-90 minutes [3].",
+          "retrieved_ids": [
+            "sabiha_gökçen_international_airport_00005",
+            "sabiha_gökçen_international_airport_00009",
+            "istanbul_00016",
+            "istanbul_00015",
+            "istanbul_00056"
+          ],
+          "gold_ids": [
+            "istanbul_00016"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 0.3333333333333333,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9293364882469177,
+          "latency_s": 2.37,
+          "faithfulness_claims": [
+            {
+              "claim": "The Havabüs from Sabiha Gökçen Airport to Taksim runs every 30 minutes between 04:00 and 01:00",
+              "supported": true
+            },
+            {
+              "claim": "The trip takes 60-90 minutes",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What is the difference between lahmacun and pide in Turkish cuisine?",
+          "ground_truth": "Lahmacun, often called 'Turkish pizza', is a thin round flatbread topped with minced meat, herbs and spices, usually served with lemon and parsley and rolled up like a wrap. Pide is a boat-shaped flatbread filled with toppings such as cheese, minced meat, vegetables or eggs and baked to a golden crisp. Both are often served sprinkled with lemon juice and wrapped around pickles, tomatoes, peppers, onions or lettuce.",
+          "answer": "In Turkish cuisine, lahmacun and pide are both popular flatbreads, but they have distinct differences:\n\n- **Lahmacun**: Also known as \"Turkish Pizza,\" it is a thin, round flatbread topped with a mixture of minced meat (usually lamb or beef), herbs, and spices. It is often served with lemon and parsley for rolling and eating like a wrap.\n\n- **Pide**: This is a boat-shaped flatbread that can be filled with various toppings such as cheese, minced meat, vegetables, or eggs. It is baked to a golden crisp and is often served sprinkled with lemon juice and wrapped around vegetables like pickles, tomatoes, peppers, onions, and lettuce.\n\nBoth are enjoyed as street snacks and are staples of Turkish bakery culture. [1], [2], [5]",
+          "retrieved_ids": [
+            "istanbul_00106",
+            "istanbul_00105",
+            "istanbul_00104",
+            "istanbul_00107",
+            "istanbul_00103"
+          ],
+          "gold_ids": [
+            "istanbul_00106"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9108290076255798,
+          "latency_s": 5.63,
+          "faithfulness_claims": [
+            {
+              "claim": "Lahmacun is also known as 'Turkish Pizza'.",
+              "supported": true
+            },
+            {
+              "claim": "Lahmacun is a thin, round flatbread topped with a mixture of minced meat (usually lamb or beef), herbs, and spices.",
+              "supported": true
+            },
+            {
+              "claim": "Lahmacun is often served with lemon and parsley for rolling and eating like a wrap.",
+              "supported": true
+            },
+            {
+              "claim": "Pide is a boat-shaped flatbread that can be filled with various toppings such as cheese, minced meat, vegetables, or eggs.",
+              "supported": true
+            },
+            {
+              "claim": "Pide is baked to a golden crisp and is often served sprinkled with lemon juice and wrapped around vegetables like pickles, tomatoes, peppers, onions, and lettuce.",
+              "supported": true
+            },
+            {
+              "claim": "Both lahmacun and pide are enjoyed as street snacks and are staples of Turkish bakery culture.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "category": "Practical Info",
+          "difficulty": "inference",
+          "question": "What restriction was added to the Istanbulkart in 2023 that affects tourists?",
+          "ground_truth": "As of 2023 the Istanbulkart must be 'personalized' (linked to a Turkish ID card) to enjoy discounted transfer fares and Marmaray refunds. Regular tourists are not eligible for this personalization and therefore cannot use those discounts or refunds.",
+          "answer": "As of 2023, the Istanbulkart must be \"personalized\" by linking it to a Turkish ID card to enjoy discount transfers and Marmaray refunds. This means that regular tourists are not eligible for these discounts and refunds [1], [2], [3].",
+          "retrieved_ids": [
+            "istanbul_00041",
+            "istanbul_00047",
+            "istanbul_00039",
+            "istanbul_00064",
+            "istanbul_00042"
+          ],
+          "gold_ids": [
+            "istanbul_00041",
+            "istanbul_00047"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8838680982589722,
+          "latency_s": 2.26,
+          "faithfulness_claims": [
+            {
+              "claim": "As of 2023, the Istanbulkart must be 'personalized' by linking it to a Turkish ID card to enjoy discount transfers and Marmaray refunds.",
+              "supported": true
+            },
+            {
+              "claim": "This means that regular tourists are not eligible for these discounts and refunds.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "synthesis",
+          "question": "Which Tram T1 stops are most useful for visiting the Old City's main sights, and why is this route popular?",
+          "ground_truth": "Tram T1 runs from Bağcılar in the western suburbs to Kabataş via roughly 20 stations including Aksaray, Laleli-Üniversite (for the Grand Bazaar), Beyazit, Çemberlitaş, Sultanahmet (for the Blue Mosque), Gülhane Park, Sirkeci and Eminönü (for Bosphorus ferries). It is the most useful line in the Old City because it passes near most major sites, but the popular route is often very crowded.",
+          "answer": "The most useful Tram T1 stops for visiting the Old City's main sights are:\n\n- **Sultanahmet**: Near the Blue Mosque and other major historical sites.\n- **Gülhane**: Close to Gülhane Park.\n- **Sirkeci**: Connects to Marmaray and Tram U3, and is near the Bosphorus ferries.\n- **Beyazit**: Near the Grand Bazaar.\n- **Çemberlitaş**: Another key stop with historical significance.\n\nThis route is popular because it passes near most major sites in the Old City, making it a convenient and efficient way to explore the area [2].",
+          "retrieved_ids": [
+            "istanbul_00050",
+            "istanbul_historical_peninsula_00010",
+            "istanbul_galata_00010",
+            "istanbul_historical_peninsula_00016",
+            "istanbul_historical_peninsula_00009"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00010",
+            "istanbul_00050",
+            "istanbul_historical_peninsula_00006"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8806437849998474,
+          "latency_s": 4.66,
+          "faithfulness_claims": [
+            {
+              "claim": "Sultanahmet is near the Blue Mosque and other major historical sites.",
+              "supported": true
+            },
+            {
+              "claim": "Gülhane is close to Gülhane Park.",
+              "supported": true
+            },
+            {
+              "claim": "Sirkeci connects to Marmaray and Tram U3, and is near the Bosphorus ferries.",
+              "supported": true
+            },
+            {
+              "claim": "Beyazit is near the Grand Bazaar.",
+              "supported": true
+            },
+            {
+              "claim": "Çemberlitaş is another key stop with historical significance.",
+              "supported": true
+            },
+            {
+              "claim": "Tram T1 passes near most major sites in the Old City, making it a convenient and efficient way to explore the area.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "What kind of views do Sultanahmet hotels typically offer, and what price range can travellers expect?",
+          "ground_truth": "Sultanahmet has a selection of quality, reasonably priced hotels, many with terraces overlooking the Golden Horn or with views of the Sea of Marmara and the Blue Mosque. The district also holds most of the city's hostel-type accommodation favoured by independent travellers, though a few upmarket hotels exist there too.",
+          "answer": "Sultanahmet hotels typically offer terraces overlooking the Golden Horn, or views of the Marmara Sea and the Blue Mosque. The area has a selection of quality, reasonably priced hotels [5]. However, specific price ranges are not provided in the context. \n\nCitations: [5]",
+          "retrieved_ids": [
+            "istanbul_00110",
+            "istanbul_00063",
+            "istanbul_historical_peninsula_00017",
+            "istanbul_00070",
+            "istanbul_00109"
+          ],
+          "gold_ids": [
+            "istanbul_00110",
+            "istanbul_00109"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8958507776260376,
+          "latency_s": 2.73,
+          "faithfulness_claims": [
+            {
+              "claim": "Sultanahmet hotels typically offer terraces overlooking the Golden Horn, or views of the Marmara Sea and the Blue Mosque.",
+              "supported": true
+            },
+            {
+              "claim": "The area has a selection of quality, reasonably priced hotels.",
+              "supported": true
+            },
+            {
+              "claim": "Specific price ranges are not provided in the context.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "Why is the Kıztaşı column also called the 'Maiden's Stone' in Turkish?",
+          "ground_truth": "Kıztaşı is a red-grey Egyptian granite column erected around 450 AD in honour of Emperor Marcian on Kızanlık Caddesi in Fatih. Its Turkish name means 'the maiden's stone' because engravings of female guardian spirits adorn its base, even though the emperor's own statue that originally stood on top has disappeared.",
+          "answer": "The Kıztaşı column, also known as the \"Maiden's Stone\" in Turkish, is called this because it features engravings of female guardian spirits at its base [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00026",
+            "istanbul_00068",
+            "istanbul_princes_islands_00003",
+            "istanbul_princes_islands_00002",
+            "istanbul_princes_islands_00001"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00026"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9185136556625366,
+          "latency_s": 1.89,
+          "faithfulness_claims": [
+            {
+              "claim": "The Kıztaşı column is also known as the 'Maiden's Stone' in Turkish.",
+              "supported": true
+            },
+            {
+              "claim": "The Kıztaşı column features engravings of female guardian spirits at its base.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 37,
+          "category": "Shopping",
+          "difficulty": "factual",
+          "question": "Where is Istanbul's textile wholesale business concentrated, and where do you go for upscale fashion?",
+          "ground_truth": "Textile wholesale business is concentrated in Laleli. For upscale fashion retail, head to Nişantaşı on the European Side or Bağdat Avenue on the Asian Side.",
+          "answer": "Istanbul's textile wholesale business is concentrated in Laleli [1]. For upscale fashion, you can visit Nişantaşı on the European Side or Bağdat Avenue on the Asian Side [1].",
+          "retrieved_ids": [
+            "istanbul_00101",
+            "istanbul_00109",
+            "istanbul_00100",
+            "istanbul_new_city_00000",
+            "istanbul_galata_00005"
+          ],
+          "gold_ids": [],
+          "precision_at_k": null,
+          "recall_at_k": null,
+          "mrr": null,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.897362470626831,
+          "latency_s": 4.56,
+          "faithfulness_claims": [
+            {
+              "claim": "Istanbul's textile wholesale business is concentrated in Laleli",
+              "supported": true
+            },
+            {
+              "claim": "For upscale fashion, you can visit Nişantaşı on the European Side",
+              "supported": true
+            },
+            {
+              "claim": "For upscale fashion, you can visit Bağdat Avenue on the Asian Side",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "Which areas of Istanbul are particularly prone to pickpocketing, and when is the risk highest?",
+          "ground_truth": "Pickpockets target any crowded area, and Sultanahmet has tourist police stationed at the north end of the square and outside Sirkeci station because of this risk. Buses, trams and streetcars are especially crowded during rush hours on Mondays and Fridays, which creates extra opportunity for pickpockets to operate.",
+          "answer": "Areas of Istanbul that are particularly prone to pickpocketing include crowded tourist spots such as the Historical Peninsula, Taksim Square, Istiklal Street, and public transportation hubs like the Metro system. The risk is highest during peak tourist seasons and in chaotic environments where tourists tend to gather [1], [2], [3], [4].",
+          "retrieved_ids": [
+            "istanbul_00129",
+            "istanbul_historical_peninsula_00043",
+            "istanbul_galata_00031",
+            "istanbul_kadıköy_00019",
+            "istanbul_00111"
+          ],
+          "gold_ids": [
+            "istanbul_00129",
+            "istanbul_historical_peninsula_00043"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 0.6666666666666666,
+          "answer_relevance": 0.9033318758010864,
+          "latency_s": 2.8,
+          "faithfulness_claims": [
+            {
+              "claim": "Areas of Istanbul that are particularly prone to pickpocketing include crowded tourist spots such as the Historical Peninsula, Taksim Square, Istiklal Street, and public transportation hubs like the Metro system.",
+              "supported": true
+            },
+            {
+              "claim": "The risk is highest during peak tourist seasons.",
+              "supported": false
+            },
+            {
+              "claim": "The risk is highest in chaotic environments where tourists tend to gather.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "category": "Itinerary & Planning",
+          "difficulty": "synthesis",
+          "question": "What is the minimum transfer journey from Istanbul Airport to Sultanahmet using public transport only?",
+          "ground_truth": "A minimum of two transfers is required. First take the M11 metro from the airport to Gayrettepe, then transfer to the M2 metro southbound to Vezneciler (the penultimate stop). Walk 300 m to the Laleli-Üniversite stop on Tram T1 and ride three stops east to Sultanahmet. You'll need at least 18 TL of Istanbulkart credit per traveller just for the M11 segment.",
+          "answer": "The minimum transfer journey from Istanbul Airport to Sultanahmet using public transport involves two transfers:\n\n1. Take the M11 metro line from Istanbul Airport to Gayrettepe.\n2. Transfer to Metro line M2 at Gayrettepe and travel southbound to Vezneciler (the penultimate stop).\n3. Transfer to Tram line 1 at Laleli-Üniversite (300 meters away) and travel eastward for three stops to Sultanahmet.\n\nCitations: [1], [2]",
+          "retrieved_ids": [
+            "istanbul_airport_00019",
+            "istanbul_airport_00018",
+            "istanbul_00013",
+            "istanbul_00014",
+            "istanbul_sile_00012"
+          ],
+          "gold_ids": [
+            "istanbul_00013",
+            "istanbul_airport_00017",
+            "istanbul_airport_00019"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9094421863555908,
+          "latency_s": 7.88,
+          "faithfulness_claims": [
+            {
+              "claim": "The minimum transfer journey from Istanbul Airport to Sultanahmet using public transport involves two transfers.",
+              "supported": true
+            },
+            {
+              "claim": "Take the M11 metro line from Istanbul Airport to Gayrettepe.",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Metro line M2 at Gayrettepe and travel southbound to Vezneciler (the penultimate stop).",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Tram line 1 at Laleli-Üniversite (300 meters away) and travel eastward for three stops to Sultanahmet.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "category": "Activities & Entertainment",
+          "difficulty": "synthesis",
+          "question": "What is Turkish Airlines' Touristanbul programme, and who is eligible for it?",
+          "ground_truth": "Touristanbul is a free guided tour of Istanbul's sights offered by Turkish Airlines to its layover passengers, including transport from and to the airport and a traditional Turkish meal. To be eligible the passenger needs a layover of at least six hours and at most 24 hours between 09:00 and 18:00, and both the arriving and departing flights must be international and operated by Turkish Airlines. No prior reservation is needed; passengers just go to the 'hotel desk' in the arrivals hall.",
+          "answer": "Turkish Airlines' Touristanbul programme offers free guided tours of Istanbul's sights to passengers. The programme includes transport from and to the airport and a traditional Turkish meal. To be eligible, you must have a layover of at least six hours and at most 24 hours, between 09:00 and 18:00, and both your arriving and departing flights must be international and operated by Turkish Airlines. No prior reservation is needed; you just need to proceed through customs and immigration and then to the hotel desk in the arrivals hall (near meeting point 4 / opposite Exit door 14) [1].",
+          "retrieved_ids": [
+            "istanbul_airport_00030",
+            "istanbul_airport_00005",
+            "istanbul_00041",
+            "istanbul_airport_00000",
+            "istanbul_airport_00032"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00030"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.875166654586792,
+          "latency_s": 9.28,
+          "faithfulness_claims": [
+            {
+              "claim": "Turkish Airlines' Touristanbul programme offers free guided tours of Istanbul's sights to passengers.",
+              "supported": true
+            },
+            {
+              "claim": "The programme includes transport from and to the airport and a traditional Turkish meal.",
+              "supported": true
+            },
+            {
+              "claim": "To be eligible, you must have a layover of at least six hours and at most 24 hours, between 09:00 and 18:00.",
+              "supported": true
+            },
+            {
+              "claim": "Both your arriving and departing flights must be international and operated by Turkish Airlines.",
+              "supported": true
+            },
+            {
+              "claim": "No prior reservation is needed; you just need to proceed through customs and immigration and then to the hotel desk in the arrivals hall (near meeting point 4 / opposite Exit door 14).",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "How far is Sabiha Gökçen Airport from Pendik high-speed-train station, and what onward destinations can you reach from there?",
+          "ground_truth": "Sabiha Gökçen Airport is 12 km from Pendik YHT railway station, reachable by taxi or bus 132H. From Pendik you can catch high-speed YHT trains east to Ankara and Konya, and onward connections to Erzurum, Kars and Tatvan via Ankara.",
+          "answer": "Sabiha Gökçen International Airport is approximately 10 km from the Pendik high-speed-train station [1], [2]. From Pendik, you can reach onward destinations such as Ankara, Eskişehir, Konya, Sivas, and other eastern cities by high-speed train (YHT). Additionally, you can change in Konya for Adana, and in Ankara for Erzurum, Kars, and Tatvan (which has onward connections to Tabriz and Tehran in Iran) [2].",
+          "retrieved_ids": [
+            "istanbul_00022",
+            "istanbul_00021",
+            "sabiha_gökçen_international_airport_00000",
+            "istanbul_airport_00024",
+            "istanbul_airport_00000"
+          ],
+          "gold_ids": [
+            "istanbul_00022",
+            "istanbul_00016"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9208105206489563,
+          "latency_s": 6.82,
+          "faithfulness_claims": [
+            {
+              "claim": "Sabiha Gökçen International Airport is approximately 10 km from the Pendik high-speed-train station",
+              "supported": true
+            },
+            {
+              "claim": "From Pendik, you can reach onward destinations such as Ankara, Eskişehir, Konya, Sivas, and other eastern cities by high-speed train (YHT)",
+              "supported": true
+            },
+            {
+              "claim": "You can change in Konya for Adana, and in Ankara for Erzurum, Kars, and Tatvan (which has onward connections to Tabriz and Tehran in Iran)",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "category": "Food & Drink",
+          "difficulty": "factual",
+          "question": "What is kumpir, and where is the best place in Istanbul to try it?",
+          "ground_truth": "Kumpir is a baked potato filled with toppings such as grated cheese, mayonnaise, ketchup, pickles, sliced red cabbage, sweetcorn, sausage slices, carrots, mushrooms and Russian salad, with each filling optional. It is available at many cafés around the city, but the best kumpir comes from one of the cafés in Ortaköy, which have a long tradition of preparing the dish and serve really filling, tasty versions.",
+          "answer": "Kumpir is a popular Turkish snack consisting of a baked potato with various fillings such as grated cheese, mayonnaise, ketchup, pickles, sliced red cabbage, sweetcorn, sausage slices, carrots, mushrooms, and Russian salad. The best place in Istanbul to try kumpir is in Ortaköy, where the cafes have a long tradition of preparing it and offer really filling and tasty versions [4].",
+          "retrieved_ids": [
+            "istanbul_kadıköy_00000",
+            "istanbul_european_bosphorus_00011",
+            "istanbul_00098",
+            "istanbul_00105",
+            "istanbul_00100"
+          ],
+          "gold_ids": [
+            "istanbul_european_bosphorus_00011",
+            "istanbul_00105"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8974026441574097,
+          "latency_s": 4.3,
+          "faithfulness_claims": [
+            {
+              "claim": "Kumpir is a popular Turkish snack consisting of a baked potato with various fillings such as grated cheese, mayonnaise, ketchup, pickles, sliced red cabbage, sweetcorn, sausage slices, carrots, mushrooms, and Russian salad.",
+              "supported": true
+            },
+            {
+              "claim": "The best place in Istanbul to try kumpir is in Ortaköy.",
+              "supported": true
+            },
+            {
+              "claim": "The cafes in Ortaköy have a long tradition of preparing kumpir.",
+              "supported": true
+            },
+            {
+              "claim": "The cafes in Ortaköy offer really filling and tasty versions of kumpir.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 43,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "What mobile-network coverage can travellers expect in Istanbul's historic centre?",
+          "ground_truth": "The Historical Peninsula has 4G from all Turkish carriers. As of February 2025, only a few other parts of the city have 5G, and there has been no national rollout yet.",
+          "answer": "Travellers in Istanbul's historic centre can expect 4G coverage from all Turkish carriers. 5G is available in particular places, but full rollout is expected by 2026 [1].",
+          "retrieved_ids": [
+            "istanbul_00135",
+            "istanbul_00039",
+            "istanbul_airport_00057",
+            "istanbul_00018",
+            "istanbul_00055"
+          ],
+          "gold_ids": [
+            "istanbul_00135",
+            "istanbul_historical_peninsula_00042"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.87901371717453,
+          "latency_s": 2.8,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers in Istanbul's historic centre can expect 4G coverage from all Turkish carriers.",
+              "supported": true
+            },
+            {
+              "claim": "5G is available in particular places.",
+              "supported": true
+            },
+            {
+              "claim": "Full rollout of 5G is expected by 2026.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "synthesis",
+          "question": "What was Hagia Irene used for after the Ottoman conquest, and what is it used for today?",
+          "ground_truth": "Hagia Irene was built in 532 after its predecessor was destroyed in the Hippodrome riots. Unusually for a Byzantine church in Istanbul, the Ottomans did not convert it into a mosque but used it as an arsenal — a weapons store — until 1826. Today it is mostly a concert hall, with the same hours and ticket (Adult 900 TL or €18) as the main Topkapı Palace.",
+          "answer": "After the Ottoman conquest, Hagia Irene was not converted into a mosque like many other churches. Instead, it was used as an arsenal, a weapons store, until 1826. Today, it is primarily used as a concert hall [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00019",
+            "istanbul_historical_peninsula_00003",
+            "istanbul_historical_peninsula_00018",
+            "istanbul_kadıköy_00002"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00020"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8883390426635742,
+          "latency_s": 2.44,
+          "faithfulness_claims": [
+            {
+              "claim": "After the Ottoman conquest, Hagia Irene was not converted into a mosque like many other churches.",
+              "supported": true
+            },
+            {
+              "claim": "Hagia Irene was used as an arsenal, a weapons store, until 1826.",
+              "supported": true
+            },
+            {
+              "claim": "Today, it is primarily used as a concert hall.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "category": "Accommodation",
+          "difficulty": "synthesis",
+          "question": "What kinds of accommodation can travellers find on the Princes' Islands, and on which islands are they available?",
+          "ground_truth": "Most of the islands' accommodation is on Büyükada, close to the ferry pier. Some accommodation can also be found on Heybeliada. The smaller islands of Kınalıada and Burgaz have far fewer formal lodging options, so day trips are more common there.",
+          "answer": "Travellers can find accommodation on the Princes' Islands, primarily on Büyükada, which is close to the ferry pier. Some accommodation can also be found on Heybeliada [2].",
+          "retrieved_ids": [
+            "istanbul_kadıköy_00021",
+            "istanbul_princes_islands_00017",
+            "istanbul_princes_islands_00000",
+            "istanbul_princes_islands_00001",
+            "istanbul_00110"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00017"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8629263639450073,
+          "latency_s": 3.12,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers can find accommodation on the Princes' Islands",
+              "supported": true
+            },
+            {
+              "claim": "Accommodation is primarily on Büyükada",
+              "supported": true
+            },
+            {
+              "claim": "Büyükada is close to the ferry pier",
+              "supported": true
+            },
+            {
+              "claim": "Some accommodation can also be found on Heybeliada",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "What is the historical origin of the term 'Sublime Porte' for Ottoman government?",
+          "ground_truth": "The Sublime Porte was the gatehouse into Topkapı Palace, named after the Sultan's Imperial High Gate (Bâb-ı Hümâyûn). Turkic rulers traditionally announced edicts at their palace gate, and because French was the language of western diplomacy the term was translated as 'Sublime Porte'. It eventually came to refer to the entire Ottoman government, similar to how 'Kremlin' means Russian government.",
+          "answer": "The term 'Sublime Porte' originated from the gatehouse into Topkapı Palace, known as the Sultan's Imperial or High Gate (Bâb-ı Hümâyûn). This gate was where Turkic rulers announced their edicts and received supplicants and ambassadors. The term was translated from Turkish to French as \"Sublime Porte,\" and it came to symbolize the Ottoman government and high officialdom. [1]",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00019",
+            "istanbul_rural_00001",
+            "istanbul_historical_peninsula_00024",
+            "istanbul_galata_00003",
+            "istanbul_historical_peninsula_00003"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00019"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9059406518936157,
+          "latency_s": 6.46,
+          "faithfulness_claims": [
+            {
+              "claim": "The term 'Sublime Porte' originated from the gatehouse into Topkapı Palace, known as the Sultan's Imperial or High Gate (Bâb-ı Hümâyûn).",
+              "supported": true
+            },
+            {
+              "claim": "This gate was where Turkic rulers announced their edicts and received supplicants and ambassadors.",
+              "supported": true
+            },
+            {
+              "claim": "The term was translated from Turkish to French as 'Sublime Porte'.",
+              "supported": true
+            },
+            {
+              "claim": "It came to symbolize the Ottoman government and high officialdom.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "category": "Shopping",
+          "difficulty": "factual",
+          "question": "What is special about chalcedony jewelry sold in Istanbul?",
+          "ground_truth": "Chalcedony is a semi-precious gemstone named after the nearby ancient town of Chalcedon, on the Asian side of the Bosphorus. It is sold in many of Istanbul's jewellery shops alongside other handicrafts produced by both Armenian and Turkish craftsmen, making the city one of the top places to buy unique jewellery.",
+          "answer": "Chalcedony, a semi-precious gemstone named after the nearby town of Chalcedon (modern-day Kadıköy), is sold in many of Istanbul's jewelry shops. Istanbul is known for its exceptional handicraft from both Armenian and Turkish craftsmen, making it one of the top places for buying unique jewelry items, including those made from chalcedony [1].",
+          "retrieved_ids": [
+            "istanbul_00100",
+            "istanbul_kadıköy_00002",
+            "istanbul_00101",
+            "istanbul_asian_bosphorus_00013",
+            "istanbul_00066"
+          ],
+          "gold_ids": [
+            "istanbul_00100",
+            "istanbul_kadıköy_00002"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9144302010536194,
+          "latency_s": 4.02,
+          "faithfulness_claims": [
+            {
+              "claim": "Chalcedony, a semi-precious gemstone named after the nearby town of Chalcedon (modern-day Kadıköy), is sold in many of Istanbul's jewelry shops.",
+              "supported": true
+            },
+            {
+              "claim": "Istanbul is known for its exceptional handicraft from both Armenian and Turkish craftsmen.",
+              "supported": true
+            },
+            {
+              "claim": "Istanbul is one of the top places for buying unique jewelry items, including those made from chalcedony.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "category": "Health & Safety",
+          "difficulty": "synthesis",
+          "question": "What is the lira/euro hotel scam, and what warning signs should travellers look out for?",
+          "ground_truth": "Some smaller hotels quote prices in lira and then later, when payment is due, claim the price was given in euros. Hotels that refuse early payment and ask guests to 'pay when you leave' should raise suspicions. Such hotels often offer excellent service at apparently reasonable rates, expecting that guests will conclude they should just pay without complaint.",
+          "answer": "The lira/euro hotel scam in Istanbul involves hotels quoting prices in lira but later claiming the price was given in euros when payment is due. This results in a much higher cost for the guest. Warning signs include:\n\n- Hotels that prefer you to \"pay when you leave\" rather than early in your stay.\n- Excellent service and accommodation at a reasonable price, which can be a sign that the hotel expects most guests to pay without complaint.\n\nCitations: [1]",
+          "retrieved_ids": [
+            "istanbul_00116",
+            "istanbul_00118",
+            "istanbul_00119",
+            "istanbul_00114",
+            "istanbul_00127"
+          ],
+          "gold_ids": [
+            "istanbul_00116"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9253240823745728,
+          "latency_s": 5.49,
+          "faithfulness_claims": [
+            {
+              "claim": "The lira/euro hotel scam in Istanbul involves hotels quoting prices in lira but later claiming the price was given in euros when payment is due.",
+              "supported": true
+            },
+            {
+              "claim": "This results in a much higher cost for the guest.",
+              "supported": true
+            },
+            {
+              "claim": "Warning signs include hotels that prefer you to 'pay when you leave' rather than early in your stay.",
+              "supported": true
+            },
+            {
+              "claim": "Excellent service and accommodation at a reasonable price can be a sign that the hotel expects most guests to pay without complaint.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "category": "Itinerary & Planning",
+          "difficulty": "synthesis",
+          "question": "When are tulips in bloom across Istanbul, and where can visitors see the largest displays?",
+          "ground_truth": "Depending on the cultivar, tulips bloom from late March to early May, with April offering the best views. Large patches with relatively exotic varieties can be seen at Sultanahmet Park and Gülhane Park in the Old City, Emirgan Park in the northern European Bosphorus, and on Çamlıca Hill on the Asian Side.",
+          "answer": "Tulips in Istanbul bloom from late March to early May, with the best views typically in April. Visitors can see the largest and most diverse displays of tulips at Sultanahmet Park and Gülhane Park in Sultanahmet, Emirgan Park in the northern European Bosphorus neighborhood of Emirgan, or Çamlıca Hill on the Asian Side [1].",
+          "retrieved_ids": [
+            "istanbul_00069",
+            "istanbul_princes_islands_00004",
+            "istanbul_new_city_00003",
+            "istanbul_european_bosphorus_00001",
+            "istanbul_00066"
+          ],
+          "gold_ids": [
+            "istanbul_00069"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9043281078338623,
+          "latency_s": 4.98,
+          "faithfulness_claims": [
+            {
+              "claim": "Tulips in Istanbul bloom from late March to early May",
+              "supported": true
+            },
+            {
+              "claim": "The best views of tulips are typically in April",
+              "supported": true
+            },
+            {
+              "claim": "Visitors can see the largest and most diverse displays of tulips at Sultanahmet Park and Gülhane Park in Sultanahmet",
+              "supported": true
+            },
+            {
+              "claim": "Visitors can see the largest and most diverse displays of tulips at Emirgan Park in the northern European Bosphorus neighborhood of Emirgan",
+              "supported": true
+            },
+            {
+              "claim": "Visitors can see the largest and most diverse displays of tulips at Çamlıca Hill on the Asian Side",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "category": "Activities & Entertainment",
+          "difficulty": "synthesis",
+          "question": "Where in Sultanahmet can you smoke a nargile (waterpipe), and what kind of settings can travellers expect?",
+          "ground_truth": "Most nargile cafés in the Old City are on Yeniçeriler Caddesi near the Grand Bazaar. Çorlulu Ali Paşa and Koca Sinan Paşa Türbesi are both in secluded internal courts around the corner from tomb yards, while Rumeli Kahvesi is set inside the cemetery of an old medrese. In the south of Sultanahmet near the sea, Yeni Marmara on Çayıroğlu Sokak offers terrace seating with a view.",
+          "answer": "In Sultanahmet, you can smoke a nargile (waterpipe) at several locations, each offering unique settings:\n\n1. **Yeniçeriler Caddesi**: This area near the Grand Bazaar has multiple places where you can enjoy a nargile.\n2. **Çorlulu Ali Paşa and Koca Sinan Paşa Türbesi**: These spots are located in secluded internal courts, just around the corner from some tomb yards.\n3. **Rumeli Kahvesi**: Situated inside the cemetery of an old medrese, this place is not as spooky as it might sound.\n4. **Yeni Marmara (Çayıroğlu Sokak)**: Located near the sea, this spot offers a terrace where you can enjoy the view while smoking a nargile.\n\nThese settings range from more secluded and historic to those with scenic views, providing a variety of experiences for travelers. [1]",
+          "retrieved_ids": [
+            "istanbul_00070",
+            "istanbul_00128",
+            "istanbul_galata_00026",
+            "istanbul_00110",
+            "istanbul_historical_peninsula_00016"
+          ],
+          "gold_ids": [
+            "istanbul_00070"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9215913414955139,
+          "latency_s": 7.65,
+          "faithfulness_claims": [
+            {
+              "claim": "In Sultanahmet, you can smoke a nargile (waterpipe) at several locations, each offering unique settings.",
+              "supported": true
+            },
+            {
+              "claim": "Yeniçeriler Caddesi is an area near the Grand Bazaar where you can enjoy a nargile.",
+              "supported": true
+            },
+            {
+              "claim": "Çorlulu Ali Paşa and Koca Sinan Paşa Türbesi are located in secluded internal courts, just around the corner from some tomb yards.",
+              "supported": true
+            },
+            {
+              "claim": "Rumeli Kahvesi is situated inside the cemetery of an old medrese, and it’s not as spooky as it might sound.",
+              "supported": true
+            },
+            {
+              "claim": "Yeni Marmara (Çayıroğlu Sokak) is located near the sea and offers a terrace where you can enjoy the view while smoking a nargile.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 51,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "How can a group of travellers use a single Istanbulkart efficiently, and what restriction applies to one type of line?",
+          "ground_truth": "A group can use one Istanbulkart by touching it to the reader as many times as there are passengers on most lines — buses, trams, suburban trains, metro and local ferries. The exception is the BRT Metrobüs line, where you must touch out as well as in. There is no need to touch out on regular metro or tram lines.",
+          "answer": "A group of travellers can use a single Istanbulkart efficiently by touching it as many times as there are passengers when boarding a vehicle. This means that the group can share a single card, which is more convenient and cost-effective than each person needing their own card [1], [5]. However, it's important to note that on the BRT Metrobüs line, the card must be touched out upon exiting, which is a restriction not present on other lines [1].",
+          "retrieved_ids": [
+            "istanbul_00040",
+            "istanbul_00042",
+            "istanbul_airport_00018",
+            "istanbul_00037",
+            "istanbul_00039"
+          ],
+          "gold_ids": [
+            "istanbul_00040",
+            "istanbul_00047"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9021854400634766,
+          "latency_s": 8.07,
+          "faithfulness_claims": [
+            {
+              "claim": "A group of travellers can use a single Istanbulkart efficiently by touching it as many times as there are passengers when boarding a vehicle.",
+              "supported": true
+            },
+            {
+              "claim": "The group can share a single card, which is more convenient and cost-effective than each person needing their own card.",
+              "supported": true
+            },
+            {
+              "claim": "On the BRT Metrobüs line, the card must be touched out upon exiting.",
+              "supported": true
+            },
+            {
+              "claim": "This restriction is not present on other lines.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "How is Turkish tea traditionally brewed and served, and what flavour is most popular among locals?",
+          "ground_truth": "Turkish tea is brewed samovar-style, with a small pot of very strong tea sitting on a larger vessel of boiling water. A small amount of strong tea is poured into a tulip-shaped glass and cut to the desired strength with hot water, usually sweetened with cube sugar rather than milk. Locals prefer plain black tea (Siyah Çay), while apple tea (Elma Çayı) is mostly enjoyed by tourists.",
+          "answer": "Turkish tea is traditionally brewed samovar-style, with a small pot of very strong tea sitting on a larger vessel of boiling water. A small amount of strong tea is poured into a little tulip-shaped glass and cut to the desired strength with hot water. Turks usually add cube sugar, but never milk, although milk can often be requested. The most popular flavor among locals is Siyah Çay (black tea) [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00099",
+            "istanbul_00098",
+            "istanbul_00105",
+            "istanbul_asian_bosphorus_00013",
+            "istanbul_galata_00025"
+          ],
+          "gold_ids": [
+            "istanbul_00099"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8829094171524048,
+          "latency_s": 3.9,
+          "faithfulness_claims": [
+            {
+              "claim": "Turkish tea is traditionally brewed samovar-style, with a small pot of very strong tea sitting on a larger vessel of boiling water.",
+              "supported": true
+            },
+            {
+              "claim": "A small amount of strong tea is poured into a little tulip-shaped glass and cut to the desired strength with hot water.",
+              "supported": true
+            },
+            {
+              "claim": "Turks usually add cube sugar, but never milk, although milk can often be requested.",
+              "supported": true
+            },
+            {
+              "claim": "The most popular flavor among locals is Siyah Çay (black tea).",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "category": "Practical Info",
+          "difficulty": "synthesis",
+          "question": "Why is it especially important to ask for prices upfront in Istanbul, even for something as small as a tea?",
+          "ground_truth": "Tourists are constantly overcharged in Istanbul, and prices are often not on display in sweet shops or restaurants. Asking the price beforehand, even for tea, helps avoid being hit with a wildly inflated bill. If a place refuses to give a price upfront, the advice is to skip it or ask only after knowing the approximate fair price.",
+          "answer": "It is especially important to ask for prices upfront in Istanbul, even for something as small as a tea, because tourists are often overcharged. Many places do not display prices, and this can lead to significant overpayment if you do not inquire about the cost beforehand [1].",
+          "retrieved_ids": [
+            "istanbul_00111",
+            "istanbul_00098",
+            "istanbul_00136",
+            "istanbul_00128",
+            "istanbul_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00128",
+            "istanbul_00111"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9323851466178894,
+          "latency_s": 5.75,
+          "faithfulness_claims": [
+            {
+              "claim": "It is especially important to ask for prices upfront in Istanbul, even for something as small as a tea, because tourists are often overcharged.",
+              "supported": true
+            },
+            {
+              "claim": "Many places do not display prices, and this can lead to significant overpayment if you do not inquire about the cost beforehand.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "synthesis",
+          "question": "What is the Column of Constantine (Çemberlitaş), and how did it get its Turkish name?",
+          "ground_truth": "The Column of Constantine stands at the corner of Yeniçeriler and Vezirhan Caddesi in Beyazıt, just 15 m from the Çemberlitaş tram stop. It was erected in honour of Constantine in 328 AD and stands about 35 m tall today in rough-hewn porphyry blocks. After the original statue and its replacement cross fell, the column was reinforced with iron bands — 'çemberli taş' meaning 'banded stone' — which became the neighbourhood's name.",
+          "answer": "The Column of Constantine, also known as Çemberlitaş, is a monument located in Istanbul, specifically at the corner of Yeniçeriler Cd and Vezirhan Cd. It was originally erected in honor of Emperor Constantine in 328 AD and stands 35 meters tall, constructed with rough-hewn porphyry blocks. Initially, it was topped with a statue of Constantine, which was later replaced by a cross after the statue blew down in the 12th century. The Ottomans removed the cross and reinforced the column with iron bands, which gave it the Turkish name Çemberlitaş, meaning \"ring stone\" [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00024",
+            "istanbul_00000",
+            "istanbul_00001",
+            "istanbul_historical_peninsula_00018",
+            "istanbul_princes_islands_00003"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00024"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9123181104660034,
+          "latency_s": 9.06,
+          "faithfulness_claims": [
+            {
+              "claim": "The Column of Constantine, also known as Çemberlitaş, is a monument located in Istanbul, specifically at the corner of Yeniçeriler Cd and Vezirhan Cd.",
+              "supported": true
+            },
+            {
+              "claim": "It was originally erected in honor of Emperor Constantine in 328 AD",
+              "supported": true
+            },
+            {
+              "claim": "It stands 35 meters tall, constructed with rough-hewn porphyry blocks.",
+              "supported": true
+            },
+            {
+              "claim": "Initially, it was topped with a statue of Constantine, which was later replaced by a cross after the statue blew down in the 12th century.",
+              "supported": true
+            },
+            {
+              "claim": "The Ottomans removed the cross and reinforced the column with iron bands, which gave it the Turkish name Çemberlitaş, meaning 'ring stone'.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "Does the Four Seasons Hotel in the Historical Peninsula serve non-residents in its restaurant?",
+          "ground_truth": "Yes — the Four Seasons Hotel's restaurant in the Historical Peninsula serves non-residents and is listed among the 'Splurge' eating options in the Sultanahmet area.",
+          "answer": "Yes, the Four Seasons Hotel in the Historical Peninsula serves non-residents in its restaurant [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00037",
+            "istanbul_historical_peninsula_00000",
+            "istanbul_airport_00058",
+            "istanbul_galata_00026",
+            "istanbul_galata_00027"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00037"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 0.0,
+          "answer_relevance": 0.955190896987915,
+          "latency_s": 3.73,
+          "faithfulness_claims": [
+            {
+              "claim": "The Four Seasons Hotel in the Historical Peninsula serves non-residents in its restaurant",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "When did Istanbul stop being the capital of Turkey, and why was the capital moved?",
+          "ground_truth": "When the Republic of Turkey was founded in 1923 after the War of Independence, Kemal Atatürk moved the capital from Istanbul to Ankara, which is strategically located in the centre of the new republic. Atatürk's broader aim was also to break with Istanbul's dysfunctional Ottoman politics.",
+          "answer": "Istanbul stopped being the capital of Turkey in 1923 when the Republic of Turkey was established after the War of Independence. The capital was moved to Ankara, which was strategically located in the center of the new republic. This move was initiated by Kemal Atatürk to break with the old Ottoman Empire's dysfunctional politics and to symbolize a new direction for the country [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00002",
+            "istanbul_historical_peninsula_00003",
+            "istanbul_galata_00004",
+            "istanbul_00001",
+            "istanbul_00000"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00003",
+            "istanbul_00002"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9016925096511841,
+          "latency_s": 5.75,
+          "faithfulness_claims": [
+            {
+              "claim": "Istanbul stopped being the capital of Turkey in 1923",
+              "supported": true
+            },
+            {
+              "claim": "The Republic of Turkey was established after the War of Independence",
+              "supported": true
+            },
+            {
+              "claim": "The capital was moved to Ankara",
+              "supported": true
+            },
+            {
+              "claim": "Ankara was strategically located in the center of the new republic",
+              "supported": true
+            },
+            {
+              "claim": "This move was initiated by Kemal Atatürk",
+              "supported": true
+            },
+            {
+              "claim": "The move was to break with the old Ottoman Empire's dysfunctional politics",
+              "supported": true
+            },
+            {
+              "claim": "The move was to symbolize a new direction for the country",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 57,
+          "category": "Shopping",
+          "difficulty": "inference",
+          "question": "Why do most major shopping malls in Istanbul have airport-style security checks at the entrance?",
+          "ground_truth": "Most major shopping malls have security checkpoints similar to those seen in airports and museums prior to entry. This reflects the city's general security posture toward crowded public spaces, particularly because Istanbul has been targeted by terrorist incidents in the past and authorities want to deter weapons or explosives in dense indoor venues.",
+          "answer": "Most major shopping malls in Istanbul have airport-style security checks at the entrance due to security measures, similar to those seen in airports and museums, to ensure the safety of visitors and prevent potential security threats [1].",
+          "retrieved_ids": [
+            "istanbul_00097",
+            "istanbul_airport_00003",
+            "istanbul_airport_00005",
+            "istanbul_airport_00004",
+            "istanbul_airport_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00097"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.940977931022644,
+          "latency_s": 2.06,
+          "faithfulness_claims": [
+            {
+              "claim": "Most major shopping malls in Istanbul have airport-style security checks at the entrance",
+              "supported": true
+            },
+            {
+              "claim": "Security checks are similar to those seen in airports and museums",
+              "supported": true
+            },
+            {
+              "claim": "Security checks are implemented to ensure the safety of visitors and prevent potential security threats",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 58,
+          "category": "Health & Safety",
+          "difficulty": "factual",
+          "question": "What is the coin scam involving a 'change €50 for €2 coins' offer in Istanbul?",
+          "ground_truth": "A scammer holds a stack of coins and asks where you are from. If you mention a euro country, he wants you to swap a €50 note for what he claims is thirty €2 coins worth €60. In reality, only the first coin in the stack is a real €2 coin; the rest are 1-lira coins that look very similar but are worth only about 1/100 of €2.",
+          "answer": "The coin scam in Istanbul involves a Turkish individual approaching tourists, often from euro countries, and offering to exchange a €50 note for 30 €2 coins, claiming this makes €60 in total. The first coin shown is indeed a €2 coin, but the rest are likely 1-lira coins, which look similar but are worth only 1/100 of the value of a €2 coin [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00116",
+            "istanbul_00117",
+            "istanbul_00096",
+            "istanbul_00113",
+            "istanbul_00124"
+          ],
+          "gold_ids": [
+            "istanbul_00116",
+            "istanbul_00117"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9186445474624634,
+          "latency_s": 3.4,
+          "faithfulness_claims": [
+            {
+              "claim": "The coin scam in Istanbul involves a Turkish individual approaching tourists, often from euro countries, and offering to exchange a €50 note for 30 €2 coins, claiming this makes €60 in total.",
+              "supported": true
+            },
+            {
+              "claim": "The first coin shown is indeed a €2 coin, but the rest are likely 1-lira coins, which look similar but are worth only 1/100 of the value of a €2 coin.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 59,
+          "category": "Itinerary & Planning",
+          "difficulty": "factual",
+          "question": "Which months are pleasantly warm and considered the best times to visit Istanbul itself?",
+          "ground_truth": "Late spring (late May to early June) and early autumn (late September to early October) are the most pleasant and are considered the best times to visit Istanbul. During these periods temperatures are pleasantly warm with less rain than winter, though nights can get chilly and showers are still possible.",
+          "answer": "The best times to visit Istanbul, characterized by pleasantly warm temperatures, are late May to early June and late September to early October [1].",
+          "retrieved_ids": [
+            "istanbul_00008",
+            "istanbul_princes_islands_00004",
+            "istanbul_00007",
+            "istanbul_00004",
+            "istanbul_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00008",
+            "istanbul_princes_islands_00004"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9212148785591125,
+          "latency_s": 1.73,
+          "faithfulness_claims": [
+            {
+              "claim": "The best times to visit Istanbul are late May to early June and late September to early October",
+              "supported": true
+            },
+            {
+              "claim": "These periods are characterized by pleasantly warm temperatures",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 60,
+          "category": "Activities & Entertainment",
+          "difficulty": "factual",
+          "question": "How long is the Great Tour (Büyük Tur) bicycle route around Büyükada, and what is the road like?",
+          "ground_truth": "The Great Tour covers the full circumference of Büyükada and is about 15 km long. Bikes can be rented in many places near the pier, the roads are well-paved and scenic, and there are few significant gradients along the route.",
+          "answer": "The Great Tour (Büyük Tur) bicycle route around Büyükada is about 15 km long. The roads are well paved, scenic, and have few gradients [1].",
+          "retrieved_ids": [
+            "istanbul_princes_islands_00013",
+            "istanbul_princes_islands_00018",
+            "istanbul_00035",
+            "istanbul_princes_islands_00009",
+            "istanbul_00027"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00013"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9372897744178772,
+          "latency_s": 5.09,
+          "faithfulness_claims": [
+            {
+              "claim": "The Great Tour (Büyük Tur) bicycle route around Büyükada is about 15 km long.",
+              "supported": true
+            },
+            {
+              "claim": "The roads are well paved.",
+              "supported": true
+            },
+            {
+              "claim": "The roads are scenic.",
+              "supported": true
+            },
+            {
+              "claim": "The roads have few gradients.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 61,
+          "category": "Transportation",
+          "difficulty": "inference",
+          "question": "Why does Wikivoyage say the Istanbulkart pays for itself within a few trips?",
+          "ground_truth": "An Istanbulkart provides significantly discounted rates — a bit over half price for unlinked trips and even lower for transfers within roughly 90 minutes — compared with regular single tickets. A single round trip to the airport alone covers more than half the cost of the card, so for any visitor staying more than a day or two and using public transport, the savings quickly outweigh the initial purchase price.",
+          "answer": "The İstanbulkart provides significantly discounted rates compared to regular single tickets, often more than half price for unlinked trips and even cheaper for transfers. Additionally, it offers discounts on transfers and short round trips, which can help it pay for itself in just a few trips [2].",
+          "retrieved_ids": [
+            "istanbul_00039",
+            "istanbul_00040",
+            "istanbul_00041",
+            "istanbul_airport_00018",
+            "istanbul_00049"
+          ],
+          "gold_ids": [
+            "istanbul_00040",
+            "istanbul_00039"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8795584440231323,
+          "latency_s": 4.3,
+          "faithfulness_claims": [
+            {
+              "claim": "The İstanbulkart provides significantly discounted rates compared to regular single tickets, often more than half price for unlinked trips and even cheaper for transfers.",
+              "supported": true
+            },
+            {
+              "claim": "It offers discounts on transfers and short round trips.",
+              "supported": true
+            },
+            {
+              "claim": "The İstanbulkart can help pay for itself in just a few trips.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 62,
+          "category": "Food & Drink",
+          "difficulty": "factual",
+          "question": "When and where are roasted chestnuts typically sold in Istanbul, and why are they popular in the cold months?",
+          "ground_truth": "Roasted chestnuts are sold from carts around the city year-round but are most commonly eaten in winter. They are a popular cold-weather snack because they keep your hands warm while you walk, making them especially welcome on chilly streets.",
+          "answer": "Roasted chestnuts are sold from carts around the city of Istanbul and are most commonly eaten during the winter months, though they are available year-round [1]. They are popular in the cold months because they keep your hands warm, making them a comforting snack when the weather is chilly [1].",
+          "retrieved_ids": [
+            "istanbul_00106",
+            "istanbul_00098",
+            "istanbul_00010",
+            "istanbul_00100",
+            "istanbul_00104"
+          ],
+          "gold_ids": [
+            "istanbul_00106"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.946437418460846,
+          "latency_s": 7.49,
+          "faithfulness_claims": [
+            {
+              "claim": "Roasted chestnuts are sold from carts around the city of Istanbul",
+              "supported": true
+            },
+            {
+              "claim": "Roasted chestnuts are most commonly eaten during the winter months",
+              "supported": true
+            },
+            {
+              "claim": "Roasted chestnuts are available year-round",
+              "supported": true
+            },
+            {
+              "claim": "Roasted chestnuts are popular in the cold months because they keep your hands warm",
+              "supported": true
+            },
+            {
+              "claim": "Roasted chestnuts are a comforting snack when the weather is chilly",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 63,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "When should travellers convert any remaining Turkish lira back to foreign currency before leaving Turkey?",
+          "ground_truth": "Exchange leftover lira directly before leaving Turkey, because in many foreign countries it can be hard to convert lira back at a proper rate. Banks and currency exchanges in the city offer competitive rates with a sell-buy-spread of about 1-2%, whereas airport rates are much worse.",
+          "answer": "Travelers should convert any remaining Turkish lira back to foreign currency directly before leaving Turkey, as it can be difficult to exchange lira at a good rate in other countries [1].",
+          "retrieved_ids": [
+            "istanbul_00096",
+            "istanbul_00116",
+            "istanbul_airport_00030",
+            "istanbul_00041",
+            "sabiha_gökçen_international_airport_00002"
+          ],
+          "gold_ids": [
+            "istanbul_00096"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9138925075531006,
+          "latency_s": 1.82,
+          "faithfulness_claims": [
+            {
+              "claim": "Travelers should convert any remaining Turkish lira back to foreign currency directly before leaving Turkey",
+              "supported": true
+            },
+            {
+              "claim": "It can be difficult to exchange lira at a good rate in other countries",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 64,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "inference",
+          "question": "Why is it risky to ask a taxi driver to take you to 'Topkapı', and what should you say instead?",
+          "ground_truth": "There are two places called 'Topkapı' in Istanbul: Topkapı Palace near Sultanahmet, and the Topkapı district near the city walls 10 km west. Asking simply for 'Topkapı' may land you at the city walls instead of the palace. To avoid this you should specify 'Topkapı Sarayı' (the palace) or refer to Sultanahmet as the destination.",
+          "answer": "It is risky to ask a taxi driver to take you to 'Topkapı' because it could be misunderstood as a request to go to the city walls, which are 10 km west of the historical center, not to Topkapı Palace, which is a major tourist attraction in Sultanahmet Square. If you are unlucky, a taxi driver might take you to the wrong location, possibly as part of a scam [1]. \n\nInstead, you should specifically ask the taxi driver to take you to \"Topkapı Palace\" to ensure you are taken to the correct location.",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00017",
+            "istanbul_00123",
+            "istanbul_00126",
+            "istanbul_00124",
+            "istanbul_00059"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00017"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9062837362289429,
+          "latency_s": 13.45,
+          "faithfulness_claims": [
+            {
+              "claim": "It is risky to ask a taxi driver to take you to 'Topkapı' because it could be misunderstood as a request to go to the city walls.",
+              "supported": true
+            },
+            {
+              "claim": "The city walls are 10 km west of the historical center.",
+              "supported": true
+            },
+            {
+              "claim": "The city walls are not near Topkapı Palace.",
+              "supported": true
+            },
+            {
+              "claim": "Topkapı Palace is a major tourist attraction in Sultanahmet Square.",
+              "supported": true
+            },
+            {
+              "claim": "If you are unlucky, a taxi driver might take you to the wrong location, possibly as part of a scam.",
+              "supported": true
+            },
+            {
+              "claim": "You should specifically ask the taxi driver to take you to 'Topkapı Palace' to ensure you are taken to the correct location.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 65,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "What is significant about Harbiye as a neighbourhood to stay in on Istanbul's European side?",
+          "ground_truth": "Harbiye is popular because it sits close to the centre of the new city on the European side and offers a variety of international-standard apartments, hotels, and moderate hotels for budget travellers. Nişantaşı and Taksim are nearby, so guests staying in Harbiye can easily reach the activities and entertainment those neighbourhoods offer.",
+          "answer": "Harbiye is a significant neighborhood to stay in on Istanbul's European side because it is close to the main center of the new city and offers a variety of accommodations, including international standard apartments, hotels, and moderate hotels for budget travelers. Additionally, its proximity to Nişantaşı and Taksim allows visitors to benefit from the activities in those areas [1].",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_western_suburbs_00000",
+            "istanbul_00030",
+            "istanbul_00108",
+            "istanbul_00000"
+          ],
+          "gold_ids": [
+            "istanbul_00109"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8925135135650635,
+          "latency_s": 3.02,
+          "faithfulness_claims": [
+            {
+              "claim": "Harbiye is a significant neighborhood to stay in on Istanbul's European side",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is close to the main center of the new city",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye offers a variety of accommodations, including international standard apartments, hotels, and moderate hotels for budget travelers",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye's proximity to Nişantaşı and Taksim allows visitors to benefit from the activities in those areas",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 66,
+          "category": "Culture & Customs",
+          "difficulty": "factual",
+          "question": "What is 'Catstanbul' and roughly how many cats does the city have?",
+          "ground_truth": "'Catstanbul' is a popular nickname reflecting Istanbul's large feline population, which ranges from about 125,000 to over a million cats, mostly tabbies. They are generally amicable, well-fed and healthy because they are looked after collectively by residents, so they are described as 'communally-owned' rather than feral.",
+          "answer": "'Catstanbul' is a nickname for Istanbul, reflecting the city's large population of cats. The city is estimated to have between 125,000 to over a million feline citizens, mostly tabbies, which are described as amicable, well-fed, and healthy. [1]",
+          "retrieved_ids": [
+            "istanbul_00068",
+            "istanbul_00000",
+            "istanbul_00055",
+            "istanbul_kadıköy_00009",
+            "istanbul_00067"
+          ],
+          "gold_ids": [],
+          "precision_at_k": null,
+          "recall_at_k": null,
+          "mrr": null,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8993260860443115,
+          "latency_s": 4.34,
+          "faithfulness_claims": [
+            {
+              "claim": "'Catstanbul' is a nickname for Istanbul",
+              "supported": true
+            },
+            {
+              "claim": "The city is estimated to have between 125,000 to over a million feline citizens",
+              "supported": true
+            },
+            {
+              "claim": "Most of the cats are tabbies",
+              "supported": true
+            },
+            {
+              "claim": "The cats are described as amicable, well-fed, and healthy",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 67,
+          "category": "Shopping",
+          "difficulty": "synthesis",
+          "question": "Where can you find shopping districts popular with locals rather than tourists in Istanbul's Old City?",
+          "ground_truth": "Tahtakale, Mercan and Mahmutpaşa are shopping districts extending from Eminönü Meydanı near Galata Bridge uphill to Beyazıt II Mosque, and they are popular with locals. Another area is the textile and leather shopping zone around the 18th-century baroque mosque in the Old City. By contrast, the Grand Bazaar and Spice Bazaar are heavily touristic with markedly higher prices.",
+          "answer": "In the Old City of Istanbul, you can find shopping districts that are more popular with locals rather than tourists by avoiding the highly touristy areas like the Spice Market (Eminönü). Instead, look for places where the tourist-local ratio is very low. Textile wholesale business is concentrated in Laleli, which might be a good option for a more local shopping experience [1].",
+          "retrieved_ids": [
+            "istanbul_00101",
+            "istanbul_00109",
+            "istanbul_galata_00000",
+            "istanbul_eastern_suburbs_00000",
+            "istanbul_new_city_00000"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00032"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8916001319885254,
+          "latency_s": 3.46,
+          "faithfulness_claims": [
+            {
+              "claim": "In the Old City of Istanbul, you can find shopping districts that are more popular with locals rather than tourists by avoiding the highly touristy areas like the Spice Market (Eminönü).",
+              "supported": true
+            },
+            {
+              "claim": "Instead, look for places where the tourist-local ratio is very low.",
+              "supported": true
+            },
+            {
+              "claim": "Textile wholesale business is concentrated in Laleli, which might be a good option for a more local shopping experience.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 68,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "Why should travellers be cautious about wearing football team jerseys on match days in Istanbul?",
+          "ground_truth": "Istanbul hosts three of the biggest football clubs in Turkey — Beşiktaş, Fenerbahçe and Galatasaray — and their rivalry is fearsome. Wearing the jersey of one of these teams (or supporting an opposing team when the Turkish national team plays in Istanbul) can attract hostility or even violent attacks, particularly after derbies or on match days.",
+          "answer": "Travellers should be cautious about wearing football team jerseys on match days in Istanbul due to the fierce rivalries between the major clubs, such as Beşiktaş, Fenerbahçe, and Galatasaray. Wearing a jersey of a particular team can lead to confrontations or harassment, especially if you are in an area dominated by fans of a rival team. Additionally, there have been instances of violent attacks on fans of the opposing team, particularly when the Turkish national team plays in Istanbul [1], [2], [4].",
+          "retrieved_ids": [
+            "istanbul_00112",
+            "istanbul_european_bosphorus_00018",
+            "istanbul_00088",
+            "istanbul_00111",
+            "istanbul_00129"
+          ],
+          "gold_ids": [
+            "istanbul_00112",
+            "istanbul_kadıköy_00019",
+            "istanbul_00088"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9261085987091064,
+          "latency_s": 4.35,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers should be cautious about wearing football team jerseys on match days in Istanbul due to the fierce rivalries between the major clubs, such as Beşiktaş, Fenerbahçe, and Galatasaray.",
+              "supported": true
+            },
+            {
+              "claim": "Wearing a jersey of a particular team can lead to confrontations or harassment, especially if you are in an area dominated by fans of a rival team.",
+              "supported": true
+            },
+            {
+              "claim": "There have been instances of violent attacks on fans of the opposing team, particularly when the Turkish national team plays in Istanbul.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 69,
+          "category": "Itinerary & Planning",
+          "difficulty": "factual",
+          "question": "How can travellers get from Istanbul Airport to Edirne, and roughly what does the bus cost as of June 2024?",
+          "ground_truth": "Istanbul Seyahat operates a bus from Istanbul Airport via Lüleburgaz and Babaeski to Edirne every 2-3 hours from midday to midnight. As of June 2024, the adult fare to Edirne is 450 TL. Tickets to intermediate stops cost less (400 TL to Lüleburgaz, 420 TL to Babaeski).",
+          "answer": "Travellers can get from Istanbul Airport to Edirne by taking a bus operated by Istanbul Seyahat. The bus route runs every 2-3 hours from midday to midnight, and the adult fare is 450 TL as of June 2024 [1].",
+          "retrieved_ids": [
+            "istanbul_airport_00007",
+            "istanbul_00014",
+            "istanbul_00017",
+            "istanbul_airport_00015",
+            "istanbul_00013"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00008"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9421292543411255,
+          "latency_s": 4.5,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers can get from Istanbul Airport to Edirne by taking a bus operated by Istanbul Seyahat.",
+              "supported": true
+            },
+            {
+              "claim": "The bus route runs every 2-3 hours from midday to midnight.",
+              "supported": true
+            },
+            {
+              "claim": "The adult fare is 450 TL as of June 2024.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 70,
+          "category": "Activities & Entertainment",
+          "difficulty": "synthesis",
+          "question": "What landmarks and natural features can be found on Heybeliada in the Princes' Islands?",
+          "ground_truth": "Heybeliada is 2700 m wide and 1200 m long and has four hills, the highest being Değirmentepe at 136 m and including Taşocağı, Makarios and Ümit Hills; an 85 m hill formerly called Priest Hill is home to a Seminary. The island has four ports, with Çam Harbor and Bahriye Port in a beautiful bay being the most important. Notable buildings include the Naval School, the Aye Ofemya Holy Spring, the Heybeliada Sanatorium (Turkey's first, founded 1924), and Abbas Halim Pasha Mansion.",
+          "answer": "Heybeliada, one of the Princes' Islands, features several notable landmarks and natural features:\n\n- **Hills**: The island consists of four hills:\n  - **Değirmentepe**: The highest peak at 136 meters.\n  - **Taşocağı Hill**\n  - **Makarios Hill**\n  - **Ümit Hill** (formerly known as Priest Hill, 85 meters high with a Seminary on it)\n\n- **Ports**: There are four ports on the island, with Çam Harbor and Bahriye Port being the most significant and located in a beautiful bay.\n\n- **Important Buildings**:\n  - **Naval School**\n  - **Aye Ofemya Holy Spring**\n  - **Heybeliada Sanatorium** (Founded in 1924, the first sanatorium in Turkey)\n  - **Hüseyin Rahmi Gürpınar High School**\n  - **Abbas Halim Pasha Mansion**\n  - **Seminary** and other religious buildings\n  - **Official buildings**\n\nThese landmarks and natural features contribute to the rich cultural and historical heritage of Heybeliada. [1]",
+          "retrieved_ids": [
+            "istanbul_princes_islands_00007",
+            "istanbul_princes_islands_00017",
+            "istanbul_princes_islands_00001",
+            "istanbul_kadıköy_00021",
+            "istanbul_princes_islands_00002"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00007"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8528718948364258,
+          "latency_s": 11.08,
+          "faithfulness_claims": [
+            {
+              "claim": "Heybeliada, one of the Princes' Islands, features several notable landmarks and natural features.",
+              "supported": true
+            },
+            {
+              "claim": "The island consists of four hills.",
+              "supported": true
+            },
+            {
+              "claim": "Değirmentepe is the highest peak at 136 meters.",
+              "supported": true
+            },
+            {
+              "claim": "Taşocağı Hill is one of the four hills.",
+              "supported": true
+            },
+            {
+              "claim": "Makarios Hill is one of the four hills.",
+              "supported": true
+            },
+            {
+              "claim": "Ümit Hill is one of the four hills, formerly known as Priest Hill, 85 meters high with a Seminary on it.",
+              "supported": true
+            },
+            {
+              "claim": "There are four ports on the island, with Çam Harbor and Bahriye Port being the most significant and located in a beautiful bay.",
+              "supported": true
+            },
+            {
+              "claim": "Important buildings on the island include the Naval School, the Aye Ofemya Holy Spring, the Heybeliada Sanatorium (Founded in 1924, the first sanatorium in Turkey), Hüseyin Rahmi Gürpınar High School, Abbas Halim Pasha Mansion, the Seminary, other religious buildings, and official buildings.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 71,
+          "category": "Transportation",
+          "difficulty": "factual",
+          "question": "How often do Marmaray trains run across the Bosphorus and what is a typical short-distance fare?",
+          "ground_truth": "Marmaray trains run every 15 minutes from 06:00 to 23:00. Fares are calculated by distance but within the city centre are about 25 TL, which is less than €1. The line passes under the Bosphorus connecting Halkalı in the west to Pendik and Gebze in the east via stations like Yenikapı, Sirkeci and Üsküdar.",
+          "answer": "Marmaray trains run every 15 minutes from 06:00 to 23:00. A typical short-distance fare within the city center is about 25 TL, which is less than €1 [4].",
+          "retrieved_ids": [
+            "istanbul_00043",
+            "istanbul_historical_peninsula_00013",
+            "istanbul_00020",
+            "istanbul_historical_peninsula_00008",
+            "istanbul_historical_peninsula_00009"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00008",
+            "istanbul_00043"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 0.5,
+          "answer_relevance": 0.8744344711303711,
+          "latency_s": 2.96,
+          "faithfulness_claims": [
+            {
+              "claim": "Marmaray trains run every 15 minutes from 06:00 to 23:00.",
+              "supported": true
+            },
+            {
+              "claim": "A typical short-distance fare within the city center is about 25 TL, which is less than €1.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 72,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What are 'Wet Burger' (ıslak hamburger) and Patso, and how do they differ?",
+          "ground_truth": "Wet Burger (ıslak hamburger) is a Turkish street-food classic featuring a soft bun and a meat patty drenched in a garlicky tomato-based sauce, then steamed for a moist, flavourful texture. Patso is a different kind of sandwich, filled with French fries and often dressed with ketchup, mayonnaise or sausage slices, making it a simple, satisfying fast-food snack rather than a burger.",
+          "answer": "'Wet Burger' (ıslak hamburger) is a Turkish street food classic featuring a soft bun and a meat patty drenched in a garlicky, tomato-based sauce, then steamed to give it a moist, flavorful texture. Patso, on the other hand, is a popular Turkish snack consisting of a sandwich filled with French fries, often accompanied by ketchup, mayonnaise, or sausage slices, making it a simple yet satisfying fast-food treat [2].",
+          "retrieved_ids": [
+            "istanbul_galata_00021",
+            "istanbul_00104",
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_with_children_00005",
+            "istanbul_western_suburbs_00013"
+          ],
+          "gold_ids": [
+            "istanbul_00104",
+            "istanbul_galata_00021"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9105325937271118,
+          "latency_s": 3.87,
+          "faithfulness_claims": [
+            {
+              "claim": "'Wet Burger' (ıslak hamburger) is a Turkish street food classic",
+              "supported": true
+            },
+            {
+              "claim": "It features a soft bun and a meat patty drenched in a garlicky, tomato-based sauce",
+              "supported": true
+            },
+            {
+              "claim": "The burger is then steamed to give it a moist, flavorful texture",
+              "supported": true
+            },
+            {
+              "claim": "Patso is a popular Turkish snack",
+              "supported": true
+            },
+            {
+              "claim": "Patso consists of a sandwich filled with French fries",
+              "supported": true
+            },
+            {
+              "claim": "Patso is often accompanied by ketchup, mayonnaise, or sausage slices",
+              "supported": true
+            },
+            {
+              "claim": "Patso is a simple yet satisfying fast-food treat",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 73,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "What are the operating hours of the M11 metro line that serves Istanbul Airport?",
+          "ground_truth": "Line M11 runs from 06:00 to 00:00, seven days a week (as of June 2024), with a service frequency of every 20 minutes. The journey from Istanbul Airport to Gayrettepe takes about 30 minutes. Future plans may extend round-the-clock operation to weekends and public holidays as on some other lines.",
+          "answer": "The M11 metro line that serves Istanbul Airport operates from 06:00 to 00:00, 7 days a week, with a service frequency of every 20 minutes [2].",
+          "retrieved_ids": [
+            "istanbul_00013",
+            "istanbul_airport_00019",
+            "istanbul_airport_00017",
+            "istanbul_00044",
+            "istanbul_airport_00006"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00019"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9203497171401978,
+          "latency_s": 2.32,
+          "faithfulness_claims": [
+            {
+              "claim": "The M11 metro line that serves Istanbul Airport operates from 06:00 to 00:00, 7 days a week",
+              "supported": true
+            },
+            {
+              "claim": "The M11 metro line has a service frequency of every 20 minutes",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 74,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "factual",
+          "question": "Is Hagia Sophia included in the Istanbul Museum Pass?",
+          "ground_truth": "Hagia Sophia is notably not included in the Museum Pass. Tickets to Hagia Sophia cost an extra €25 as of March 2024. The pass does cover Topkapı Palace and Harem, Hagia Irene, Istanbul Archaeological Museums, Istanbul Mosaic Museum, Museum of Turkey and Islamic Arts, Galata Mevlevi House Museum, Rumeli Hisar Museum, and the Galata Tower.",
+          "answer": "No, the Hagia Sophia is not included in the Istanbul Museum Pass. Tickets for the Hagia Sophia cost an extra €25 as of March 2024 [1], [2].",
+          "retrieved_ids": [
+            "istanbul_00064",
+            "istanbul_00063",
+            "istanbul_00065",
+            "istanbul_historical_peninsula_00019",
+            "istanbul_00071"
+          ],
+          "gold_ids": [
+            "istanbul_00064"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.908315122127533,
+          "latency_s": 13.76,
+          "faithfulness_claims": [
+            {
+              "claim": "The Hagia Sophia is not included in the Istanbul Museum Pass.",
+              "supported": true
+            },
+            {
+              "claim": "Tickets for the Hagia Sophia cost an extra €25 as of March 2024.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 75,
+          "category": "Accommodation",
+          "difficulty": "factual",
+          "question": "What is the Mercure hotel in Sirkeci, and where is it located?",
+          "ground_truth": "The Mercure in Sirkeci is an Accor chain hotel located opposite Sirkeci railway station in the Historical Peninsula. It sits within the cluster of mid-range hotels around the old European-train terminus.",
+          "answer": "The Mercure hotel in Sirkeci is an Accor chain hotel located opposite Sirkeci station [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00040",
+            "istanbul_historical_peninsula_00008",
+            "istanbul_eastern_suburbs_00010",
+            "istanbul_historical_peninsula_00011",
+            "istanbul_historical_peninsula_00006"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00040"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9251691699028015,
+          "latency_s": 2.37,
+          "faithfulness_claims": [
+            {
+              "claim": "The Mercure hotel in Sirkeci is an Accor chain hotel",
+              "supported": true
+            },
+            {
+              "claim": "The Mercure hotel is located opposite Sirkeci station",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 76,
+          "category": "Culture & Customs",
+          "difficulty": "inference",
+          "question": "Why are several of Sultanahmet's nargile cafés located inside or next to old cemeteries and tombs?",
+          "ground_truth": "Sultanahmet has many historic medreses and tomb complexes from the Ottoman era, and several of the calm, secluded inner courtyards attached to them have been converted into nargile cafés like Çorlulu Ali Paşa, Koca Sinan Paşa Türbesi and Rumeli Kahvesi. The courtyards' shaded, walled atmosphere is well suited to the leisurely pace of waterpipe smoking, and despite being among tombs the spaces feel calm rather than spooky.",
+          "answer": "Several of Sultanahmet's nargile cafés are located inside or next to old cemeteries and tombs because these areas are often quiet and secluded, providing a peaceful setting for smoking nargile. For example, Çorlulu Ali Paşa and Koca Sinan Paşa Türbesi are in secluded internal courts, and Rumeli Kahvesi is inside the cemetery of an old medrese [1].",
+          "retrieved_ids": [
+            "istanbul_00070",
+            "istanbul_galata_00026",
+            "istanbul_00128",
+            "istanbul_historical_peninsula_00018",
+            "istanbul_historical_peninsula_00031"
+          ],
+          "gold_ids": [
+            "istanbul_00070"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9195784330368042,
+          "latency_s": 6.48,
+          "faithfulness_claims": [
+            {
+              "claim": "Several of Sultanahmet's nargile cafés are located inside or next to old cemeteries and tombs",
+              "supported": true
+            },
+            {
+              "claim": "These areas are often quiet and secluded, providing a peaceful setting for smoking nargile",
+              "supported": true
+            },
+            {
+              "claim": "Çorlulu Ali Paşa and Koca Sinan Paşa Türbesi are in secluded internal courts",
+              "supported": true
+            },
+            {
+              "claim": "Rumeli Kahvesi is inside the cemetery of an old medrese",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 77,
+          "category": "Shopping",
+          "difficulty": "factual",
+          "question": "Where is Istanbul's main wholesale textile area, and how do shop opening days in Istanbul differ from the rest of the world?",
+          "ground_truth": "Istanbul's wholesale textile business is concentrated in Laleli. Contrary to many other places, shops in Istanbul are usually open during weekends, so visitors can shop on Saturday and Sunday throughout the city.",
+          "answer": "Istanbul's main wholesale textile area is concentrated in Laleli [2]. Unlike many other places in the world, shops in Istanbul are usually open during weekends [1].",
+          "retrieved_ids": [
+            "istanbul_00097",
+            "istanbul_00101",
+            "istanbul_00100",
+            "istanbul_00067",
+            "istanbul_00109"
+          ],
+          "gold_ids": [],
+          "precision_at_k": null,
+          "recall_at_k": null,
+          "mrr": null,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9185540676116943,
+          "latency_s": 4.0,
+          "faithfulness_claims": [
+            {
+              "claim": "Istanbul's main wholesale textile area is concentrated in Laleli",
+              "supported": true
+            },
+            {
+              "claim": "Unlike many other places in the world, shops in Istanbul are usually open during weekends",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 78,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "What scam involving counterfeit banknotes is reported in the Taksim area's bars?",
+          "ground_truth": "Many bars in the Taksim area give customers counterfeit lira bills as change. The fakes are usually well-made and hard to identify in low light. To verify a bill, hold it up to a strong light face-side up and check for an outline of the same face along with the bill's value (20, 50, etc.) as a watermark; if these features are missing, try to swap the bill or contact the police.",
+          "answer": "In the Taksim area, some bars are known to give customers counterfeit bills that are well-made and hard to identify as fakes in the dark. To verify a bill's authenticity, you can check its size against another bill or look for the security features such as the outline of the face on the bill and the value of the bill appearing next to it, light and translucent. If these security features are missing, you should try to have the bill changed or speak to the police [1].",
+          "retrieved_ids": [
+            "istanbul_00117",
+            "istanbul_00113",
+            "istanbul_00114",
+            "istanbul_galata_00031",
+            "istanbul_00129"
+          ],
+          "gold_ids": [
+            "istanbul_00117"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.857752799987793,
+          "latency_s": 7.21,
+          "faithfulness_claims": [
+            {
+              "claim": "In the Taksim area, some bars are known to give customers counterfeit bills that are well-made and hard to identify as fakes in the dark.",
+              "supported": true
+            },
+            {
+              "claim": "To verify a bill's authenticity, you can check its size against another bill.",
+              "supported": true
+            },
+            {
+              "claim": "You can look for the security features such as the outline of the face on the bill and the value of the bill appearing next to it, light and translucent.",
+              "supported": true
+            },
+            {
+              "claim": "If these security features are missing, you should try to have the bill changed or speak to the police.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 79,
+          "category": "Itinerary & Planning",
+          "difficulty": "synthesis",
+          "question": "Why might travellers want to avoid the Princes' Islands in winter, and what trade-offs come with visiting in that season?",
+          "ground_truth": "In winter (November to March), ferry services are less frequent and can be cancelled altogether due to storms and high waves, sometimes cutting the islands off entirely. The biting cold and near-deserted, gloomy 'ghost-town' atmosphere can be unpleasant for many visitors. However, travellers who want to see the islands blanketed by snow and don't mind the cold may enjoy a unique, quiet experience that summer visitors never see.",
+          "answer": "Travellers might want to avoid the Princes' Islands in winter due to the biting cold and the fact that the islands can become very gloomy and almost deserted, creating a \"ghost-town\" experience [1], [2]. However, if you don't mind the cold, you can enjoy the islands blanketed by snow and the almost deserted atmosphere, which can be a unique and peaceful experience [1], [2].",
+          "retrieved_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00004",
+            "istanbul_kadıköy_00021",
+            "istanbul_princes_islands_00020",
+            "istanbul_princes_islands_00000"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00020"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8971614837646484,
+          "latency_s": 3.43,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers might want to avoid the Princes' Islands in winter due to the biting cold and the fact that the islands can become very gloomy and almost deserted, creating a 'ghost-town' experience",
+              "supported": true
+            },
+            {
+              "claim": "If you don't mind the cold, you can enjoy the islands blanketed by snow and the almost deserted atmosphere, which can be a unique and peaceful experience",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 80,
+          "category": "Activities & Entertainment",
+          "difficulty": "inference",
+          "question": "How much does the 'Long Bosphorus Trip' (Uzun Boğaz turu) cost for foreigners, and when does it depart?",
+          "ground_truth": "The Long Bosphorus Trip costs 640 TL for foreigners — the same price for the round trip and one-way, with no discount for minors. The departure from Eminönü is early at 10:35, and tickets can only be bought at the ticket booth around one hour before departure. Arriving early is recommended because the ferry is very popular and will not wait for late ticket buyers.",
+          "answer": "The 'Long Bosphorus Trip' (Uzun Boğaz turu) costs 640 TL for foreigners, and it departs at 10:35. [1]",
+          "retrieved_ids": [
+            "istanbul_00082",
+            "istanbul_european_bosphorus_00007",
+            "istanbul_00086",
+            "istanbul_00023",
+            "istanbul_historical_peninsula_00013"
+          ],
+          "gold_ids": [
+            "istanbul_00082"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9355663061141968,
+          "latency_s": 2.75,
+          "faithfulness_claims": [
+            {
+              "claim": "The 'Long Bosphorus Trip' (Uzun Boğaz turu) costs 640 TL for foreigners",
+              "supported": true
+            },
+            {
+              "claim": "The 'Long Bosphorus Trip' departs at 10:35",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 81,
+          "category": "Transportation",
+          "difficulty": "factual",
+          "question": "Which motorway exit serves Istanbul Airport, and roughly how long does it take to drive to a European-side district?",
+          "ground_truth": "Istanbul Airport is located at exit K7 on the O-7 motorway, also known as Kuzey Marmara Otoyolu (Northern Marmara Highway). A typical drive from the airport to a European-side district takes about an hour.",
+          "answer": "The motorway exit that serves Istanbul Airport is K7 on the O-7 / Otoyol 7 (Northern Marmara Highway). A typical journey into one of the European side districts will take about an hour [3].",
+          "retrieved_ids": [
+            "istanbul_00030",
+            "istanbul_airport_00017",
+            "istanbul_airport_00025",
+            "sabiha_gökçen_international_airport_00007",
+            "istanbul_airport_00000"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00025"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 0.3333333333333333,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9061684608459473,
+          "latency_s": 2.36,
+          "faithfulness_claims": [
+            {
+              "claim": "The motorway exit that serves Istanbul Airport is K7 on the O-7 / Otoyol 7 (Northern Marmara Highway).",
+              "supported": true
+            },
+            {
+              "claim": "A typical journey into one of the European side districts will take about an hour.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 82,
+          "category": "Food & Drink",
+          "difficulty": "factual",
+          "question": "What is an esnaf lokantası and why would a traveller seek one out?",
+          "ground_truth": "Esnaf lokantası are old-school canteen-style restaurants that serve a wide variety of traditional Turkish dishes — soups, main courses and desserts — at affordable prices. They are recommended for a full-on culinary experience and to taste authentic everyday Turkish cooking rather than tourist-oriented food.",
+          "answer": "An esnaf lokantası is an old-school canteen that offers a variety of traditional Turkish dishes, ranging from soups to main courses to desserts. Travellers might seek one out for a full-on culinary experience, as these restaurants provide a taste of authentic Turkish cuisine [1].",
+          "retrieved_ids": [
+            "istanbul_00102",
+            "istanbul_00040",
+            "istanbul_00050",
+            "istanbul_00039",
+            "istanbul_airport_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00102"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8870656490325928,
+          "latency_s": 4.24,
+          "faithfulness_claims": [
+            {
+              "claim": "An esnaf lokantası is an old-school canteen",
+              "supported": true
+            },
+            {
+              "claim": "esnaf lokantası offers a variety of traditional Turkish dishes",
+              "supported": true
+            },
+            {
+              "claim": "the dishes range from soups to main courses to desserts",
+              "supported": true
+            },
+            {
+              "claim": "travellers might seek one out for a full-on culinary experience",
+              "supported": true
+            },
+            {
+              "claim": "esnaf lokantası provides a taste of authentic Turkish cuisine",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 83,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "Are credit cards or foreign currency accepted at Istanbul's public-transport ticket kiosks?",
+          "ground_truth": "Only cash in Turkish lira is accepted at ticket kiosks of Istanbul public transport. Credit cards and foreign currency are not accepted, so travellers should arrange lira in advance or use an Istanbulkart, which can be purchased at machines using notes or a credit card.",
+          "answer": "No, only cash in Turkish lira is accepted at ticket kiosks of public transport [1].",
+          "retrieved_ids": [
+            "istanbul_00037",
+            "istanbul_00039",
+            "istanbul_airport_00007",
+            "istanbul_00042",
+            "istanbul_00096"
+          ],
+          "gold_ids": [
+            "istanbul_00037",
+            "istanbul_00039",
+            "istanbul_00049"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8962965607643127,
+          "latency_s": 2.3,
+          "faithfulness_claims": [
+            {
+              "claim": "No, only cash in Turkish lira is accepted at ticket kiosks of public transport",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 84,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "inference",
+          "question": "Why are the Theodosian Walls described today as battle-scarred and only 'mostly intact', given their original function?",
+          "ground_truth": "The Theodosian Walls were Constantinople's main defensive line from 408 CE onward, withstanding centuries of sieges and earthquakes, including the 4th Crusade's breach and the 55-day Ottoman siege in 1453. Centuries of warfare, repeated earthquake damage and varying-quality repairs, plus 1980s and 1990s restoration projects often criticized as 'unsightly', mean the walls survive only in patchy, scarred condition with gaps cut for modern highways.",
+          "answer": "The Theodosian Walls are described as battle-scarred and only 'mostly intact' because they have endured numerous sieges and battles over the centuries, including the famous 55-day siege that led to the fall of Constantinople to the Ottomans in 1453 [4]. Despite their original function as a critical point of defense, the walls have suffered damage from these conflicts and have also been modified to accommodate modern infrastructure, such as gaps for highways [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00028",
+            "istanbul_00076",
+            "istanbul_historical_peninsula_00026",
+            "istanbul_historical_peninsula_00002",
+            "istanbul_historical_peninsula_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00080",
+            "istanbul_historical_peninsula_00028",
+            "istanbul_00076",
+            "istanbul_00078"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.5,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8942662477493286,
+          "latency_s": 7.06,
+          "faithfulness_claims": [
+            {
+              "claim": "The Theodosian Walls are described as battle-scarred and only 'mostly intact'.",
+              "supported": true
+            },
+            {
+              "claim": "The walls have endured numerous sieges and battles over the centuries.",
+              "supported": true
+            },
+            {
+              "claim": "The walls were involved in the famous 55-day siege that led to the fall of Constantinople to the Ottomans in 1453.",
+              "supported": true
+            },
+            {
+              "claim": "The walls have suffered damage from these conflicts.",
+              "supported": true
+            },
+            {
+              "claim": "The walls have been modified to accommodate modern infrastructure, such as gaps for highways.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 85,
+          "category": "Culture & Customs",
+          "difficulty": "factual",
+          "question": "What does the Turkish district name 'Fatih' mean, and what historical event does it commemorate?",
+          "ground_truth": "'Fatih' means 'conquest' in Turkish. The Fatih district takes its name from the conquest of Constantinople by the Ottoman Sultan Mehmed II on 29 May 1453, after a 55-day siege ended Byzantine rule and reshaped the city into the Ottoman capital.",
+          "answer": "The Turkish district name 'Fatih' means \"conquest.\" It commemorates the conquest of Constantinople by Sultan Mehmed II in 1453, which marked the end of the Byzantine Empire and the beginning of Ottoman rule over the city [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00026",
+            "istanbul_galata_00005",
+            "istanbul_european_bosphorus_00001",
+            "istanbul_galata_00004",
+            "istanbul_galata_00006"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00026"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 0.3333333333333333,
+          "answer_relevance": 0.877609133720398,
+          "latency_s": 5.18,
+          "faithfulness_claims": [
+            {
+              "claim": "The Turkish district name 'Fatih' means 'conquest'.",
+              "supported": true
+            },
+            {
+              "claim": "It commemorates the conquest of Constantinople by Sultan Mehmed II in 1453.",
+              "supported": false
+            },
+            {
+              "claim": "The conquest marked the end of the Byzantine Empire and the beginning of Ottoman rule over the city.",
+              "supported": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

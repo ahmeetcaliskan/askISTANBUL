@@ -1,0 +1,230 @@
+{
+  "timestamp": "2026-06-02T21:16:58.724644",
+  "k": 5,
+  "client_type": "openrouter",
+  "conditions": [
+    {
+      "condition": "dense-rag",
+      "k": 5,
+      "n_questions": 5,
+      "aggregate": {
+        "precision_at_k": {
+          "mean": 0.27999999999999997,
+          "min": 0.0,
+          "max": 0.6,
+          "n": 5
+        },
+        "recall_at_k": {
+          "mean": 0.419047619047619,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 5
+        },
+        "mrr": {
+          "mean": 0.45,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 5
+        },
+        "faithfulness": {
+          "mean": 0.4583333333333333,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 4
+        },
+        "answer_relevance": {
+          "mean": 0.8987748771905899,
+          "min": 0.8850778341293335,
+          "max": 0.9187180995941162,
+          "n": 4
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "What is the cheapest way to get from Istanbul Airport to Sultanahmet, and what transfers are required?",
+          "ground_truth": "Take the M11 metro from the airport to Gayrettepe (about 30 minutes), transfer to the M2 southbound to Vezneciler, walk roughly 300 m to the Laleli-Üniversite tram stop, then ride Tram T1 three stops east to Sultanahmet. The HVIST-11 Havaist coach also runs directly from the airport to Çatladıkapı in Sultanahmet for 380 TL in about 110 minutes if you prefer a single-vehicle option.",
+          "answer": "The cheapest route is to take the M11 metro from the airport to Gayrettepe, transfer to the M2 metro (southbound) and ride to Vezneciler, then change to Tram line 1 at Laleli‑Üniversite and travel three stops to Sultanahmet. This requires two transfers and payment with an Istanbulkart. [5]",
+          "retrieved_ids": [
+            "istanbul_00014",
+            "istanbul_00013",
+            "istanbul_00028",
+            "istanbul_airport_00017",
+            "istanbul_airport_00018"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00016",
+            "istanbul_airport_00017",
+            "istanbul_airport_00018"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 0.25,
+          "faithfulness": 0.3333333333333333,
+          "answer_relevance": 0.9034361243247986,
+          "latency_s": 11.58,
+          "faithfulness_claims": [
+            {
+              "claim": "The cheapest route is to take the M11 metro from the airport to Gayrettepe, transfer to the M2 metro (southbound) and ride to Vezneciler, then change to Tram line 1 at Laleli‑Üniversite and travel three stops to Sultanahmet.",
+              "supported": false
+            },
+            {
+              "claim": "This route requires two transfers.",
+              "supported": false
+            },
+            {
+              "claim": "Payment with an Istanbulkart is required for this route.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What is balık-ekmek and where in Istanbul is it traditionally sold?",
+          "ground_truth": "Balık-ekmek means 'fish and bread' and consists of freshly grilled fish, typically mackerel, served in a crusty bread roll with lettuce, onions, sometimes tomatoes, and a squeeze of lemon. It is an iconic waterfront snack, especially at the lower level of Galata Bridge near the Eminönü ferry pier where vendors such as Eminönü Balık Ekmek and Deniz Yildizi Balikci sell it.",
+          "answer": "Balık-ekmek is a popular low-budget meal consisting of grilled fish inside half a bread roll, often served with garlic sauce. It is traditionally sold in buffets along the coast and at various street vendors in Istanbul. The most common locations mentioned are near the Bosphorus and in the coastal areas, such as near the ferry pier in Eminönü or along the seafront. \n\n[1] [2] [3] [4]\n\nSources: [1], [2], [3], [4]",
+          "retrieved_ids": [
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_historical_peninsula_00035",
+            "istanbul_kadıköy_00014",
+            "istanbul_00103",
+            "istanbul_eastern_suburbs_00008"
+          ],
+          "gold_ids": [
+            "istanbul_00108",
+            "istanbul_00109",
+            "istanbul_00110",
+            "istanbul_00111",
+            "istanbul_00112",
+            "istanbul_historical_peninsula_00056",
+            "istanbul_historical_peninsula_00057",
+            "istanbul_historical_peninsula_00065",
+            "istanbul_historical_peninsula_00066",
+            "istanbul_historical_peninsula_00067",
+            "istanbul_historical_peninsula_00068"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 0.5,
+          "answer_relevance": 0.8878674507141113,
+          "latency_s": 14.18,
+          "faithfulness_claims": [
+            {
+              "claim": "Balık-ekmek is a popular low-budget meal consisting of grilled fish inside half a bread roll, often served with garlic sauce.",
+              "supported": false
+            },
+            {
+              "claim": "It is traditionally sold in buffets along the coast and at various street vendors in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "The most common locations mentioned are near the Bosphorus and in the coastal areas, such as near the ferry pier in Eminönü or along the seafront.",
+              "supported": true
+            },
+            {
+              "claim": "Sources: [1], [2], [3], [4].",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "Which travellers can enter Turkey without obtaining a visa in advance, and how long is the e-visa valid for those who do need one?",
+          "ground_truth": "From 2020 onward most EU, UK, CIS and South American visitors do not need a visa. Travellers from many other countries including Australia, Canada and the United States can obtain an e-visa online that is valid for 90 days.",
+          "answer": "Travelers from most EU countries, the United Kingdom, CIS nations and South American countries can enter Turkey without obtaining a visa in advance.  \nVisitors from many other countries (e.g., Australia, Canada, the United States) can obtain an e‑visa online, and that e‑visa is valid for 90 days.  \n\n**Sources**  \n[1] – Visa requirements and e‑visa validity.  \n[2] – Same visa‑free and e‑visa information.",
+          "retrieved_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012",
+            "istanbul_airport_00030",
+            "istanbul_airport_00045",
+            "istanbul_airport_00008"
+          ],
+          "gold_ids": [
+            "istanbul_00012",
+            "istanbul_airport_00002"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9187180995941162,
+          "latency_s": 23.18,
+          "faithfulness_claims": [
+            {
+              "claim": "Travelers from most EU countries, the United Kingdom, CIS nations and South American countries can enter Turkey without obtaining a visa in advance.",
+              "supported": true
+            },
+            {
+              "claim": "Visitors from many other countries (e.g., Australia, Canada, the United States) can obtain an e‑visa online, and that e‑visa is valid for 90 days.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "factual",
+          "question": "What was the Hippodrome at Sultanahmet Square used for, and what notable monuments remain there today?",
+          "ground_truth": "The Hippodrome was a U-shaped chariot-racing track first built in 203 AD and rebuilt under Constantine in 324, where rival factions of Greens and Blues raced. A riot there in 532 left 30,000 dead and ruined half the city, and the venue was abandoned after the Crusader attack of 1204. The square still holds two obelisks, the stump of the Serpent Column, and the 1901 German Fountain donated by Kaiser Wilhelm.",
+          "answer": "",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_historical_peninsula_00021",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00005",
+            "istanbul_00070"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_historical_peninsula_00019",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00021",
+            "istanbul_historical_peninsula_00022",
+            "istanbul_historical_peninsula_00023",
+            "istanbul_historical_peninsula_00024"
+          ],
+          "precision_at_k": 0.6,
+          "recall_at_k": 0.42857142857142855,
+          "mrr": 1.0,
+          "faithfulness": null,
+          "answer_relevance": null,
+          "latency_s": 39.73,
+          "faithfulness_claims": []
+        },
+        {
+          "id": 5,
+          "category": "Accommodation",
+          "difficulty": "synthesis",
+          "question": "Which Istanbul neighbourhoods are best suited to budget travellers looking for hostels, and how do they differ in character?",
+          "ground_truth": "Sultanahmet in the old city is the main hub for hostel-type accommodation favoured by independent travellers, with many hotels offering Marmara Sea or Blue Mosque views. Taksim on the European side has hostels and moderate hotels and serves as the city's shopping and entertainment centre. Harbiye is close to both Nişantaşı and Taksim and contains apartments and moderate hotels for budget travellers.",
+          "answer": "**Neighbourhoods with good hostel options for budget travellers**\n\n| Neighbourhood | Typical hostel‑style accommodation | Characteristic vibe |\n|---------------|------------------------------------|---------------------|\n| **Taksim** | Many hostels (plus budget hotels) | The heart of the European side – bustling shopping streets, cafés, bars and a lively nightlife scene. It’s the go‑to spot for tourists who want to be in the middle of the action. |\n| **Sultanahmet** | A large share of hostels (especially for independent travellers) | The historic old city, home to iconic sights such as the Blue Mosque and Hagia Sophia. It’s quieter than Taksim, with a more cultural, heritage‑focused atmosphere and scenic views of the Golden Horn or the Marmara Sea. |\n| **Harbiye** | Mostly moderate hotels, but also budget options | A neighbourhood close to the new city centre on the European side. It offers a mix of international‑standard apartments and budget hotels, giving a more relaxed, residential feel while still being near the main attractions. |\n\n**How they differ**\n\n* **Taksim** is the most energetic and commercial area, ideal for travellers who enjoy nightlife, shopping and a fast‑paced environment.  \n* **Sultanahmet** provides a quieter, historically rich setting, perfect for those who want to stay close to the city’s ancient landmarks.  \n* **Harbiye** offers a more laid‑back, residential atmosphere with easy access to the new city centre, making it a good compromise between cost and convenience.  \n\nThese neighbourhoods collectively give budget travellers a range of hostel options that match different preferences for ambience and proximity to Istanbul’s key sights.  \n\n**Sources**  \n[1] Istanbul — Sleep (Taksim, Sultanahmet, Harbiye)",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_00108",
+            "istanbul_airport_00057",
+            "istanbul_princes_islands_00003",
+            "istanbul_00033"
+          ],
+          "gold_ids": [
+            "istanbul_00114",
+            "istanbul_00115"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 0.0,
+          "answer_relevance": 0.8850778341293335,
+          "latency_s": 22.46,
+          "faithfulness_claims": []
+        }
+      ]
+    }
+  ]
+}
