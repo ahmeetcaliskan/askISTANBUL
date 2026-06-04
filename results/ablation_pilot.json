@@ -1,0 +1,496 @@
+{
+  "timestamp": "2026-06-04T01:10:43.259643",
+  "k": 5,
+  "client_type": "openrouter",
+  "conditions": [
+    {
+      "condition": "rerank-rag",
+      "k": 5,
+      "n_questions": 10,
+      "aggregate": {
+        "precision_at_k": {
+          "mean": 0.34,
+          "min": 0.2,
+          "max": 0.6,
+          "n": 10
+        },
+        "recall_at_k": {
+          "mean": 0.9,
+          "min": 0.3333333333333333,
+          "max": 1.0,
+          "n": 10
+        },
+        "mrr": {
+          "mean": 0.9,
+          "min": 0.5,
+          "max": 1.0,
+          "n": 10
+        },
+        "faithfulness": {
+          "mean": 1.0,
+          "min": 1.0,
+          "max": 1.0,
+          "n": 10
+        },
+        "answer_relevance": {
+          "mean": 0.9086143374443054,
+          "min": 0.8736369609832764,
+          "max": 0.9349055290222168,
+          "n": 10
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "What is the cheapest way to get from Istanbul Airport to Sultanahmet, and what transfers are required?",
+          "ground_truth": "Take the M11 metro from the airport to Gayrettepe (about 30 minutes), transfer to the M2 southbound to Vezneciler, walk roughly 300 m to the Laleli-Üniversite tram stop, then ride Tram T1 three stops east to Sultanahmet. The HVIST-11 Havaist coach also runs directly from the airport to Çatladıkapı in Sultanahmet for 380 TL in about 110 minutes if you prefer a single-vehicle option.",
+          "answer": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram system. Here are the steps and transfers required:\n\n1. Take the M11 metro line from the airport to Gayrettepe.\n2. Transfer to Metro line M2 heading southbound.\n3. Travel as far as Vezneciler (the penultimate stop).\n4. Transfer to Tram line 1 at Laleli-Üniversite (300 m away).\n5. Travel eastward for three stops on the tram until you reach Sultanahmet.\n\nMake sure to have an IstanbulKart with sufficient credit for the journey. [1], [4]",
+          "retrieved_ids": [
+            "istanbul_airport_00019",
+            "istanbul_00013",
+            "istanbul_00028",
+            "istanbul_airport_00018",
+            "istanbul_00014"
+          ],
+          "gold_ids": [
+            "istanbul_00013",
+            "istanbul_airport_00017",
+            "istanbul_airport_00019"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.6666666666666666,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9314597845077515,
+          "latency_s": 6.07,
+          "faithfulness_claims": [
+            {
+              "claim": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram system.",
+              "supported": true
+            },
+            {
+              "claim": "Take the M11 metro line from the airport to Gayrettepe.",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Metro line M2 heading southbound.",
+              "supported": true
+            },
+            {
+              "claim": "Travel as far as Vezneciler (the penultimate stop).",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Tram line 1 at Laleli-Üniversite (300 m away).",
+              "supported": true
+            },
+            {
+              "claim": "Travel eastward for three stops on the tram until you reach Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Make sure to have an IstanbulKart with sufficient credit for the journey.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What is balık-ekmek and where in Istanbul is it traditionally sold?",
+          "ground_truth": "Balık-ekmek means 'fish and bread' and consists of freshly grilled fish, typically mackerel, served in a crusty bread roll with lettuce, onions, sometimes tomatoes, and a squeeze of lemon. It is an iconic waterfront snack, especially at the lower level of Galata Bridge near the Eminönü ferry pier where vendors such as Eminönü Balık Ekmek and Deniz Yildizi Balikci sell it.",
+          "answer": "Balık-ekmek is a grilled fish sandwiched inside half a bread, typically made with mackerel and served with lettuce, onions, and sometimes tomatoes, often accompanied by a squeeze of lemon and a sprinkle of spices. It is a popular low-budget meal and a flavorful snack often enjoyed by the waterfront. In Istanbul, it is traditionally sold from buffets along the coast, in the market area a little inland, and at kiosks by the ferry pier in Kadıköy [1], [2], [3].",
+          "retrieved_ids": [
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_00103",
+            "istanbul_kadıköy_00014",
+            "istanbul_00098",
+            "istanbul_historical_peninsula_00035"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00035",
+            "istanbul_kadıköy_00014",
+            "istanbul_00103"
+          ],
+          "precision_at_k": 0.6,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8912843465805054,
+          "latency_s": 8.19,
+          "faithfulness_claims": [
+            {
+              "claim": "Balık-ekmek is a grilled fish sandwiched inside half a bread, typically made with mackerel and served with lettuce, onions, and sometimes tomatoes, often accompanied by a squeeze of lemon and a sprinkle of spices.",
+              "supported": true
+            },
+            {
+              "claim": "It is a popular low-budget meal and a flavorful snack often enjoyed by the waterfront.",
+              "supported": true
+            },
+            {
+              "claim": "In Istanbul, it is traditionally sold from buffets along the coast, in the market area a little inland, and at kiosks by the ferry pier in Kadıköy.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "Which travellers can enter Turkey without obtaining a visa in advance, and how long is the e-visa valid for those who do need one?",
+          "ground_truth": "From 2020 onward most EU, UK, CIS and South American visitors do not need a visa. Travellers from many other countries including Australia, Canada and the United States can obtain an e-visa online that is valid for 90 days.",
+          "answer": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance. Travellers from countries including Australia, Canada, and the US can get an e-visa online, which is valid for 90 days [1], [2].",
+          "retrieved_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012",
+            "istanbul_airport_00030",
+            "istanbul_00063",
+            "istanbul_airport_00005"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.923403263092041,
+          "latency_s": 7.18,
+          "faithfulness_claims": [
+            {
+              "claim": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance.",
+              "supported": true
+            },
+            {
+              "claim": "Travellers from countries including Australia, Canada, and the US can get an e-visa online.",
+              "supported": true
+            },
+            {
+              "claim": "The e-visa is valid for 90 days.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "factual",
+          "question": "What was the Hippodrome at Sultanahmet Square used for, and what notable monuments remain there today?",
+          "ground_truth": "The Hippodrome was a U-shaped chariot-racing track first built in 203 AD and rebuilt under Constantine in 324, where rival factions of Greens and Blues raced. A riot there in 532 left 30,000 dead and ruined half the city, and the venue was abandoned after the Crusader attack of 1204. The square still holds two obelisks, the stump of the Serpent Column, and the 1901 German Fountain donated by Kaiser Wilhelm.",
+          "answer": "The Hippodrome at Sultanahmet Square was used for chariot racing, which often involved rival political factions, primarily the Greens and the Blues. A notable incident in 532 AD saw 30,000 people die in crowd trouble, and the event left half the city in ruins. The Hippodrome was abandoned after the Crusader attack of 1204. Today, the square retains several monuments, including a couple of obelisks and the stump of the \"serpent column.\" [1]",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_00065",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00026",
+            "istanbul_historical_peninsula_00005"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00018"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8736369609832764,
+          "latency_s": 9.24,
+          "faithfulness_claims": [
+            {
+              "claim": "The Hippodrome at Sultanahmet Square was used for chariot racing",
+              "supported": true
+            },
+            {
+              "claim": "Chariot racing often involved rival political factions, primarily the Greens and the Blues",
+              "supported": true
+            },
+            {
+              "claim": "A notable incident in 532 AD saw 30,000 people die in crowd trouble",
+              "supported": true
+            },
+            {
+              "claim": "The 532 AD event left half the city in ruins",
+              "supported": true
+            },
+            {
+              "claim": "The Hippodrome was abandoned after the Crusader attack of 1204",
+              "supported": true
+            },
+            {
+              "claim": "Today, the square retains several monuments, including a couple of obelisks and the stump of the 'serpent column'",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "category": "Accommodation",
+          "difficulty": "synthesis",
+          "question": "Which Istanbul neighbourhoods are best suited to budget travellers looking for hostels, and how do they differ in character?",
+          "ground_truth": "Sultanahmet in the old city is the main hub for hostel-type accommodation favoured by independent travellers, with many hotels offering Marmara Sea or Blue Mosque views. Taksim on the European side has hostels and moderate hotels and serves as the city's shopping and entertainment centre. Harbiye is close to both Nişantaşı and Taksim and contains apartments and moderate hotels for budget travellers.",
+          "answer": "The best neighbourhoods for budget travelers looking for hostels in Istanbul are Harbiye, Taksim, and Sultanahmet. Each of these areas has its own distinct character:\n\n1. **Harbiye**: This area is popular and offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers. It is close to the main center of the new city on the European side, and staying here allows you to benefit from the activities in nearby Nişantaşı and Taksim [1].\n\n2. **Taksim**: Taksim is the main center of the city on the European side, known for its vibrant atmosphere, shopping, and entertainment. It has moderate hotels for budget travelers and several hostels. Taksim is a bustling area with a lot of nightlife and cultural activities [1].\n\n3. **Sultanahmet**: This is the main center for the old city on the European side. It is rich in historical and cultural sites, with a selection of quality, reasonably priced hotels. Many hostels frequented by independent travelers are located here, and some offer terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque [1].\n\nThese areas cater to different preferences, with Harbiye and Taksim being more modern and lively, while Sultanahmet offers a more historical and cultural experience.\n\n[1]",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_eastern_suburbs_00000",
+            "istanbul_00136",
+            "istanbul_00101",
+            "istanbul_airport_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00109"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8956112861633301,
+          "latency_s": 22.31,
+          "faithfulness_claims": [
+            {
+              "claim": "The best neighbourhoods for budget travelers looking for hostels in Istanbul are Harbiye, Taksim, and Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is popular and offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is close to the main center of the new city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Staying in Harbiye allows you to benefit from the activities in nearby Nişantaşı and Taksim.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is the main center of the city on the European side, known for its vibrant atmosphere, shopping, and entertainment.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim has moderate hotels for budget travelers and several hostels.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is a bustling area with a lot of nightlife and cultural activities.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet is the main center for the old city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet is rich in historical and cultural sites, with a selection of quality, reasonably priced hotels.",
+              "supported": true
+            },
+            {
+              "claim": "Many hostels frequented by independent travelers are located in Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Some hotels in Sultanahmet offer terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye and Taksim are more modern and lively, while Sultanahmet offers a more historical and cultural experience.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "category": "Culture & Customs",
+          "difficulty": "factual",
+          "question": "How should travellers handle tipping when taking taxis in Istanbul?",
+          "ground_truth": "Tipping is generally unnecessary for taxis, and there is no extra fare at night. Drivers should be using the taximeter; if a driver tries to negotiate a fixed price or fails to start the meter, it is best to refuse the ride and take another cab to avoid being overcharged.",
+          "answer": "Travellers should know that tipping is generally unnecessary when taking taxis in Istanbul [1].",
+          "retrieved_ids": [
+            "istanbul_00057",
+            "istanbul_00122",
+            "istanbul_00058",
+            "istanbul_00124",
+            "istanbul_00014"
+          ],
+          "gold_ids": [
+            "istanbul_00057",
+            "istanbul_00126",
+            "istanbul_airport_00015"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.3333333333333333,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9109801054000854,
+          "latency_s": 1.71,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers should know that tipping is generally unnecessary when taking taxis in Istanbul",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "category": "Shopping",
+          "difficulty": "synthesis",
+          "question": "Why might travellers want to avoid buying Turkish Delight or spices at the Spice Bazaar, and where would be a better place to shop?",
+          "ground_truth": "Prices at the Spice Market in Eminönü are roughly two to three times higher than elsewhere in the city because the area is heavily touristic. Istiklal Caddesi in Beyoğlu has many stores selling Turkish sweets by the kilogram and is generally a better place to buy fresh lokum and other Turkish delights, unless you are a strong haggler.",
+          "answer": "Travellers might want to avoid buying Turkish Delight or spices at the Spice Bazaar because prices there can be significantly higher compared to other locations in the city [4]. A better place to shop for Turkish Delight would be Istiklal Caddesi, where there are numerous stores selling Turkish sweets by the kilogram, including lokum and helvah [2]. For spices, while the Spice Bazaar is a traditional spot, exploring other central spots such as Üsküdar might offer better prices [1].",
+          "retrieved_ids": [
+            "istanbul_00100",
+            "istanbul_00098",
+            "istanbul_00128",
+            "istanbul_00101",
+            "istanbul_00132"
+          ],
+          "gold_ids": [
+            "istanbul_00101",
+            "istanbul_00098"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 0.5,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9349055290222168,
+          "latency_s": 7.41,
+          "faithfulness_claims": [
+            {
+              "claim": "Travellers might want to avoid buying Turkish Delight or spices at the Spice Bazaar because prices there can be significantly higher compared to other locations in the city",
+              "supported": true
+            },
+            {
+              "claim": "A better place to shop for Turkish Delight would be Istiklal Caddesi, where there are numerous stores selling Turkish sweets by the kilogram, including lokum and helvah",
+              "supported": true
+            },
+            {
+              "claim": "For spices, while the Spice Bazaar is a traditional spot, exploring other central spots such as Üsküdar might offer better prices",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "category": "Health & Safety",
+          "difficulty": "inference",
+          "question": "What major natural hazard does Istanbul face, and what should travellers do to prepare for it?",
+          "ground_truth": "A major earthquake with its epicentre in the nearby Sea of Marmara is expected within the next few decades. Travellers are advised to read an earthquake safety article before arriving so they know how to respond if a quake occurs during their stay.",
+          "answer": "Istanbul faces the major natural hazard of a major earthquake, with the epicenter expected to be in the nearby Sea of Marmara. To prepare, travellers should read the earthquake safety article before arriving in Istanbul [1].",
+          "retrieved_ids": [
+            "istanbul_00111",
+            "istanbul_00129",
+            "istanbul_00006",
+            "istanbul_airport_00057",
+            "istanbul_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00111"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9044207334518433,
+          "latency_s": 3.06,
+          "faithfulness_claims": [
+            {
+              "claim": "Istanbul faces the major natural hazard of a major earthquake",
+              "supported": true
+            },
+            {
+              "claim": "the epicenter [of the earthquake] is expected to be in the nearby Sea of Marmara",
+              "supported": true
+            },
+            {
+              "claim": "travellers should read the earthquake safety article before arriving in Istanbul",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "category": "Itinerary & Planning",
+          "difficulty": "factual",
+          "question": "When are the best times of year to visit the Princes' Islands, and which seasons should be avoided?",
+          "ground_truth": "Spring (April and May) and autumn (September and October) are the best times, with pleasant temperatures and smaller crowds. Summer weekends from June to August are very crowded on both the islands and the ferries, while winter from November to March is cold and quiet, suitable only for travellers who don't mind biting cold and a near-deserted feel.",
+          "answer": "The best times to visit the Princes' Islands are during spring (April and May) and autumn (September and October). During these seasons, the temperature is pleasantly mild, and the islands are not very crowded. Early spring, around late March, is particularly charming when the silver wattles are in bloom, adding to the islands' beauty. Summer weekends (June to August) should be avoided due to crowds on the islands and in the ships. Winter (November to March) is also generally less favorable unless you are interested in a \"ghost-town\" experience with the islands blanketed by snow and don't mind the biting cold [2].",
+          "retrieved_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00004",
+            "istanbul_00008",
+            "istanbul_princes_islands_00000",
+            "istanbul_kadıköy_00021"
+          ],
+          "gold_ids": [
+            "istanbul_princes_islands_00005",
+            "istanbul_princes_islands_00004",
+            "istanbul_00008"
+          ],
+          "precision_at_k": 0.6,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8943659067153931,
+          "latency_s": 8.53,
+          "faithfulness_claims": [
+            {
+              "claim": "The best times to visit the Princes' Islands are during spring (April and May) and autumn (September and October).",
+              "supported": true
+            },
+            {
+              "claim": "During these seasons, the temperature is pleasantly mild, and the islands are not very crowded.",
+              "supported": true
+            },
+            {
+              "claim": "Early spring, around late March, is particularly charming when the silver wattles are in bloom, adding to the islands' beauty.",
+              "supported": true
+            },
+            {
+              "claim": "Summer weekends (June to August) should be avoided due to crowds on the islands and in the ships.",
+              "supported": true
+            },
+            {
+              "claim": "Winter (November to March) is also generally less favorable unless you are interested in a 'ghost-town' experience with the islands blanketed by snow and don't mind the biting cold.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "category": "Activities & Entertainment",
+          "difficulty": "factual",
+          "question": "Which six Istanbul football clubs play in the Süper Lig, and which one won the 2000 UEFA Cup?",
+          "ground_truth": "Istanbul has six clubs in the Süper Lig: Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray and Kasımpaşa. Galatasaray is the club that won the 2000 UEFA Cup.",
+          "answer": "The six Istanbul football clubs that play in the Süper Lig are Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray, and Kasımpaşa. Galatasaray won the 2000 UEFA Cup [1].",
+          "retrieved_ids": [
+            "istanbul_00088",
+            "istanbul_00112",
+            "istanbul_00089",
+            "istanbul_00090",
+            "istanbul_kadıköy_00012"
+          ],
+          "gold_ids": [
+            "istanbul_00088"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.9260754585266113,
+          "latency_s": 3.34,
+          "faithfulness_claims": [
+            {
+              "claim": "The six Istanbul football clubs that play in the Süper Lig are Başakşehir, Beşiktaş, Eyüpspor, Fenerbahçe, Galatasaray, and Kasımpaşa.",
+              "supported": true
+            },
+            {
+              "claim": "Galatasaray won the 2000 UEFA Cup.",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "timestamp": "2026-06-02T21:38:35.838775",
+  "k": 5,
+  "client_type": "openrouter",
+  "conditions": [
+    {
+      "condition": "rerank-rag",
+      "k": 5,
+      "n_questions": 5,
+      "aggregate": {
+        "precision_at_k": {
+          "mean": 0.2,
+          "min": 0.0,
+          "max": 0.4,
+          "n": 5
+        },
+        "recall_at_k": {
+          "mean": 0.3238095238095238,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 5
+        },
+        "mrr": {
+          "mean": 0.45,
+          "min": 0.0,
+          "max": 1.0,
+          "n": 5
+        },
+        "faithfulness": {
+          "mean": 0.925,
+          "min": 0.75,
+          "max": 1.0,
+          "n": 5
+        },
+        "answer_relevance": {
+          "mean": 0.9041329860687256,
+          "min": 0.8797184824943542,
+          "max": 0.9363375306129456,
+          "n": 5
+        }
+      },
+      "rows": [
+        {
+          "id": 1,
+          "category": "Transportation",
+          "difficulty": "synthesis",
+          "question": "What is the cheapest way to get from Istanbul Airport to Sultanahmet, and what transfers are required?",
+          "ground_truth": "Take the M11 metro from the airport to Gayrettepe (about 30 minutes), transfer to the M2 southbound to Vezneciler, walk roughly 300 m to the Laleli-Üniversite tram stop, then ride Tram T1 three stops east to Sultanahmet. The HVIST-11 Havaist coach also runs directly from the airport to Çatladıkapı in Sultanahmet for 380 TL in about 110 minutes if you prefer a single-vehicle option.",
+          "answer": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram system. Here are the steps and transfers required:\n\n1. Take the M11 metro line from the airport to Gayrettepe.\n2. Transfer to Metro line M2 heading southbound.\n3. Travel as far as Vezneciler (the penultimate stop).\n4. Transfer to Tram line 1 at Laleli-Üniversite (300 m away).\n5. Travel eastward for three stops on the tram until you reach Sultanahmet.\n\nThis route involves a minimum of two transfers and is the most cost-effective option using public transportation [1], [4].",
+          "retrieved_ids": [
+            "istanbul_airport_00019",
+            "istanbul_00013",
+            "istanbul_00028",
+            "istanbul_airport_00018",
+            "istanbul_00014"
+          ],
+          "gold_ids": [
+            "istanbul_airport_00016",
+            "istanbul_airport_00017",
+            "istanbul_airport_00018"
+          ],
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.3333333333333333,
+          "mrr": 0.25,
+          "faithfulness": 0.875,
+          "answer_relevance": 0.9363375306129456,
+          "latency_s": 5.02,
+          "faithfulness_claims": [
+            {
+              "claim": "The cheapest way to get from Istanbul Airport to Sultanahmet is by using the metro and tram system.",
+              "supported": true
+            },
+            {
+              "claim": "Take the M11 metro line from the airport to Gayrettepe.",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Metro line M2 heading southbound.",
+              "supported": true
+            },
+            {
+              "claim": "Travel as far as Vezneciler (the penultimate stop).",
+              "supported": true
+            },
+            {
+              "claim": "Transfer to Tram line 1 at Laleli-Üniversite (300 m away).",
+              "supported": true
+            },
+            {
+              "claim": "Travel eastward for three stops on the tram until you reach Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "This route involves a minimum of two transfers.",
+              "supported": true
+            },
+            {
+              "claim": "This route is the most cost-effective option using public transportation.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "category": "Food & Drink",
+          "difficulty": "synthesis",
+          "question": "What is balık-ekmek and where in Istanbul is it traditionally sold?",
+          "ground_truth": "Balık-ekmek means 'fish and bread' and consists of freshly grilled fish, typically mackerel, served in a crusty bread roll with lettuce, onions, sometimes tomatoes, and a squeeze of lemon. It is an iconic waterfront snack, especially at the lower level of Galata Bridge near the Eminönü ferry pier where vendors such as Eminönü Balık Ekmek and Deniz Yildizi Balikci sell it.",
+          "answer": "Balık-ekmek is a grilled fish sandwiched inside half a bread, typically made with mackerel and served with lettuce, onions, and sometimes tomatoes, often accompanied by a squeeze of lemon and a sprinkle of spices. It is a flavorful and iconic snack often enjoyed by the waterfront in Istanbul [2].\n\nTraditionally, balık-ekmek is sold from buffets along the coast, fish restaurants in the market area, and kiosks by the ferry pier in Kadıköy [1], [3]. Additionally, it can be found on the lower level near the Eminönü ferry pier, where outlets like Eminönü Balık Ekmek and Deniz Yildizi Balikci serve this dish [5].\n\nCitations: [1], [2], [3], [5]",
+          "retrieved_ids": [
+            "istanbul_asian_bosphorus_00010",
+            "istanbul_00103",
+            "istanbul_kadıköy_00014",
+            "istanbul_00098",
+            "istanbul_historical_peninsula_00035"
+          ],
+          "gold_ids": [
+            "istanbul_00108",
+            "istanbul_00109",
+            "istanbul_00110",
+            "istanbul_00111",
+            "istanbul_00112",
+            "istanbul_historical_peninsula_00056",
+            "istanbul_historical_peninsula_00057",
+            "istanbul_historical_peninsula_00065",
+            "istanbul_historical_peninsula_00066",
+            "istanbul_historical_peninsula_00067",
+            "istanbul_historical_peninsula_00068"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 0.75,
+          "answer_relevance": 0.9000169634819031,
+          "latency_s": 5.15,
+          "faithfulness_claims": [
+            {
+              "claim": "Balık-ekmek is a grilled fish sandwiched inside half a bread, typically made with mackerel and served with lettuce, onions, and sometimes tomatoes, often accompanied by a squeeze of lemon and a sprinkle of spices.",
+              "supported": true
+            },
+            {
+              "claim": "It is a flavorful and iconic snack often enjoyed by the waterfront in Istanbul.",
+              "supported": true
+            },
+            {
+              "claim": "Traditionally, balık-ekmek is sold from buffets along the coast, fish restaurants in the market area, and kiosks by the ferry pier in Kadıköy.",
+              "supported": true
+            },
+            {
+              "claim": "Additionally, it can be found on the lower level near the Eminönü ferry pier, where outlets like Eminönü Balık Ekmek and Deniz Yildizi Balikci serve this dish.",
+              "supported": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "category": "Practical Info",
+          "difficulty": "factual",
+          "question": "Which travellers can enter Turkey without obtaining a visa in advance, and how long is the e-visa valid for those who do need one?",
+          "ground_truth": "From 2020 onward most EU, UK, CIS and South American visitors do not need a visa. Travellers from many other countries including Australia, Canada and the United States can obtain an e-visa online that is valid for 90 days.",
+          "answer": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance. Travellers from countries including Australia, Canada, and the US can get an e-visa online, which is valid for 90 days [1], [2].",
+          "retrieved_ids": [
+            "istanbul_airport_00002",
+            "istanbul_00012",
+            "istanbul_airport_00030",
+            "istanbul_00063",
+            "istanbul_airport_00005"
+          ],
+          "gold_ids": [
+            "istanbul_00012",
+            "istanbul_airport_00002"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 1.0,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.923403263092041,
+          "latency_s": 2.2,
+          "faithfulness_claims": [
+            {
+              "claim": "Most EU, UK, CIS, and South American visitors can enter Turkey without obtaining a visa in advance.",
+              "supported": true
+            },
+            {
+              "claim": "Travellers from countries including Australia, Canada, and the US can get an e-visa online.",
+              "supported": true
+            },
+            {
+              "claim": "The e-visa is valid for 90 days.",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "category": "Attractions & Sightseeing",
+          "difficulty": "factual",
+          "question": "What was the Hippodrome at Sultanahmet Square used for, and what notable monuments remain there today?",
+          "ground_truth": "The Hippodrome was a U-shaped chariot-racing track first built in 203 AD and rebuilt under Constantine in 324, where rival factions of Greens and Blues raced. A riot there in 532 left 30,000 dead and ruined half the city, and the venue was abandoned after the Crusader attack of 1204. The square still holds two obelisks, the stump of the Serpent Column, and the 1901 German Fountain donated by Kaiser Wilhelm.",
+          "answer": "The Hippodrome at Sultanahmet Square was primarily used for chariot racing, which often involved rival political factions, notably the Greens and the Blues. The races were a significant part of the social and political life of the city, but the hippodrome was abandoned after the Crusader attack in 1204.\n\nToday, several notable monuments remain at the site:\n- A couple of obelisks\n- The stump of the \"serpent column\"\n- The German Fountain of 1901, a gift from Kaiser Wilhelm to the Sultan [1].",
+          "retrieved_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_00065",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00026",
+            "istanbul_historical_peninsula_00005"
+          ],
+          "gold_ids": [
+            "istanbul_historical_peninsula_00018",
+            "istanbul_historical_peninsula_00019",
+            "istanbul_historical_peninsula_00020",
+            "istanbul_historical_peninsula_00021",
+            "istanbul_historical_peninsula_00022",
+            "istanbul_historical_peninsula_00023",
+            "istanbul_historical_peninsula_00024"
+          ],
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.2857142857142857,
+          "mrr": 1.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.881188690662384,
+          "latency_s": 3.72,
+          "faithfulness_claims": [
+            {
+              "claim": "The Hippodrome at Sultanahmet Square was primarily used for chariot racing",
+              "supported": true
+            },
+            {
+              "claim": "The races often involved rival political factions, notably the Greens and the Blues",
+              "supported": true
+            },
+            {
+              "claim": "The races were a significant part of the social and political life of the city",
+              "supported": true
+            },
+            {
+              "claim": "The hippodrome was abandoned after the Crusader attack in 1204",
+              "supported": true
+            },
+            {
+              "claim": "A couple of obelisks remain at the site",
+              "supported": true
+            },
+            {
+              "claim": "The stump of the 'serpent column' remains at the site",
+              "supported": true
+            },
+            {
+              "claim": "The German Fountain of 1901, a gift from Kaiser Wilhelm to the Sultan, remains at the site",
+              "supported": true
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "category": "Accommodation",
+          "difficulty": "synthesis",
+          "question": "Which Istanbul neighbourhoods are best suited to budget travellers looking for hostels, and how do they differ in character?",
+          "ground_truth": "Sultanahmet in the old city is the main hub for hostel-type accommodation favoured by independent travellers, with many hotels offering Marmara Sea or Blue Mosque views. Taksim on the European side has hostels and moderate hotels and serves as the city's shopping and entertainment centre. Harbiye is close to both Nişantaşı and Taksim and contains apartments and moderate hotels for budget travellers.",
+          "answer": "For budget travelers looking for hostels, the best neighborhoods in Istanbul are Harbiye, Taksim, and Sultanahmet. Here’s how they differ in character:\n\n- **Harbiye**: This area is popular and close to the main center of the new city on the European side. It offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers. It is also close to Nişantaşı and Taksim, allowing you to benefit from the activities in those areas [1].\n\n- **Taksim**: Taksim is the main center of the city on the European side, known for shopping and entertainment. It has moderate hotels for budget travelers and several hostels. Taksim is a vibrant area with a lot of nightlife and cultural activities [1].\n\n- **Sultanahmet**: This is the main center for the old city on the European side. It has a selection of quality, reasonably priced hotels, many with terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque. Most hostel-type accommodations frequented by independent travelers are located in this district, though there are also a few upmarket hotels [1].\n\nEach of these neighborhoods offers a unique experience, with Harbiye being more residential and close to modern amenities, Taksim being a bustling urban center, and Sultanahmet offering a rich historical and cultural atmosphere. \n\n[1]",
+          "retrieved_ids": [
+            "istanbul_00109",
+            "istanbul_eastern_suburbs_00000",
+            "istanbul_00136",
+            "istanbul_00101",
+            "istanbul_airport_00057"
+          ],
+          "gold_ids": [
+            "istanbul_00114",
+            "istanbul_00115"
+          ],
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "mrr": 0.0,
+          "faithfulness": 1.0,
+          "answer_relevance": 0.8797184824943542,
+          "latency_s": 7.72,
+          "faithfulness_claims": [
+            {
+              "claim": "For budget travelers looking for hostels, the best neighborhoods in Istanbul are Harbiye, Taksim, and Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is popular and close to the main center of the new city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye offers a variety of international standard apartments, hotels, and moderate hotels for budget travelers.",
+              "supported": true
+            },
+            {
+              "claim": "Harbiye is close to Nişantaşı and Taksim, allowing you to benefit from the activities in those areas.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is the main center of the city on the European side, known for shopping and entertainment.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim has moderate hotels for budget travelers and several hostels.",
+              "supported": true
+            },
+            {
+              "claim": "Taksim is a vibrant area with a lot of nightlife and cultural activities.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet is the main center for the old city on the European side.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet has a selection of quality, reasonably priced hotels, many with terraces overlooking the Golden Horn or views of the Marmara Sea and the Blue Mosque.",
+              "supported": true
+            },
+            {
+              "claim": "Most hostel-type accommodations frequented by independent travelers are located in Sultanahmet.",
+              "supported": true
+            },
+            {
+              "claim": "Sultanahmet also has a few upmarket hotels.",
+              "supported": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

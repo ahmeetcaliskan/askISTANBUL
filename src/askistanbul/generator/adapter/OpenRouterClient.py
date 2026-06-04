@@ -90,6 +90,10 @@ class OpenRouterClient(BaseLLMClient):
         payload = self._build_payload(messages, temperature, max_new_tokens)
         resp = self._post(payload)
         data = resp.json()
+        if "choices" not in data:
+            # OpenRouter returns error/rate-limit responses without "choices"
+            error_msg = data.get("error", {}).get("message", str(data))
+            raise RuntimeError(f"OpenRouter response missing 'choices': {error_msg}")
         return data["choices"][0]["message"].get("content") or ""
 
     def chat_json(
