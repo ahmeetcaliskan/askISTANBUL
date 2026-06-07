@@ -43,7 +43,7 @@ class Retriever(ABC):
     """Common interface for dense and sparse retrievers."""
 
     @abstractmethod
-    def retrieve(self, query: str, k: int = 20) -> list[RetrievalResult]: ...
+    def retrieve(self, query: str, biencoder_k: int = 20, reranker_k: int = 5) -> list[RetrievalResult]: ...
 
 
 # ---------------------------------------------------------------------------
@@ -55,10 +55,12 @@ class DenseRetriever(Retriever):
         self,
         embedder: Optional[Embedder] = None,
         index_dir: Path = INDEX_DIR,
+        fetch_k: Optional[int] = 20,
     ):
         self.index, self.chunks, config = Embedder.load_index(index_dir)
         index_model = config["model"]
         self.embedder = embedder if embedder is not None else Embedder(model_name=index_model)
+        self.fetch_k = fetch_k
         if self.embedder.model_name != index_model:
             print(
                 f"[DenseRetriever] WARNING: index was built with {index_model!r} "
@@ -66,9 +68,9 @@ class DenseRetriever(Retriever):
             )
         print(f"[DenseRetriever] Loaded {len(self.chunks)} chunks, model={index_model}")
 
-    def retrieve(self, query: str, k: int = 20) -> list[RetrievalResult]:
+    def retrieve(self, query: str, biencoder_k: int = 20, reranker_k: int = 5) -> list[RetrievalResult]:
         vec = self.embedder.encode([query], is_query=True)
-        scores, indices = self.index.search(vec, k)
+        scores, indices = self.index.search(vec, biencoder_k)
         results: list[RetrievalResult] = []
         for score, idx in zip(scores[0], indices[0]):
             if idx == -1:
@@ -105,10 +107,11 @@ class BM25Retriever(Retriever):
         self.bm25 = BM25Okapi(tokenized)
         print(f"[BM25Retriever] Indexed {len(self.chunks)} chunks")
 
-    def retrieve(self, query: str, k: int = 20) -> list[RetrievalResult]:
+    def retrieve(self, query: str, biencoder_k: int = 20, reranker_k: int = 5) -> list[RetrievalResult]:
+        # reranker_k is accepted for interface uniformity but unused (no rerank stage).
         tokens = self.tokenize_fn(query)
         scores = self.bm25.get_scores(tokens)
-        top_indices = scores.argsort()[::-1][:k]
+        top_indices = scores.argsort()[::-1][:biencoder_k]
         return [
             RetrievalResult(chunk=self.chunks[i], score=float(scores[i]), method="bm25")
             for i in top_indices
@@ -127,13 +130,14 @@ def _main() -> None:
     parser = argparse.ArgumentParser(description="Query the Istanbul RAG index.")
     parser.add_argument("query", nargs="?", default="best rooftop bars in Beyoglu",
                         help="Natural-language question.")
-    parser.add_argument("--k", type=int, default=5, help="Number of chunks to return.")
+    parser.add_argument("--biencoder-k", type=int, default=_cfg.biencoder_fetch_k,
+                        help="Bi-encoder candidates / result count (default from BIENCODER_FETCH_K).")
+    parser.add_argument("--reranker-k", type=int, default=_cfg.reranker_fetch_k,
+                        help="Final results after reranking, used with --rerank (default from RERANKER_FETCH_K).")
     parser.add_argument("--method", choices=["dense", "bm25", "both"], default="dense",
                         help="Retrieval backend (default: dense).")
     parser.add_argument("--rerank", action="store_true",
                         help="Apply cross-encoder reranking on top of the base retriever.")
-    parser.add_argument("--fetch-k", type=int, default=_cfg.reranker_fetch_k,
-                        help="Reranker over-fetch count (default from RERANKER_FETCH_K).")
     parser.add_argument("--show-text", action="store_true",
                         help="Print the chunk text alongside scores.")
     args = parser.parse_args()
@@ -142,7 +146,11 @@ def _main() -> None:
         if not args.rerank:
             return base
         from .reranker import RerankingRetriever
-        return RerankingRetriever(base=base, fetch_k=args.fetch_k)
+        return RerankingRetriever(base=base)
+
+    def go(base: Retriever) -> list[RetrievalResult]:
+        return wrap(base).retrieve(args.query, biencoder_k=args.biencoder_k,
+                                   reranker_k=args.reranker_k)
 
     def show(label: str, results: list[RetrievalResult]) -> None:
         print(f"\n{'='*60}\n{label}  —  query: {args.query!r}\n{'='*60}")
@@ -155,9 +163,9 @@ def _main() -> None:
                 print(r.chunk.text[:300].replace("\n", " "))
 
     if args.method in ("dense", "both"):
-        show("DENSE (FAISS)", wrap(DenseRetriever()).retrieve(args.query, args.k))
+        show("DENSE (FAISS)", go(DenseRetriever()))
     if args.method in ("bm25", "both"):
-        show("SPARSE (BM25)", wrap(BM25Retriever()).retrieve(args.query, args.k))
+        show("SPARSE (BM25)", go(BM25Retriever()))
 
 
 if __name__ == "__main__":

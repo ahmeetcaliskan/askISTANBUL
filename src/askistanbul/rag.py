@@ -13,6 +13,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Optional
 
+import torch
+
 from .config import config
 from .generator.factory.LLMClientFactory import LLMClientFactory
 from .generator.port.BaseLLMClient import BaseLLMClient
@@ -47,8 +49,8 @@ class RAGPipeline:
         self.retriever = retriever or DenseRetriever()
         self.generator = generator
 
-    def answer(self, question: str, k: int = 5) -> Answer:
-        results = self.retriever.retrieve(question, k=k)
+    def answer(self, question: str, fetch_k_biencoder: int, fetch_k_reranker: int) -> Answer:
+        results = self.retriever.retrieve(question, biencoder_k=fetch_k_biencoder, reranker_k=fetch_k_reranker)
         answer_text: Optional[str] = None
         if self.generator is not None:
             messages = self.form_the_question(question, results)
@@ -96,10 +98,10 @@ class RAGPipeline:
 _HELP = """\
 Commands:
   :help                    Show this message
-  :k N                     Set top-k (current: {k})
+  :bk N                    Bi-encoder candidates / dense result count (current: {bk})
+  :rk N                    Reranker final results, used when rerank is on (current: {rk})
   :method dense|bm25       Switch retrieval backend (current: {method})
   :rerank on|off           Toggle cross-encoder reranker (current: {rerank})
-  :fetch-k N               Reranker over-fetch count (current: {fetch_k})
   :show on|off             Toggle full chunk text in output (current: {show})
   :q / :quit / exit        Exit
 Anything else is treated as a question.\
@@ -125,12 +127,13 @@ def _main() -> None:
     from .reranker import Reranker, RerankingRetriever
 
     p = argparse.ArgumentParser(description="Interactive RAG REPL over the Istanbul index.")
-    p.add_argument("--k", type=int, default=5, help="Default top-k.")
     p.add_argument("--method", choices=["dense", "bm25"], default="dense",
                    help="Initial retrieval backend.")
     p.add_argument("--rerank", action="store_true",
                    help="Enable cross-encoder reranking from the start.")
-    p.add_argument("--fetch-k", type=int, default=config.reranker_fetch_k,
+    p.add_argument("--fetch-k-biencoder", type=int, default=config.biencoder_fetch_k,
+                   help="Bi-encoder over-fetch count (default from BIENCODER_FETCH_K).")
+    p.add_argument("--fetch-k-reranker", type=int, default=config.reranker_fetch_k,
                    help="Reranker over-fetch count (default from RERANKER_FETCH_K).")
     p.add_argument("--client-type", choices=["ollama", "openai", "anthropic"], default="ollama",
                    help="LLM client type.")
@@ -138,18 +141,19 @@ def _main() -> None:
                    help="Print chunk text by default (toggle with :show).")
     args = p.parse_args()
 
+
     # readline gives arrow-key history on Mac/Linux when available.
     try:
         import readline  # noqa: F401
     except ImportError:
         pass
 
-    k = args.k
     method = args.method
     llm_client = args.client_type
     show = args.show_text
     rerank_on = args.rerank
-    fetch_k = args.fetch_k
+    fetch_k_biencoder = args.fetch_k_biencoder
+    fetch_k_reranker = args.fetch_k_reranker
 
     print("Loading retrievers... (this may take a few seconds the first time)")
     base_retrievers: dict[str, Retriever] = {
@@ -161,7 +165,7 @@ def _main() -> None:
     reranker: Optional[Reranker] = None
     if rerank_on:
         print("Loading reranker... (first time downloads model from HF)")
-        reranker = Reranker()
+        reranker = Reranker(config.reranker_model)
 
     def active_retriever() -> Retriever:
         nonlocal reranker
@@ -171,7 +175,7 @@ def _main() -> None:
         if reranker is None:
             print("Loading reranker... (first time downloads model from HF)")
             reranker = Reranker()
-        return RerankingRetriever(base=base, reranker=reranker, fetch_k=fetch_k)
+        return RerankingRetriever(base=base, reranker=reranker)
 
     print("Loading generator... (this may take a few seconds the first time)")
     generator: BaseLLMClient = LLMClientFactory.create_llm_client(config, llm_client)
@@ -183,7 +187,7 @@ def _main() -> None:
     rag = RAGPipeline(retriever=active_retriever(), generator=generator)
 
     print(
-        f"\naskistanbul REPL — method={method}, k={k}, "
+        f"\naskistanbul REPL — method={method}, bk={fetch_k_biencoder}, rk={fetch_k_reranker}, "
         f"rerank={'on' if rerank_on else 'off'}. "
         f"Type :help for commands, :q to exit.\n"
     )
@@ -203,17 +207,26 @@ def _main() -> None:
             break
         if line == ":help":
             print(_HELP.format(
-                k=k, method=method, show="on" if show else "off",
-                rerank="on" if rerank_on else "off", fetch_k=fetch_k,
+                bk=fetch_k_biencoder, rk=fetch_k_reranker, method=method,
+                show="on" if show else "off",
+                rerank="on" if rerank_on else "off",
             ))
             continue
-        if line.startswith(":k"):
+        if line.startswith(":bk"):
             parts = line.split(None, 1)
             if len(parts) != 2 or not parts[1].isdigit():
-                print("usage: :k <positive int>")
+                print("usage: :bk <positive int>")
             else:
-                k = int(parts[1])
-                print(f"k = {k}")
+                fetch_k_biencoder = int(parts[1])
+                print(f"biencoder_k = {fetch_k_biencoder}")
+            continue
+        if line.startswith(":rk"):
+            parts = line.split(None, 1)
+            if len(parts) != 2 or not parts[1].isdigit():
+                print("usage: :rk <positive int>")
+            else:
+                fetch_k_reranker = int(parts[1])
+                print(f"reranker_k = {fetch_k_reranker}")
             continue
         if line.startswith(":method"):
             parts = line.split(None, 1)
@@ -237,15 +250,6 @@ def _main() -> None:
             rag.retriever = active_retriever()
             print(f"rerank = {'on' if rerank_on else 'off'}")
             continue
-        if line.startswith(":fetch-k"):
-            parts = line.split(None, 1)
-            if len(parts) != 2 or not parts[1].isdigit():
-                print("usage: :fetch-k <positive int>")
-            else:
-                fetch_k = int(parts[1])
-                rag.retriever = active_retriever()
-                print(f"fetch-k = {fetch_k}")
-            continue
         if line.startswith(":show"):
             parts = line.split(None, 1)
             val = parts[1].strip().lower() if len(parts) == 2 else ""
@@ -264,7 +268,8 @@ def _main() -> None:
 
         # ----- query ------------------------------------------------------
         try:
-            ans = rag.answer(line, k=k)
+            ans = rag.answer(line, fetch_k_biencoder=fetch_k_biencoder,
+                             fetch_k_reranker=fetch_k_reranker)
             _render(ans, show)
         except Exception as exc:
             print(f"[error] {type(exc).__name__}: {exc}")
