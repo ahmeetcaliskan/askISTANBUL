@@ -180,8 +180,8 @@ def ndcg_at_k(
 # ---------------------------------------------------------------------------
 
 _FAITHFULNESS_SYSTEM = """\
-You are a strict evaluation judge. Your task is to assess whether each claim
-in an AI-generated answer is fully supported by the provided context passages.
+You are a balanced evaluation judge. Your task is to assess whether each claim
+in an AI-generated answer is grounded in the provided context passages.
 
 Respond with a JSON object (no markdown fences) in this exact schema:
 {
@@ -193,9 +193,13 @@ Respond with a JSON object (no markdown fences) in this exact schema:
 
 Rules:
 - Extract every distinct factual claim from the answer (typically 3-8).
-- Mark "supported": true only if the claim is explicitly or clearly inferrable
-  from the context. Partial support counts as false.
-- Do NOT use outside knowledge — only the context matters.
+- Mark "supported": true if the claim is explicitly stated, clearly inferrable,
+  or consistent with information in the context — even if phrased differently.
+- Mark "supported": false only if the claim directly contradicts the context
+  or introduces specific facts (names, numbers, prices) absent from the context.
+- Ignore formatting artifacts like citation markers ([1], [2]) — do not treat
+  them as claims.
+- Give the benefit of the doubt for reasonable paraphrases of context content.
 """
 
 _FAITHFULNESS_USER = """\
@@ -205,7 +209,7 @@ _FAITHFULNESS_USER = """\
 ### Answer
 {answer}
 
-Extract each claim from the Answer and judge whether it is supported by the Context.
+For each factual claim in the Answer, judge whether it is supported by the Context above.
 """
 
 
@@ -213,7 +217,7 @@ def faithfulness(
     answer: str,
     context_chunks: list[str],
     llm_client,
-    max_context_chars: int = 4000,
+    max_context_chars: int = 8000,
 ) -> tuple[float, list[dict]]:
     """RAGAS-style faithfulness: fraction of answer claims supported by context.
 
