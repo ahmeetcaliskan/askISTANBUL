@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AskIstanbul — RAG travel guide</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --panel: #171a23;
+    --panel-2: #1f2330;
+    --border: #2a2f3e;
+    --text: #e6e8ee;
+    --muted: #9aa3b2;
+    --accent: #e4572e;      /* Istanbul terracotta */
+    --accent-2: #2a9d8f;    /* Bosphorus teal */
+    --ok: #57cc99;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    padding: 22px 20px 16px; border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #15171f, var(--bg));
+  }
+  header h1 { margin: 0; font-size: 22px; letter-spacing: .2px; }
+  header h1 span { color: var(--accent); }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 20px; }
+
+  .askbox { display: flex; gap: 10px; margin-bottom: 12px; }
+  .askbox input[type=text] {
+    flex: 1; padding: 12px 14px; border-radius: 10px;
+    border: 1px solid var(--border); background: var(--panel); color: var(--text);
+    font-size: 15px; outline: none;
+  }
+  .askbox input[type=text]:focus { border-color: var(--accent); }
+  button.primary {
+    padding: 12px 20px; border: none; border-radius: 10px; cursor: pointer;
+    background: var(--accent); color: white; font-weight: 600; font-size: 15px;
+  }
+  button.primary:disabled { opacity: .55; cursor: default; }
+
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    padding: 12px 14px; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 10px; margin-bottom: 18px; font-size: 13px; color: var(--muted);
+  }
+  .controls label { display: flex; align-items: center; gap: 6px; }
+  select, input[type=range] { accent-color: var(--accent); }
+  select {
+    background: var(--panel-2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 6px 8px;
+  }
+  .kval { color: var(--text); min-width: 18px; text-align: center; }
+
+  .examples { margin: -6px 0 18px; font-size: 13px; color: var(--muted); }
+  .examples a { color: var(--accent-2); cursor: pointer; text-decoration: none; margin-right: 12px; }
+  .examples a:hover { text-decoration: underline; }
+
+  .answer {
+    background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 10px; padding: 16px 18px; margin-bottom: 18px; white-space: pre-wrap;
+  }
+  .answer h3 { margin: 0 0 8px; font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+  .badge {
+    display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px;
+    background: var(--panel-2); color: var(--muted); border: 1px solid var(--border); margin-left: 8px;
+  }
+
+  .sources h3 { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; }
+  .src {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 10px;
+  }
+  .src .top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .src .title { font-weight: 600; }
+  .src .heading { color: var(--muted); font-weight: 400; }
+  .src .score { font-size: 12px; color: var(--accent-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .src .text { margin-top: 8px; color: #c6ccd8; font-size: 14px; max-height: 0; overflow: hidden; transition: max-height .2s; }
+  .src.open .text { max-height: 600px; }
+  .src .toggle { cursor: pointer; color: var(--accent-2); font-size: 12px; margin-top: 6px; display: inline-block; }
+  .src a.link { color: var(--accent-2); font-size: 12px; text-decoration: none; }
+
+  .status { color: var(--muted); font-size: 13px; min-height: 18px; margin-bottom: 10px; }
+  .status.err { color: var(--accent); }
+  .spinner { display: inline-block; width: 13px; height: 13px; border: 2px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <h1>Ask<span>Istanbul</span></h1>
+    <p>Ask a travel question — answers are grounded in Wikivoyage's Istanbul articles, with sources.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="askbox">
+    <input id="q" type="text" placeholder="e.g. How do I get from the airport to Taksim Square?" autofocus />
+    <button id="go" class="primary">Ask</button>
+  </div>
+
+  <div class="examples">
+    Try:
+    <a data-q="What are the best restaurants near Sultanahmet?">restaurants near Sultanahmet</a>
+    <a data-q="How do I get from Istanbul Airport to Taksim Square?">airport → Taksim</a>
+    <a data-q="Where can I find rooftop bars in Beyoglu?">rooftop bars in Beyoğlu</a>
+  </div>
+
+  <div class="controls">
+    <label>Retrieval
+      <select id="method">
+        <option value="dense">dense (semantic)</option>
+        <option value="bm25">bm25 (keyword)</option>
+        <option value="rerank">dense + rerank</option>
+      </select>
+    </label>
+    <label title="Candidates the bi-encoder returns (dense/bm25 result count, or the rerank pool)">
+      bi-encoder k
+      <input id="bk" type="range" min="1" max="50" value="20" />
+      <span class="kval" id="bkval">20</span>
+    </label>
+    <label id="rkLabel" title="Final results kept after cross-encoder reranking (only used when method = rerank)">
+      reranker k
+      <input id="rk" type="range" min="1" max="20" value="5" />
+      <span class="kval" id="rkval">5</span>
+    </label>
+    <label><input id="generate" type="checkbox" checked /> generate answer</label>
+  </div>
+
+  <div id="status" class="status"></div>
+  <div id="answer"></div>
+  <div id="sources" class="sources"></div>
+</div>
+
+<footer>AskIstanbul · CS455/555 · Wikivoyage content CC BY-SA 3.0</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => (s || "").replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+$("bk").addEventListener("input", () => $("bkval").textContent = $("bk").value);
+$("rk").addEventListener("input", () => $("rkval").textContent = $("rk").value);
+// reranker k only matters when method = rerank
+function syncRerankControl() {
+  const isRerank = $("method").value === "rerank";
+  $("rkLabel").style.opacity = isRerank ? "1" : "0.4";
+  $("rk").disabled = !isRerank;
+}
+$("method").addEventListener("change", syncRerankControl);
+syncRerankControl();
+document.querySelectorAll(".examples a").forEach(a =>
+  a.addEventListener("click", () => { $("q").value = a.dataset.q; ask(); }));
+$("go").addEventListener("click", ask);
+$("q").addEventListener("keydown", (e) => { if (e.key === "Enter") ask(); });
+
+function setStatus(msg, isErr=false, spin=false) {
+  $("status").className = "status" + (isErr ? " err" : "");
+  $("status").innerHTML = (spin ? '<span class="spinner"></span>' : '') + esc(msg);
+}
+
+async function ask() {
+  const question = $("q").value.trim();
+  if (!question) return;
+  const generate = $("generate").checked;
+  const body = {
+    question,
+    method: $("method").value,
+    generate,
+    fetch_k_biencoder: parseInt($("bk").value, 10),
+    fetch_k_reranker: parseInt($("rk").value, 10),
+  };
+  $("go").disabled = true;
+  $("answer").innerHTML = "";
+  $("sources").innerHTML = "";
+  setStatus(generate ? "Retrieving and generating…" : "Retrieving…", false, true);
+
+  try {
+    const res = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status + " — " + (await res.text()));
+    const data = await res.json();
+    render(data);
+    setStatus(`${data.results.length} sources · ${data.method}` +
+      (data.generated ? ` · generated by ${data.generator_kind}` : " · retrieval only"));
+  } catch (err) {
+    setStatus("Error: " + err.message, true);
+  } finally {
+    $("go").disabled = false;
+  }
+}
+
+function render(data) {
+  if (data.answer) {
+    $("answer").innerHTML =
+      `<div class="answer"><h3>Answer<span class="badge">${esc(data.generator_kind||'')}</span></h3>${esc(data.answer)}</div>`;
+  } else if (data.generated === false) {
+    $("answer").innerHTML = "";
+  } else {
+    $("answer").innerHTML = `<div class="answer"><h3>Answer</h3><em>No generator available — showing retrieved sources only.</em></div>`;
+  }
+
+  let html = `<h3>Sources (${data.results.length})</h3>`;
+  for (const r of data.results) {
+    const score = r.cescore != null
+      ? `ce ${r.cescore.toFixed(3)} · ${r.score.toFixed(3)}`
+      : r.score.toFixed(3);
+    html += `
+      <div class="src" id="src-${r.rank}">
+        <div class="top">
+          <div><span class="title">[${r.rank}] ${esc(r.title)}</span>
+            <span class="heading">— ${esc(r.heading || '')}</span></div>
+          <div class="score">${score}</div>
+        </div>
+        <span class="toggle" onclick="document.getElementById('src-${r.rank}').classList.toggle('open')">show passage ▾</span>
+        ${r.url ? `&nbsp;·&nbsp;<a class="link" href="${esc(r.url)}" target="_blank" rel="noopener">source ↗</a>` : ''}
+        <div class="text">${esc(r.text)}</div>
+      </div>`;
+  }
+  $("sources").innerHTML = html;
+}
+
+// initial health ping
+fetch("/api/health").then(r => r.json()).then(h =>
+  setStatus(`Ready${h.generator_kind ? " · generator: " + h.generator_kind : " · retrieval-only"}`)
+).catch(() => {});
+</script>
+</body>
+</html>

@@ -5,6 +5,9 @@ Full evaluation harness for AskIstanbul.
 
 Runs the RAG pipeline against the labeled QA set and reports:
   - Precision@5       (retrieval quality)
+  - Recall@5          (retrieval completeness)
+  - MRR               (rank of first relevant chunk)
+  - NDCG@5            (graded ranking quality of relevant chunks)
   - Faithfulness      (generation groundedness, LLM judge)
   - Answer Relevance  (embedding cosine sim, question vs answer)
 
@@ -22,8 +25,6 @@ Usage:
 
 from __future__ import annotations
 
-from __future__ import annotations
-
 import argparse
 import json
 import time
@@ -38,7 +39,15 @@ from ..generator.factory.LLMClientFactory import LLMClientFactory
 from ..paths import EVAL_DIR, QA_DRAFT_FILE, PROJECT_ROOT
 from ..rag import RAGPipeline
 from ..retriever import BM25Retriever, DenseRetriever
-from .metrics import aggregate, answer_relevance, faithfulness, precision_at_k, recall_at_k, mrr
+from .metrics import (
+    aggregate,
+    answer_relevance,
+    faithfulness,
+    mrr,
+    ndcg_at_k,
+    precision_at_k,
+    recall_at_k,
+)
 
 RESULTS_DIR = PROJECT_ROOT / "results"
 QA_FILE     = EVAL_DIR / "qa_draft_with_relevant_chunks.jsonl"
@@ -114,10 +123,19 @@ def run_condition(
     else:
         raise ValueError(f"Unknown condition: {condition!r}")
 
+    # Per-condition k wiring (fair comparison — every condition feeds the LLM `k`):
+    #   dense/bm25 return `k` directly;
+    #   rerank over-fetches `biencoder_fetch_k` candidates, then trims to `k`.
+    if condition == "rerank-rag":
+        bk, rk = config.biencoder_fetch_k, k
+    else:
+        bk, rk = k, k
+
     rows: list[dict] = []
     p_at_k_scores: list[float] = []
     recall_scores: list[float] = []
     mrr_scores:    list[float] = []
+    ndcg_scores:   list[float] = []
     faith_scores:  list[float] = []
     rel_scores:    list[float] = []
 
@@ -135,7 +153,7 @@ def run_condition(
         last_err = None
         for attempt in range(3):
             try:
-                ans = pipeline.answer(question, k=k)
+                ans = pipeline.answer(question, fetch_k_biencoder=bk, fetch_k_reranker=rk)
                 break
             except Exception as exc:
                 last_err = exc
@@ -158,6 +176,7 @@ def run_condition(
         pk  = precision_at_k(retrieved_ids, gold_ids, k=k) if gold_ids else None
         rk  = recall_at_k(retrieved_ids, gold_ids, k=k)    if gold_ids else None
         rr  = mrr(retrieved_ids, gold_ids)                  if gold_ids else None
+        nd  = ndcg_at_k(retrieved_ids, gold_ids, k=k)       if gold_ids else None
 
         # --- Faithfulness (LLM judge) ------------------------------------
         if answer_text and context_texts:
@@ -183,6 +202,7 @@ def run_condition(
             "precision_at_k":   pk,
             "recall_at_k":      rk,
             "mrr":              rr,
+            "ndcg_at_k":        nd,
             "faithfulness":     faith,
             "answer_relevance": ar,
             "latency_s":        round(elapsed, 2),
@@ -194,6 +214,7 @@ def run_condition(
         if pk    is not None: p_at_k_scores.append(pk)
         if rk    is not None: recall_scores.append(rk)
         if rr    is not None: mrr_scores.append(rr)
+        if nd    is not None: ndcg_scores.append(nd)
         if faith is not None: faith_scores.append(faith)
         if ar    is not None: rel_scores.append(ar)
 
@@ -201,9 +222,10 @@ def run_condition(
             pk_str    = f"{pk:.3f}"    if pk    is not None else "n/a"
             rk_str    = f"{rk:.3f}"    if rk    is not None else "n/a"
             rr_str    = f"{rr:.3f}"    if rr    is not None else "n/a"
+            nd_str    = f"{nd:.3f}"    if nd    is not None else "n/a"
             faith_str = f"{faith:.3f}" if faith is not None else "n/a"
             ar_str    = f"{ar:.3f}"    if ar    is not None else "n/a"
-            print(f"         P@{k}={pk_str}  R@{k}={rk_str}  MRR={rr_str}  "
+            print(f"         P@{k}={pk_str}  R@{k}={rk_str}  MRR={rr_str}  NDCG@{k}={nd_str}  "
                   f"faith={faith_str}  rel={ar_str}  ({elapsed:.1f}s)")
 
     return {
@@ -214,6 +236,7 @@ def run_condition(
             "precision_at_k":   aggregate(p_at_k_scores),
             "recall_at_k":      aggregate(recall_scores),
             "mrr":              aggregate(mrr_scores),
+            "ndcg_at_k":        aggregate(ndcg_scores),
             "faithfulness":     aggregate(faith_scores),
             "answer_relevance": aggregate(rel_scores),
         },
@@ -237,7 +260,7 @@ class _NoRAGPipeline:
     def __init__(self, llm_client):
         self.generator = llm_client
 
-    def answer(self, question: str, k: int = 5):
+    def answer(self, question: str, fetch_k_biencoder: int = 5, fetch_k_reranker: int = 5):
         from ..rag import Answer
         messages = [
             {"role": "system", "content": self._SYSTEM},

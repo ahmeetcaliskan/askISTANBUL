@@ -55,16 +55,15 @@ class RerankingRetriever(Retriever):
         self,
         base: Retriever,
         reranker: Optional[Reranker] = None,
-        fetch_k: Optional[int] = None,
     ):
         self.base = base
         self.reranker = reranker or Reranker()
-        self.fetch_k = fetch_k if fetch_k is not None else config.reranker_fetch_k
 
-    def retrieve(self, query: str, k: int = 5) -> list[RetrievalResult]:
-        # Always over-fetch at least k candidates; usually fetch_k >> k.
-        fetch = max(self.fetch_k, k)
-        candidates = self.base.retrieve(query, k=fetch)
+    def retrieve(self, query: str, biencoder_k: int = 20, reranker_k: int = 5) -> list[RetrievalResult]:
+        # Over-fetch biencoder_k candidates from the base retriever, then keep the
+        # top reranker_k after cross-encoder scoring. biencoder_k > reranker_k is
+        # what makes reranking useful (a larger pool to re-sort and trim).
+        candidates = self.base.retrieve(query, biencoder_k=biencoder_k)
         if not candidates:
             return []
 
@@ -83,5 +82,5 @@ class RerankingRetriever(Retriever):
                 method=c.method,          # preserve base retriever tag
                 cescore=float(s),         # attach cross-encoder score
             )
-            for c, s in scored[:k]
+            for c, s in scored[:reranker_k]
         ]

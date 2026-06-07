@@ -15,6 +15,11 @@ Retrieval metrics:
       → float   Reciprocal rank of the first relevant chunk (1/rank).
                 Best for factual questions with a single key answer chunk.
 
+  ndcg_at_k(retrieved_ids, relevant_ids, k)
+      → float   Normalised Discounted Cumulative Gain at k (binary relevance).
+                Rewards placing relevant chunks near the top of the ranking;
+                1.0 means every relevant chunk is packed into the highest ranks.
+
 Generation metrics:
   faithfulness(answer, context_chunks, llm_client)
       → float   Fraction of answer claims supported by the retrieved context.
@@ -123,7 +128,55 @@ def mrr(
 
 
 # ---------------------------------------------------------------------------
-# 4. Faithfulness  (LLM judge)
+# 4. NDCG@k (Normalised Discounted Cumulative Gain, binary relevance)
+# ---------------------------------------------------------------------------
+
+def _dcg(rels: list[int]) -> float:
+    """Discounted Cumulative Gain of a relevance list (rank 1 = first item).
+
+    DCG = sum_i  rel_i / log2(i + 1)   with i the 1-based rank.
+    """
+    import math
+    return sum(rel / math.log2(rank + 1) for rank, rel in enumerate(rels, start=1))
+
+
+def ndcg_at_k(
+    retrieved_ids: list[str],
+    relevant_ids: list[str],
+    k: int | None = None,
+) -> float:
+    """Normalised DCG at k with binary relevance.
+
+    Unlike Precision@k (which ignores order) and MRR (which only looks at the
+    first hit), NDCG rewards ranking *all* relevant chunks as high as possible.
+    The ideal ranking puts every relevant chunk first, so IDCG is the DCG of
+    min(#relevant, k) ones.
+
+    Args:
+        retrieved_ids: chunk_ids returned by the retriever, ranked best-first.
+        relevant_ids:  gold-standard relevant chunk_ids from the QA set.
+        k:             cut-off; defaults to len(retrieved_ids).
+
+    Returns:
+        float in [0, 1].  Returns 0.0 if retrieved_ids or relevant_ids is empty.
+    """
+    if not retrieved_ids or not relevant_ids:
+        return 0.0
+    cut = k if k else len(retrieved_ids)
+    top = retrieved_ids[:cut]
+    relevant_set = set(relevant_ids)
+
+    gains = [1 if cid in relevant_set else 0 for cid in top]
+    dcg = _dcg(gains)
+
+    n_ideal = min(len(relevant_set), cut)
+    idcg = _dcg([1] * n_ideal)
+
+    return dcg / idcg if idcg > 0 else 0.0
+
+
+# ---------------------------------------------------------------------------
+# 5. Faithfulness  (LLM judge)
 # ---------------------------------------------------------------------------
 
 _FAITHFULNESS_SYSTEM = """\
