@@ -94,7 +94,10 @@ All configuration lives in a project-root `.env` file. Copy `.env.example` to `.
 | `ASKISTANBUL_DATA_DIR` | `<repo>/data` | Override the data directory |
 | `EMBEDDING_MODEL` | `all-MiniLM-L6-v2` | Sentence-transformer used by the dense retriever |
 | `RERANKER_MODEL` | `cross-encoder/ms-marco-MiniLM-L-6-v2` | Cross-encoder reranker (when enabled with `--rerank`) |
-| `RERANKER_FETCH_K` | `20` | How many candidates the reranker pulls before narrowing |
+| `BIENCODER_FETCH_K` | `20` | Candidates the bi-encoder (dense/bm25) returns — the result count for those methods, and the rerank candidate pool |
+| `RERANKER_FETCH_K` | `5` | Final results kept after cross-encoder reranking (only applies when reranking). Must be ≤ `BIENCODER_FETCH_K` to help |
+| `ASKISTANBUL_WARM` | `true` | `askistanbul-serve`: load models at startup (`true`) vs. lazily on first request (`false`). Override per-launch with `--warm` / `--no-warm` |
+| `GENERATOR_TYPE` | `ollama` | Which LLM backend answers queries (passed to `LLMClientFactory`): `ollama` or `openrouter`. Falls back to the other if unreachable |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | Ollama daemon address |
 | `OLLAMA_MODEL` | `qwen2.5:7b` | Local LLM for answer generation |
 | `OPENAI_API_KEY`, `OPENAI_MODEL` | — | Optional fallback (per proposal) |
@@ -138,9 +141,9 @@ askistanbul-index --skip-embed     # stop after chunking (cheap iterate)
 
 ```bash
 askistanbul-ask "best rooftop bars in Beyoglu"
-askistanbul-ask "Hagia Sophia opening hours" --k 3 --show-text
+askistanbul-ask "Hagia Sophia opening hours" --biencoder-k 3 --show-text
 askistanbul-ask "how to get to the airport" --method bm25
-askistanbul-ask "rooftop bars" --rerank --fetch-k 30      # add cross-encoder rerank
+askistanbul-ask "rooftop bars" --rerank --biencoder-k 20 --reranker-k 5   # fetch 20, rerank to 5
 ```
 
 ### Interactive REPL
@@ -154,16 +157,85 @@ Inside the REPL:
 
 ```
 ask> best rooftop bars in Beyoglu
-ask> :k 10                 # change top-k
+ask> :bk 20                # bi-encoder candidates / dense result count
+ask> :rk 5                 # reranker final results (used when rerank is on)
 ask> :method bm25          # switch retrieval backend
 ask> :rerank on            # toggle cross-encoder reranking
-ask> :fetch-k 30           # over-fetch count for reranker
 ask> :show on              # show chunk text
 ask> :help                 # see all commands
 ask> :q                    # exit
 ```
 
 The REPL prints retrieved chunks with their scores and source attributions. If Ollama is reachable, it also prints a generated answer above the chunk list.
+
+---
+
+## Web UI + API
+
+A lightweight FastAPI server exposes the pipeline over HTTP and serves a single-page web UI. No authentication.
+
+```bash
+askistanbul-serve                       # http://127.0.0.1:8000  (UI at /)
+askistanbul-serve --port 9000 --reload  # dev mode
+askistanbul-serve --no-warm             # skip startup warmup (lazy-load on first request)
+```
+
+Models (dense + bm25 retrievers, reranker, LLM client) are **warmed at startup by default** so the first request is fast — controlled by `ASKISTANBUL_WARM` / `--warm` / `--no-warm`. If the port is already in use, the server fails fast with a clear message *before* loading anything.
+
+Open `http://127.0.0.1:8000/` for the UI: type a question, pick the retrieval backend (dense / bm25 / dense+rerank), set the two k's (**bi-encoder k** = candidates, **reranker k** = final results after reranking), toggle answer generation, and see the grounded answer plus the cited source chunks (score, title/heading, Wikivoyage link, expandable passage). The reranker-k control is only active when `method = rerank`.
+
+### Endpoints
+
+| Method | Path | Body / Params | Returns |
+|---|---|---|---|
+| `GET` | `/api/health` | — | liveness + which backends are loaded |
+| `GET` | `/api/config` | — | defaults & available options for the UI |
+| `POST` | `/api/retrieve` | `{question, method, fetch_k_biencoder, fetch_k_reranker}` | retrieved chunks only (no LLM) |
+| `POST` | `/api/ask` | `{question, method, generate, fetch_k_biencoder, fetch_k_reranker}` | grounded answer + citations + chunks |
+| `GET` | `/` | — | the web UI |
+
+Interactive API docs are at `/docs` (Swagger) and `/redoc`. The generator is selected from `GENERATOR_TYPE` (default `ollama`), falling back to the other backend if it's unreachable, else retrieval-only. For `method=rerank`, the bi-encoder fetches `fetch_k_biencoder` candidates and the cross-encoder returns the top `fetch_k_reranker`; for `dense`/`bm25`, `fetch_k_reranker` is ignored and `fetch_k_biencoder` is the result count.
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/api/ask \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"How do I get from the airport to Taksim?","method":"rerank","fetch_k_biencoder":20,"fetch_k_reranker":5}'
+```
+
+---
+
+## Evaluation
+
+The evaluation harness (`askistanbul/eval/`) measures retrieval and generation quality against the hand-labeled QA set (`data/eval/qa_draft_with_relevant_chunks.jsonl`, 85 questions with gold `relevant_chunk_ids`).
+
+**Metrics** (`eval/metrics.py`): Precision@k, Recall@k, MRR, **NDCG@k** (retrieval); RAGAS-style faithfulness via an LLM judge and answer relevance via embedding cosine (generation).
+
+```bash
+# Full 4-condition comparison on all 85 questions
+askistanbul-eval --conditions all --n 85 --client-type ollama
+#   conditions: dense-rag | bm25-rag | rerank-rag | no-rag (no-retrieval baseline)
+askistanbul-eval --conditions dense-rag,no-rag --out results/run.json
+```
+
+**Ablation sweeps** (`eval/ablation.py`, retrieval-only — fast, no LLM cost):
+
+```bash
+askistanbul-ablation --sweep k        # top-k, dense vs bm25 (id-matched)
+askistanbul-ablation --sweep encoder  # all-MiniLM-L6-v2 vs multilingual-e5-base
+askistanbul-ablation --sweep chunk    # chunk_size/overlap grid (text-overlap matched)
+askistanbul-ablation --sweep all      # everything → results/ablation_all_<ts>.json
+```
+
+> The chunk-size sweep re-chunks the corpus, which changes `chunk_id`s, so gold relevance is matched by token-overlap against the primary index's gold chunk texts rather than by id. The k and encoder sweeps reuse stable ids.
+
+**Error analysis** (`eval/error_analysis.py`) turns an eval result into a markdown report — metric breakdowns by category/difficulty, failure-mode buckets (retrieval-miss, weak-retrieval, incomplete-recall, hallucination, off-topic), and the worst concrete cases:
+
+```bash
+askistanbul-erroranalysis results/eval_baseline_<ts>.json --condition dense-rag
+#   → results/error_analysis.md
+```
+
+**One-shot deliverables:** `bash scripts/run_full_eval.sh [ollama|openrouter]` runs the ablation grid, the full 4-condition comparison, and the error-analysis report in sequence.
 
 ---
 
@@ -193,10 +265,20 @@ askISTANBUL/
     ├── reranker.py             # cross-encoder reranker (two-stage retrieval)
     ├── rag.py                  # RAGPipeline + interactive REPL
     ├── pipeline.py             # offline indexing facade (Pipeline)
-    └── generator/              # LLM clients (hexagonal architecture)
-        ├── port/BaseLLMClient.py        # abstract LLM client interface
-        ├── adapter/OllamaClient.py      # concrete Ollama implementation
-        └── factory/LLMClientFactory.py  # picks the right client at runtime
+    ├── generator/              # LLM clients (hexagonal architecture)
+    │   ├── port/BaseLLMClient.py        # abstract LLM client interface
+    │   ├── adapter/OllamaClient.py      # local Ollama implementation
+    │   ├── adapter/OpenRouterClient.py  # hosted API fallback
+    │   └── factory/LLMClientFactory.py  # picks the right client at runtime
+    ├── eval/                   # evaluation harness
+    │   ├── metrics.py          # precision/recall/mrr/ndcg + faithfulness/relevance
+    │   ├── evaluator.py        # 4-condition comparison runner (askistanbul-eval)
+    │   ├── ablation.py         # retrieval ablation sweeps (askistanbul-ablation)
+    │   ├── error_analysis.py   # failure-mode report (askistanbul-erroranalysis)
+    │   └── auto_label.py       # LLM-assisted gold-label assignment
+    └── api/                    # FastAPI server + web UI
+        ├── server.py           # endpoints + launcher (askistanbul-serve)
+        └── static/index.html   # single-page UI
 ```
 
 ### What each script does
@@ -225,17 +307,18 @@ Splits cleaned documents into overlapping token windows. Respects section bounda
 Loads a sentence-transformer once, encodes texts in batches, builds a FAISS inner-product index (cosine similarity on normalized vectors). Knows about the `intfloat/e5-*` family's `query:` / `passage:` prefix convention and applies it transparently.
 
 #### `retriever.py` — `Retriever` (ABC), `DenseRetriever`, `BM25Retriever`
-- `DenseRetriever` loads the FAISS index + chunk metadata, encodes the query through the same `Embedder`, returns top-k by inner product.
+- All retrievers share one signature: `retrieve(query, biencoder_k=20, reranker_k=5)`. The base (bi-encoder) retrievers return `biencoder_k` results and ignore `reranker_k`; only the reranker uses it.
+- `DenseRetriever` loads the FAISS index + chunk metadata, encodes the query through the same `Embedder`, returns the top `biencoder_k` by inner product.
 - `BM25Retriever` builds an in-memory BM25 index from `all_chunks.jsonl` using a custom tokenizer (lowercase + punctuation strip + English stopwords).
 - Both return `list[RetrievalResult]` so they're drop-in interchangeable.
 
 #### `reranker.py` — `Reranker`, `RerankingRetriever`
 - `Reranker` wraps a HuggingFace cross-encoder (default `cross-encoder/ms-marco-MiniLM-L-6-v2`) and scores `(query, text)` pairs jointly.
-- `RerankingRetriever` decorates any `Retriever` with two-stage retrieval: over-fetch `fetch_k` candidates from the base, rescore with the cross-encoder, return top-`k`. Method tag is preserved as `"dense+rerank"` / `"bm25+rerank"`.
+- `RerankingRetriever` decorates any `Retriever` with two-stage retrieval: over-fetch `biencoder_k` candidates from the base, rescore with the cross-encoder, return the top `reranker_k`. The cross-encoder score is attached as `RetrievalResult.cescore`.
 
 #### `rag.py` — `RAGPipeline`, `Answer`, REPL
-- `RAGPipeline` ties a `Retriever` and an optional `BaseLLMClient` together. Its `answer(question, k)` retrieves, builds a chat-completion messages list via `form_the_question()`, and (if a generator is wired in) calls `.chat(messages)` for the final answer.
-- The `_main()` function is the `askistanbul-repl` entry point. It loads both retrievers at startup, lazily loads the reranker if enabled, dispatches REPL commands (`:k`, `:method`, `:rerank`, `:fetch-k`, `:show`).
+- `RAGPipeline` ties a `Retriever` and an optional `BaseLLMClient` together. Its `answer(question, fetch_k_biencoder, fetch_k_reranker)` retrieves (passing both k's through to the retriever), builds a chat-completion messages list via `form_the_question()`, and (if a generator is wired in) calls `.chat(messages)` for the final answer.
+- The `_main()` function is the `askistanbul-repl` entry point. It loads both retrievers at startup, lazily loads the reranker if enabled, dispatches REPL commands (`:bk`, `:rk`, `:method`, `:rerank`, `:show`).
 
 #### `pipeline.py` — `Pipeline`
 Composes all four offline stages (`Scraper` → `Preprocessor` → `Chunker` → `Embedder`) into a single `.run()` call. The `askistanbul-index` CLI is just a thin wrapper that exposes `--skip-scrape` and `--skip-embed` flags.
@@ -263,18 +346,20 @@ from askistanbul import (
 # offline: build the index
 Pipeline().run()
 
-# online: retrieval only
+# online: retrieval only — dense returns biencoder_k results
 rag = RAGPipeline(retriever=DenseRetriever())
-result = rag.answer("best rooftop bars in Beyoglu", k=5)
+result = rag.answer("best rooftop bars in Beyoglu", fetch_k_biencoder=5, fetch_k_reranker=5)
 for r in result.results:
     print(r.score, r.chunk.title, "—", r.chunk.heading)
 
 # online: retrieval + reranking + LLM generation
+# fetch 20 candidates with the bi-encoder, rerank, keep the top 5
 rag = RAGPipeline(
-    retriever=RerankingRetriever(DenseRetriever(), Reranker(), fetch_k=20),
+    retriever=RerankingRetriever(DenseRetriever(), Reranker()),
     generator=OllamaClient(),
 )
-answer = rag.answer("how do I get from the airport to Taksim?", k=5)
+answer = rag.answer("how do I get from the airport to Taksim?",
+                    fetch_k_biencoder=20, fetch_k_reranker=5)
 print(answer.answer)         # LLM-generated, grounded text
 print(answer.citations)      # ["Istanbul Airport — Get out (https://…)", …]
 ```

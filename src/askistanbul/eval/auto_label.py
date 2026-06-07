@@ -133,7 +133,7 @@ def main() -> None:
         print(f"\n[{i:3d}/{len(items)}] Q{qid}: {question[:70]}...")
 
         # Retrieve candidate chunks
-        results   = retriever.retrieve(question, k=args.fetch_k)
+        results   = retriever.retrieve(question, biencoder_k=args.fetch_k)
         relevant_ids: list[str] = []
 
         for r in results:

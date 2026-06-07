@@ -14,6 +14,9 @@ askistanbul-ask        = "askistanbul.retriever:_main"
 askistanbul-repl       = "askistanbul.rag:_main"
 askistanbul-eval       = "askistanbul.eval.evaluator:main"
 askistanbul-autolabel  = "askistanbul.eval.auto_label:main"
+askistanbul-ablation   = "askistanbul.eval.ablation:main"
+askistanbul-erroranalysis = "askistanbul.eval.error_analysis:main"
+askistanbul-serve      = "askistanbul.api.server:_main"
 
 [build-system]
 requires = ["setuptools>=68", "wheel"]
@@ -25,3 +28,6 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["askistanbul*"]
+
+[tool.setuptools.package-data]
+"askistanbul.api" = ["static/*"]
